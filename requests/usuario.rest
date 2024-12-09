@@ -1,0 +1,69 @@
+###Usuarios
+
+###login
+POST http://localhost:3000/api/usuarios/login
+Content-Type: application/json
+
+{
+  "email": "scarlettluna397@gmail.com",
+  "password": "Luna.12345"
+}
+
+# {
+#   "email": "davidvela306@gmail.com",
+#   "password": "David.123"
+# }
+
+
+### recuperar contraseña
+POST http://localhost:3000/api/recuperar-password
+Content-Type: application/json
+
+{
+  "email": "scarlettluna397@gmail.com"
+}
+
+###nueva contraseña
+PUT http://localhost:3000/api/nueva-password/g9ugzz8xhv
+Content-Type: application/json
+
+{
+  "password": "Luna.12345",
+  "confirmarPassword": "Luna.12345"
+}
+
+###perfil
+GET http://localhost:3000/api/usuarios/perfil
+Authorization: Bearer
+
+
+###actualizar contraseña
+PUT http://localhost:3000/api/usuarios/actualizar-password
+Content-Type: application/json
+
+{
+  "password": "Luna.12345",
+  "confirmarPassword": "Luna.12345"
+}
+
+### actualizar usuario 
+PUT http://localhost:3000/api/usuarios/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NGU4NzIwMmI0ZDc1MmM0MTIxZTBkMCIsInJvbCI6Imd1YXJkaWEiLCJpYXQiOjE3MzMyODY1MjMsImV4cCI6MTczMzM3MjkyM30.ddvgoE9BNXPP7WXGbm4Ls4VMij62oLxybENeOfgoKWE
+Content-Type: application/json
+
+{
+  "nombre": "Estefany",
+  "apellido": "Luna",
+  "cedula": "1548951000",
+  "email": "scarlettluna397@gmail.com",
+  "password": "Luna.123",
+  "telefono": "0998374400",
+  "placa_vehiculo": "abb-110",
+  "rol": "Estudiante",
+  "estado": true
+}
+
+### -----------------------espacios----------------------
+### parqueadero disponibles
+GET http://localhost:3000/api/usuarios/parqueaderos-disponibles
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NGU4NzIwMmI0ZDc1MmM0MTIxZTBkMCIsInJvbCI6Imd1YXJkaWEiLCJpYXQiOjE3MzMyODY1MjMsImV4cCI6MTczMzM3MjkyM30.ddvgoE9BNXPP7WXGbm4Ls4VMij62oLxybENeOfgoKWE
