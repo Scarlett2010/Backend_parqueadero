@@ -1,0 +1,70 @@
+###Usuarios
+
+###login
+POST http://localhost:3000/api/login
+Content-Type: application/json
+
+{
+  "email": "scarlettluna397@gmail.com",
+  "password": "Luna.12345"
+}
+
+# {
+#   "email": "davidvela306@gmail.com",
+#   "password": "David.123"
+# }
+
+
+### recuperar contraseña
+POST http://localhost:3000/api/recuperar-password
+Content-Type: application/json
+
+{
+  "email": "scarlettluna397@gmail.com"
+}
+
+###nueva contraseña
+PUT http://localhost:3000/api/nueva-password/orut44nkxxa
+Content-Type: application/json
+
+{
+  "password": "Luna.12345",
+  "confirmarPassword": "Luna.12345"
+}
+
+###perfil
+GET http://localhost:3000/api/usuarios/perfil
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NTdhZmYzNGM3ZGJjODJhOTllNjQ3MyIsInJvbCI6InVzdWFyaW8iLCJpYXQiOjE3MzM4MDAwNTksImV4cCI6MTczMzg4NjQ1OX0.QJU98ZXF1X2JLZQxwrWqX4q3l0lGzqSKyv3bQSHFUFg
+
+
+###actualizar contraseña
+PUT http://localhost:3000/api/usuarios/actualizar-password
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NTdhZmYzNGM3ZGJjODJhOTllNjQ3MyIsInJvbCI6InVzdWFyaW8iLCJpYXQiOjE3MzM4MDAwNTksImV4cCI6MTczMzg4NjQ1OX0.QJU98ZXF1X2JLZQxwrWqX4q3l0lGzqSKyv3bQSHFUFg
+Content-Type: application/json
+
+{
+  "actualPassword": "Luna.12345",
+  "nuevoPassword": "Luna.123"
+}
+
+### actualizar usuario 
+PUT http://localhost:3000/api/usuarios/6757aff34c7dbc82a99e6473
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NTdhZmYzNGM3ZGJjODJhOTllNjQ3MyIsInJvbCI6InVzdWFyaW8iLCJpYXQiOjE3MzM4MDAwNTksImV4cCI6MTczMzg4NjQ1OX0.QJU98ZXF1X2JLZQxwrWqX4q3l0lGzqSKyv3bQSHFUFg
+Content-Type: application/json
+
+{
+  "nombre": "Stefany",
+  "apellido": "Luna",
+  "cedula": "1548951090",
+  "email": "scarlettluna397@gmail.com",
+  "password": "Luna.1234",
+  "telefono": "099837440",
+  "placa_vehiculo": "abc-110",
+  "rol": "Estudiante",
+  "estado": true
+}
+
+### -----------------------espacios----------------------
+### parqueadero disponibles
+GET http://localhost:3000/api/usuarios/parqueaderos-disponibles
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NGU4NzIwMmI0ZDc1MmM0MTIxZTBkMCIsInJvbCI6Imd1YXJkaWEiLCJpYXQiOjE3MzMyODY1MjMsImV4cCI6MTczMzM3MjkyM30.ddvgoE9BNXPP7WXGbm4Ls4VMij62oLxybENeOfgoKWE
