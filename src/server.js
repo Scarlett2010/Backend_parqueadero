@@ -24,7 +24,7 @@ const httpServer = createServer(app);
 dotenv.config();
 
 // Configuraciones
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 4000;
 app.set("port", PORT);
 app.use(cors());
 

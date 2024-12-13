@@ -13,7 +13,7 @@ import verificarRol from "../middlewares/autenticacion.js";
 
 const router = Router();
 
-router.post("/login", loginUsuario);
+router.post("/usuarios/login", loginUsuario);
 
 router.post("/recuperar-password", recuperarContraseña);
 
