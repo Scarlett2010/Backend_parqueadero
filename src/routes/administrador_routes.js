@@ -21,7 +21,40 @@ const router = Router();
 /*inicio sesion y recuperar contraseña*/
 
 router.post("/administrador/registrar", registroAdmin);
-
+/**
+ * @swagger
+ * /administrador/login:
+ *   post:
+ *     summary: Inicio de sesion de administrador
+ *     tags: [Administrador]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               email:
+ *                 type: string
+ *               password:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Inicio de sesion exitoso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 _id:
+ *                   type: string
+ *                 token:
+ *                   type: string
+ *
+ *       400:
+ *         description: Error de inicio de sesion
+ *
+ */
 router.post("/administrador/login", loginAdmin);
 
 router.post("/administrador/recuperar-password", recuperarContraseña);

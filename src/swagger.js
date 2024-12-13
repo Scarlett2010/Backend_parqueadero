@@ -9,7 +9,7 @@ export const options = {
     },
     servers: [
       {
-        url: "https://backend-espacios-esfot.onrender.com/", // URL del servidor
+        url: "https://backend-parqueadero-vp31.onrender.com", // URL del servidor
       },
     ],
   },
