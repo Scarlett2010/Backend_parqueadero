@@ -81,8 +81,8 @@ GET  http://localhost:3000/api/administrador/listar-guardias
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NTUxMzQ0NDUwNWIwNzhiMDljYzg3ZSIsInJvbCI6ImFkbWluaXN0cmFkb3IiLCJpYXQiOjE3MzM3MDMyNjAsImV4cCI6MTczMzc4OTY2MH0.C74JQOe8kFz-0OaM3soC51q7U51Q9vv5UF0F0OWWxJc
 
 ### actualizar perfil
-PUT http://localhost:3000/api/administrador/actualizar-perfil/675517784422db44a91a3ffe
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NTUxMzQ0NDUwNWIwNzhiMDljYzg3ZSIsInJvbCI6ImFkbWluaXN0cmFkb3IiLCJpYXQiOjE3MzM3MDMyNjAsImV4cCI6MTczMzc4OTY2MH0.C74JQOe8kFz-0OaM3soC51q7U51Q9vv5UF0F0OWWxJc
+PUT http://localhost:4000/api/administrador/actualizar-guardia/67641274d4f7e4451839f085
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NWY2ZGZlOTE5YzU5ZjQyNjIxODU2YSIsInJvbCI6ImFkbWluaXN0cmFkb3IiLCJpYXQiOjE3MzQ2MTE1MDMsImV4cCI6MTczNDY5NzkwM30.qSM7SyVYM59BTGKulay2WUU6tHSubedr1Ol6fxcOPOw
 content-type: application/json
 
 {
@@ -90,7 +90,7 @@ content-type: application/json
   "apellido": "Perez",
   "cedula": "1548950520",
   "email": "tixat81607@bawsny.com",
-  "password": "Manuel.1234",
+  "password": "Elsa.1234",
   "telefono": "0995377012",
   "estado": true
 }
