@@ -2,7 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import { createServer } from "http";
-import { Server as SocketServer } from "socket.io";
+//import { Server as SocketServer } from "socket.io";
 import routerParqueaderos from "./routes/parqueadero_routes.js";
 import routerUsuarios from "./routes/usuario_routes.js";
 import routerGuardias from "./routes/guardia_routes.js";
