@@ -31,6 +31,12 @@ const parqueaderoSchema = new mongoose.Schema(
       type: Boolean,
       default: true,
     },
+    x: {
+      type: Number,
+    },
+    y: {
+      type: Number,
+    },
   },
   {
     timestamps: true,
