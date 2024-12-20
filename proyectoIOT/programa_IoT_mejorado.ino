@@ -3,8 +3,8 @@
 #define echo1 2
 #define trig2 5
 #define echo2 4
-#define trig3 15
-#define echo3 14
+#define trig3 15 //7
+#define echo3 14 //6
 #define trig4 9
 #define echo4 8
 #define trig5 11

@@ -163,6 +163,92 @@ const router = Router();
  *              email: "juanperez@gmail.com"
  *              telefono: 987654321
  *              estado: true
+ *
+ *      UsuarioRegister:
+ *          type: object
+ *          properties:
+ *              nombre:
+ *                  type: string
+ *                  description: El nombre del usuario
+ *              apellido:
+ *                  type: string
+ *                  description: El apellido del usuario
+ *              cedula:
+ *                  type: string
+ *                  description: La cédula del usuario
+ *              email:
+ *                  type: string
+ *                  description: El email del usuario
+ *              password:
+ *                  type: string
+ *                  format: password
+ *                  description: La contraseña debe ser segura
+ *              telefono:
+ *                  type: number
+ *                  description: El teléfono del usuario
+ *              placa_vehiculo:
+ *                  type: string
+ *                  description: La placa del vehículo del usuario
+ *              rol:
+ *                  type: string
+ *                  description: El rol del usuario (e.g., administrador, cliente)
+ *              estado:
+ *                  type: boolean
+ *                  description: El estado activo o inactivo del usuario
+ *          example:
+ *              nombre: "Carlos"
+ *              apellido: "Ramírez"
+ *              cedula: "9876543210"
+ *              email: "carlosramirez@gmail.com"
+ *              password: "Usuario.123"
+ *              telefono: 123456789
+ *              placa_vehiculo: "XYZ789"
+ *              rol: "usuario"
+ *              estado: true
+ *      UsuarioResponse:
+ *          type: object
+ *          properties:
+ *              nombre:
+ *                  type: string
+ *                  description: El nombre del usuario
+ *              apellido:
+ *                  type: string
+ *                  description: El apellido del usuario
+ *              cedula:
+ *                  type: string
+ *                  description: La cédula del usuario
+ *              email:
+ *                  type: string
+ *                  description: El email del usuario
+ *              telefono:
+ *                  type: number
+ *                  description: El teléfono del usuario
+ *              placa_vehiculo:
+ *                  type: string
+ *                  description: La placa del vehículo del usuario
+ *              rol:
+ *                  type: string
+ *                  description: El rol del usuario
+ *              estado:
+ *                  type: boolean
+ *                  description: El estado activo o inactivo del usuario
+ *              _id:
+ *                  type: string
+ *                  description: El ID único del usuario
+ *              token:
+ *                  type: string
+ *                  description: El token generado para el usuario
+ *          example:
+ *              nombre: "Carlos"
+ *              apellido: "Ramírez"
+ *              cedula: "9876543210"
+ *              email: "carlosramirez@gmail.com"
+ *              telefono: 123456789
+ *              placa_vehiculo: "XYZ789"
+ *              rol: "usuario"
+ *              estado: true
+ *              _id: "63f5d123c8b7f1d21c456abc"
+ *              token: "abcd1234efgh5678ijkl"
  */
 
 /**
@@ -566,6 +652,8 @@ router.put(
  *  patch:
  *      summary: Cambiar estado de guardia
  *      tags: [Administrador]
+ *      security:
+ *          - bearerAuth: []
  *      parameters:
  *          - in: path
  *            name: id
@@ -623,6 +711,8 @@ router.patch(
  *  delete:
  *      summary: Eliminar guardia
  *      tags: [Administrador]
+ *      security:
+ *          - bearerAuth: []
  *      parameters:
  *          - in: path
  *            name: id
@@ -666,8 +756,10 @@ router.delete(
  * @swagger
  * /api/administrador/registrar-usuarios:
  *  post:
- *      summary: Registrar usuarios
+ *      summary: Registrar un nuevo usuario
  *      tags: [Administrador]
+ *      security:
+ *          - bearerAuth: []
  *      requestBody:
  *          required: true
  *          content:
@@ -688,7 +780,7 @@ router.delete(
  *                          example:
  *                              msg: Usuario registrado correctamente
  *          400:
- *              description: Error al registrar usuario
+ *              description: Error en los datos del registro
  *              content:
  *                  application/json:
  *                      schema:
@@ -698,7 +790,19 @@ router.delete(
  *                                  type: string
  *                                  description: Mensaje de error
  *                          example:
- *                              msg: Error en los datos del registro
+ *                              msg: Error en los datos proporcionados
+ *          404:
+ *              description: Usuario ya registrado o datos faltantes
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                          type: object
+ *                          properties:
+ *                              msg:
+ *                                  type: string
+ *                                  description: Mensaje de error
+ *                          example:
+ *                              msg: Lo sentimos debe llenar todos los campos o el usuario ya está registrado
  */
 router.post(
   "/administrador/registrar-usuarios",
@@ -712,6 +816,8 @@ router.post(
  *  get:
  *      summary: Listar usuarios
  *      tags: [Administrador]
+ *      security:
+ *       - bearerAuth: []
  *      responses:
  *          200:
  *              description: Lista de usuarios obtenida correctamente
@@ -742,6 +848,8 @@ router.get("/administrador/listar-usuarios", verificarAdmin, ListarUsuarios);
  *  delete:
  *      summary: Eliminar usuario
  *      tags: [Administrador]
+ *      security:
+ *          - bearerAuth: []
  *      parameters:
  *          - in: path
  *            name: id
