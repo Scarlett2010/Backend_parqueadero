@@ -1,7 +1,7 @@
 ###Usuarios
 
 ###login
-POST http://localhost:3000/api/login
+POST http://localhost:4000/api/usuarios/login
 Content-Type: application/json
 
 {
@@ -16,7 +16,7 @@ Content-Type: application/json
 
 
 ### recuperar contraseña
-POST http://localhost:3000/api/recuperar-password
+POST http://localhost:4000/api/recuperar-password
 Content-Type: application/json
 
 {
@@ -24,7 +24,7 @@ Content-Type: application/json
 }
 
 ###nueva contraseña
-PUT http://localhost:3000/api/nueva-password/orut44nkxxa
+PUT http://localhost:4000/api/nueva-password/orut44nkxxa
 Content-Type: application/json
 
 {
@@ -33,12 +33,12 @@ Content-Type: application/json
 }
 
 ###perfil
-GET http://localhost:3000/api/usuarios/perfil
+GET http://localhost:4000/api/usuarios/perfil
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NTdhZmYzNGM3ZGJjODJhOTllNjQ3MyIsInJvbCI6InVzdWFyaW8iLCJpYXQiOjE3MzM4MDAwNTksImV4cCI6MTczMzg4NjQ1OX0.QJU98ZXF1X2JLZQxwrWqX4q3l0lGzqSKyv3bQSHFUFg
 
 
 ###actualizar contraseña
-PUT http://localhost:3000/api/usuarios/actualizar-password
+PUT http://localhost:4000/api/usuarios/actualizar-password
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NTdhZmYzNGM3ZGJjODJhOTllNjQ3MyIsInJvbCI6InVzdWFyaW8iLCJpYXQiOjE3MzM4MDAwNTksImV4cCI6MTczMzg4NjQ1OX0.QJU98ZXF1X2JLZQxwrWqX4q3l0lGzqSKyv3bQSHFUFg
 Content-Type: application/json
 
@@ -48,7 +48,7 @@ Content-Type: application/json
 }
 
 ### actualizar usuario 
-PUT http://localhost:3000/api/usuarios/6757aff34c7dbc82a99e6473
+PUT http://localhost:4000/api/usuarios/6757aff34c7dbc82a99e6473
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NTdhZmYzNGM3ZGJjODJhOTllNjQ3MyIsInJvbCI6InVzdWFyaW8iLCJpYXQiOjE3MzM4MDAwNTksImV4cCI6MTczMzg4NjQ1OX0.QJU98ZXF1X2JLZQxwrWqX4q3l0lGzqSKyv3bQSHFUFg
 Content-Type: application/json
 
@@ -66,5 +66,5 @@ Content-Type: application/json
 
 ### -----------------------espacios----------------------
 ### parqueadero disponibles
-GET http://localhost:3000/api/usuarios/parqueaderos-disponibles
+GET http://localhost:4000/api/usuarios/parqueaderos-disponibles
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NGU4NzIwMmI0ZDc1MmM0MTIxZTBkMCIsInJvbCI6Imd1YXJkaWEiLCJpYXQiOjE3MzMyODY1MjMsImV4cCI6MTczMzM3MjkyM30.ddvgoE9BNXPP7WXGbm4Ls4VMij62oLxybENeOfgoKWE

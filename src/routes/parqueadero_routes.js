@@ -2,7 +2,6 @@ import { Router } from "express";
 import {
   registrarParqueadero,
   actualizarParqueadero,
-  cambiarEstadoParqueadero,
   EliminarParqueadero,
   // listarDisponibilidadParqueaderos,
   //listarParqueaderos,
@@ -46,12 +45,6 @@ const router = Router();
  *        estado:
  *          type: boolean
  *          description: El estado del parqueadero (activo/inactivo)
- *        x:
- *          type: number
- *          description: Coordenada X del parqueadero
- *        y:
- *          type: number
- *          description: Coordenada Y del parqueadero
  *      example:
  *        nombre: "Parqueadero ESFOT"
  *        description: "Parqueadero principal"
@@ -60,8 +53,6 @@ const router = Router();
  *        tipo: "Automovil"
  *        espacios: 6
  *        estado: true
- *        x: 100
- *        y: 100
  */
 
 /**
@@ -128,48 +119,6 @@ router.post("/parqueaderos/registrar", verificarAdmin, registrarParqueadero);
  *         description: No autorizado, falta de token
  */
 router.put("/parqueaderos/:id", verificarAdmin, actualizarParqueadero);
-
-/**
- * @swagger
- * /api/parqueaderos/{id}:
- *   patch:
- *     summary: Cambia el estado de un parqueadero
- *     tags: [Parqueadero]
- *     security:
- *       - bearerAuth: []
- *     parameters:
- *       - name: id
- *         in: path
- *         required: true
- *         description: El ID del parqueadero cuyo estado se quiere cambiar
- *         schema:
- *           type: string
- *           example: "63f5d123c8b7f1d21c456abc"
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               estado:
- *                 type: boolean
- *                 description: El nuevo estado del parqueadero (activo/inactivo)
- *             required:
- *               - estado
- *           example:
- *             estado: false
- *     responses:
- *       200:
- *         description: Estado del parqueadero cambiado exitosamente
- *       400:
- *         description: Error en los datos enviados
- *       404:
- *         description: Parqueadero no encontrado
- *       401:
- *         description: No autorizado, falta de token
- */
-router.patch("/parqueaderos/:id", verificarAdmin, cambiarEstadoParqueadero);
 
 /**
  * @swagger

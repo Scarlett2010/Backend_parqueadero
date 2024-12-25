@@ -5,7 +5,7 @@ import Usuario from "../models/usuarios.js";
 import Parqueaderos from "../models/parqueaderos.js";
 import mongoose from "mongoose";
 import usuarios from "../models/usuarios.js";
-import guardias from "../models/guardias.js";
+import parqueadero from "../models/parqueaderos.js";
 
 const login = async (req, res) => {
   const { email, password } = req.body;
@@ -233,6 +233,23 @@ const verParqueaderosDisponibles = async (req, res) => {
     });
   res.status(200).json(parqueaderos);
 };
+const cambiarEstadoParqueadero = async (req, res) => {
+  try {
+    const { estado } = req.body;
+    if (typeof estado !== "boolean") {
+      return res.status(400).json({ msg: "El estado debe ser true o false" });
+    }
+    await parqueadero.findByIdAndUpdate(req.params.id, { estado: estado });
+    res.status(200).json({
+      msg: `Estado del parqueadero modificado exitosamente a ${estado}`,
+    });
+  } catch (error) {
+    res.status(500).json({
+      msg: "Error al modificar el estado del parqueadero",
+      error: error.message,
+    });
+  }
+};
 
 export {
   login,
@@ -247,4 +264,5 @@ export {
   cambiarEstadoUsuario,
   actualizarUsuarios,
   verParqueaderosDisponibles,
+  cambiarEstadoParqueadero,
 };

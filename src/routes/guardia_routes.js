@@ -12,6 +12,7 @@ import {
   cambiarEstadoUsuario,
   actualizarUsuarios,
   verParqueaderosDisponibles,
+  cambiarEstadoParqueadero,
 } from "../controllers/guardia_controller.js";
 import verificarRol from "../middlewares/autenticacion.js";
 
@@ -158,6 +159,39 @@ const router = Router();
  *         rol: "Estudiante"
  *         estado: true
  *         _id: "63f5d123c8b7f1d21c456abc"
+ *
+ * Parqueadero:
+ *      type: object
+ *      properties:
+ *        nombre:
+ *          type: string
+ *          description: El nombre del parqueadero
+ *        description:
+ *          type: string
+ *          description: Descripción del parqueadero
+ *        planta:
+ *          type: string
+ *          description: La planta en la que se encuentra el parqueadero
+ *        bloque:
+ *          type: string
+ *          description: El bloque donde está ubicado el parqueadero
+ *        tipo:
+ *          type: string
+ *          description: Tipo de parqueadero (Ej. cubierto, descubierto)
+ *        espacios:
+ *          type: number
+ *          description: El número de espacios disponibles en el parqueadero
+ *        estado:
+ *          type: boolean
+ *          description: El estado del parqueadero (activo/inactivo)
+ *      example:
+ *        nombre: "Parqueadero ESFOT"
+ *        description: "Parqueadero principal"
+ *        planta: "Planta 1"
+ *        bloque: "A"
+ *        tipo: "Automovil"
+ *        espacios: 6
+ *        estado: true
  */
 
 /**
@@ -219,7 +253,7 @@ const router = Router();
  *                              value:
  *                                  msg: Lo sentimos, primero debe proporcionar un token
  */
-router.post("/api/guardias/login", login);
+router.post("/guardias/login", login);
 
 /**
  * @swagger
@@ -384,7 +418,7 @@ router.get("/guardias/perfil", verificarRol, perfil);
  *                    msg: Lo sentimos, debe llenar todos los campos
  */
 router.put(
-  "/api/guardias/actualizar-password",
+  "/guardias/actualizar-password",
   verificarRol,
   actualizarContraseñaG
 );
@@ -449,7 +483,7 @@ router.put(
  *                  value:
  *                    msg: Lo sentimos, debes llenar todos los campos
  */
-router.put("/api/guardias/:id", verificarRol, actualizarPerfil);
+router.put("/guardias/:id", verificarRol, actualizarPerfil);
 
 /**
  * @swagger
@@ -542,7 +576,7 @@ router.put("/api/guardias/:id", verificarRol, actualizarPerfil);
  *                  value:
  *                    msg: Lo sentimos pero el usuario ya se encuentra registrado
  */
-router.post("/api/guardias/registrar", verificarRol, registroUsuarios);
+router.post("/guardias/registrar", verificarRol, registroUsuarios);
 
 /**
  * @swagger
@@ -759,5 +793,51 @@ router.put(
  *        description: Parqueaderos disponibles obtenidos
  */
 router.get("/guardias/parqueaderos-disponibles", verParqueaderosDisponibles);
+
+/**
+ * @swagger
+ * /api/guardias/parqueaderos/{id}:
+ *   patch:
+ *     summary: Cambia el estado de un parqueadero
+ *     tags: [Guardia]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - name: id
+ *         in: path
+ *         required: true
+ *         description: El ID del parqueadero cuyo estado se quiere cambiar
+ *         schema:
+ *           type: string
+ *           example: "63f5d123c8b7f1d21c456abc"
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               estado:
+ *                 type: boolean
+ *                 description: El nuevo estado del parqueadero (activo/inactivo)
+ *             required:
+ *               - estado
+ *           example:
+ *             estado: false
+ *     responses:
+ *       200:
+ *         description: Estado del parqueadero cambiado exitosamente
+ *       400:
+ *         description: Error en los datos enviados
+ *       404:
+ *         description: Parqueadero no encontrado
+ *       401:
+ *         description: No autorizado, falta de token
+ */
+router.patch(
+  "/guardias/parqueaderos/:id",
+  verificarRol,
+  cambiarEstadoParqueadero
+);
 
 export default router;

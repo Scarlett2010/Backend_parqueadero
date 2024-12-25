@@ -1,6 +1,6 @@
 ### -----------------------login----------------------
 ### login
-POST http://localhost:3000/api/guardias/login
+POST http://localhost:4000/api/guardias/login
 content-type: application/json
 
 {
@@ -10,7 +10,7 @@ content-type: application/json
 
 
 ### recuperar contraseña
-POST http://localhost:3000/api/guardias/recuperar-password
+POST http://localhost:4000/api/guardias/recuperar-password
 Content-Type: application/json
 
 {
@@ -19,7 +19,7 @@ Content-Type: application/json
 
 
 ### contraseña nueva
-PUT http://localhost:3000/api/guardias/nueva-password/8nms6o98ei9
+PUT http://localhost:4000/api/guardias/nueva-password/8nms6o98ei9
 Content-Type: application/json
 
 {
@@ -31,11 +31,11 @@ Content-Type: application/json
 
 ### -----------------------perfil----------------------
 ### perfil guardia
-GET http://localhost:3000/api/guardias/perfil
+GET http://localhost:4000/api/guardias/perfil
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NTYzOTYwYzU3OTYyNmY0YTVmYmYxNiIsInJvbCI6Imd1YXJkaWEiLCJpYXQiOjE3MzM3MDQwNDgsImV4cCI6MTczMzc5MDQ0OH0.z5w9zMbPiL_Pgps4nqVsUBspkGOf2TKrNUqcdp1_Les
 
 ###actualizar contraseña
-PUT http://localhost:3000/api/guardias/actualizar-password
+PUT http://localhost:4000/api/guardias/actualizar-password
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NTYzOTYwYzU3OTYyNmY0YTVmYmYxNiIsInJvbCI6Imd1YXJkaWEiLCJpYXQiOjE3MzM3MDQwNDgsImV4cCI6MTczMzc5MDQ0OH0.z5w9zMbPiL_Pgps4nqVsUBspkGOf2TKrNUqcdp1_Les
 Content-Type: application/json
 
@@ -45,7 +45,7 @@ Content-Type: application/json
 }
 
 ### actualizar perfil guardia
-PUT http://localhost:3000/api/guardias/67563960c579626f4a5fbf16
+PUT http://localhost:4000/api/guardias/67563960c579626f4a5fbf16
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NTYzOTYwYzU3OTYyNmY0YTVmYmYxNiIsInJvbCI6Imd1YXJkaWEiLCJpYXQiOjE3MzM3MTMyNDAsImV4cCI6MTczMzc5OTY0MH0.Oc3k05fnT4mgi6qpgWhZe22M_QUC9jsqPtvOnhsEjDc
 Content-Type: application/json
 
@@ -64,7 +64,7 @@ Content-Type: application/json
 
 ### -----------------------usuarios----------------------
 ### Registrar usuario externo
-POST http://localhost:3000/api/guardias/registrar
+POST http://localhost:4000/api/guardias/registrar
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NTYzOTYwYzU3OTYyNmY0YTVmYmYxNiIsInJvbCI6Imd1YXJkaWEiLCJpYXQiOjE3MzM3OTk4NjUsImV4cCI6MTczMzg4NjI2NX0.mHw4LAlyNq8tWoVcpG0Hq6AVKtd2Gr0AV-T5Ck_TkVw
 Content-Type: application/json
 
@@ -81,12 +81,12 @@ Content-Type: application/json
 }
 
 ###listar usuario
-GET  http://localhost:3000/api/guardias/listar-usuarios
+GET  http://localhost:4000/api/guardias/listar-usuarios
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NTYzOTYwYzU3OTYyNmY0YTVmYmYxNiIsInJvbCI6Imd1YXJkaWEiLCJpYXQiOjE3MzM3MTM0MTMsImV4cCI6MTczMzc5OTgxM30.LeHquD1tshDQYBlCwd1mANRbTDdKAtSs26kWxb5VfHs
 Content-Type: application/json
 
 ### cambiar estado usuario
-PATCH  http://localhost:3000/api/guardias/cambiar-estado-usuario/67565e155d488118b0b84b2d
+PATCH  http://localhost:4000/api/guardias/cambiar-estado-usuario/67565e155d488118b0b84b2d
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NTYzOTYwYzU3OTYyNmY0YTVmYmYxNiIsInJvbCI6Imd1YXJkaWEiLCJpYXQiOjE3MzM3MTM0MTMsImV4cCI6MTczMzc5OTgxM30.LeHquD1tshDQYBlCwd1mANRbTDdKAtSs26kWxb5VfHs
 Content-Type: application/json
 
@@ -95,7 +95,7 @@ Content-Type: application/json
 }
 
 ### actualizar usuario externo
-PUT http://localhost:3000/api/guardias/actualizar-usuarios/67565e155d488118b0b84b2d
+PUT http://localhost:4000/api/guardias/actualizar-usuarios/67565e155d488118b0b84b2d
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NTYzOTYwYzU3OTYyNmY0YTVmYmYxNiIsInJvbCI6Imd1YXJkaWEiLCJpYXQiOjE3MzM3MTM0MTMsImV4cCI6MTczMzc5OTgxM30.LeHquD1tshDQYBlCwd1mANRbTDdKAtSs26kWxb5VfHs
 Content-Type: application/json
 
@@ -115,5 +115,5 @@ Content-Type: application/json
 
 ### -----------------------espacios----------------------
 ### parqueadero disponibles
-GET http://localhost:3000/api/guardias/parqueaderos-disponibles
+GET http://localhost:4000/api/guardias/parqueaderos-disponibles
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NTYzOTYwYzU3OTYyNmY0YTVmYmYxNiIsInJvbCI6Imd1YXJkaWEiLCJpYXQiOjE3MzM3MTM0MTMsImV4cCI6MTczMzc5OTgxM30.LeHquD1tshDQYBlCwd1mANRbTDdKAtSs26kWxb5VfHs

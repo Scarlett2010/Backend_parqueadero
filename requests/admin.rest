@@ -18,11 +18,11 @@ content-type: application/json
 
 {
   "email": "sluna6360@gmail.com",
-  "password": "Admin.12345"
+  "password": "Admin.1234"
 }
 
 ### recuperar contraseña administrador
-POST http://localhost:3000/api/administrador/recuperar-password
+POST http://localhost:4000/api/administrador/recuperar-password
 Content-Type: application/json
 
 {
