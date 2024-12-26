@@ -353,7 +353,7 @@ router.post("/administrador/login", loginAdmin);
 
 /**
  * @swagger
- * /api/administrador/recuperar-password:
+ * /api/administrador/recuperar-contraseña:
  *  post:
  *    summary: Solicita recuperación de contraseña
  *    tags: [Administrador]
@@ -372,98 +372,85 @@ router.post("/administrador/login", loginAdmin);
  *      404:
  *        description: Usuario no encontrado
  */
-router.post("/administrador/recuperar-password", recuperarContraseña);
+router.post("/administrador/recuperar-contraseña", recuperarContraseña);
 
 /**
  * @swagger
- * /api/administrador/comprobar-token:
+ * /api/administrador/recuperar-contraseña/{token}:
  *  get:
- *      summary: Comprobar token de recuperación de contraseña
- *      tags: [Administrador]
- *      parameters:
- *          - in: query
- *            name: token
- *            schema:
- *                type: string
- *            required: true
- *            description: Token de recuperación de contraseña
- *      responses:
- *          200:
- *              description: Token válido
- *              content:
- *                  application/json:
- *                      schema:
- *                          type: object
- *                          properties:
- *                              msg:
- *                                  type: string
- *                                  description: Mensaje de éxito
- *                          example:
- *                              msg: Token válido
- *          400:
- *              description: Token inválido o expirado
- *              content:
- *                  application/json:
- *                      schema:
- *                          type: object
- *                          properties:
- *                              msg:
- *                                  type: string
- *                                  description: Mensaje de error
- *                          example:
- *                              msg: Token inválido o expirado
+ *    summary: Verifica el token de recuperación de contraseña
+ *    tags: [Administrador]
+ *    parameters:
+ *      - name: token
+ *        in: path
+ *        required: true
+ *        schema:
+ *          type: string
+ *    responses:
+ *      200:
+ *        description: Token válido
+ *      400:
+ *        description: Token inválido o expirado
  */
-router.get("/administrador/comprobar-token/:token", comprobarTokenContraseña);
+router.get(
+  "/administrador/recuperar-contraseña/:token",
+  comprobarTokenContraseña
+);
 
 /**
  * @swagger
- * /api/administrador/nueva-password:
- *  post:
- *      summary: Establecer nueva contraseña
- *      tags: [Administrador]
- *      requestBody:
- *          required: true
- *          content:
- *              application/json:
- *                  schema:
- *                      type: object
- *                      properties:
- *                          token:
- *                              type: string
- *                              description: Token de recuperación
- *                          nuevaPassword:
- *                              type: string
- *                              description: Nueva contraseña
- *                      example:
- *                          token: abcdef123456
- *                          nuevaPassword: nuevaContrasenaSegura
- *      responses:
- *          200:
- *              description: Contraseña actualizada con éxito
- *              content:
- *                  application/json:
- *                      schema:
- *                          type: object
- *                          properties:
- *                              msg:
- *                                  type: string
- *                                  description: Mensaje de éxito
- *                          example:
- *                              msg: Contraseña actualizada correctamente
- *          400:
- *              description: Error al actualizar contraseña
- *              content:
- *                  application/json:
- *                      schema:
- *                          type: object
- *                          properties:
- *                              msg:
- *                                  type: string
- *                                  description: Mensaje de error
- *                          example:
- *                              msg: Token inválido o nueva contraseña no válida
+ * /api/administrador/nueva-contraseña/{token}:
+ *  put:
+ *    summary: Actualiza la contraseña de un administrador
+ *    tags: [Administrador]
+ *    parameters:
+ *      - in: path
+ *        name: token
+ *        required: true
+ *        schema:
+ *          type: string
+ *        description: Token de validación del administrador
+ *    requestBody:
+ *      required: true
+ *      content:
+ *        application/json:
+ *          schema:
+ *            type: object
+ *            properties:
+ *              password:
+ *                type: string
+ *                description: Nueva contraseña
+ *                example: "NuevaContraseña123"
+ *              confirmarPassword:
+ *                type: string
+ *                description: Confirmación de la nueva contraseña
+ *                example: "NuevaContraseña123"
+ *            required:
+ *              - password
+ *              - confirmarPassword
+ *    responses:
+ *      200:
+ *        description: Contraseña actualizada con éxito
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                msg:
+ *                  type: string
+ *                  example: Contraseña actualizada con exito
+ *      404:
+ *        description: Error en la solicitud
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                msg:
+ *                  type: string
+ *                  example: Lo sentimos no hemos podido verificar su cuenta
  */
-router.post("/administrador/nueva-password/:token", nuevaContraseña);
+router.put("/administrador/nueva-contraseña/:token", nuevaContraseña);
 
 /**
  * @swagger

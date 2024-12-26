@@ -257,7 +257,7 @@ router.post("/guardias/login", login);
 
 /**
  * @swagger
- * /api/guardias/recuperar-password:
+ * /api/guardias/recuperar-contraseña:
  *  post:
  *    summary: Solicita recuperación de contraseña
  *    tags: [Guardia]
@@ -270,17 +270,18 @@ router.post("/guardias/login", login);
  *            properties:
  *              email:
  *                type: string
+ *                example: "juanperez@gmail.com"
  *    responses:
  *      200:
  *        description: Correo enviado para recuperación
  *      404:
  *        description: Usuario no encontrado
  */
-router.post("/guardias/recuperar-password", recuperarContraseña);
+router.post("/guardias/recuperar-contraseña", recuperarContraseña);
 
 /**
  * @swagger
- * /api/guardias/recuperar-password/{token}:
+ * /api/guardias/recuperar-contraseña/{token}:
  *  get:
  *    summary: Verifica el token de recuperación de contraseña
  *    tags: [Guardia]
@@ -296,11 +297,11 @@ router.post("/guardias/recuperar-password", recuperarContraseña);
  *      400:
  *        description: Token inválido o expirado
  */
-router.get("/guardias/recuperar-password/:token", comprobarTokenContraseña);
+router.get("/guardias/recuperar-contraseña/:token", comprobarTokenContraseña);
 
 /**
  * @swagger
- * /api/guardias/nueva-password/{token}:
+ * /api/guardias/nueva-contraseña/{token}:
  *  put:
  *    summary: Cambia la contraseña utilizando el token
  *    tags: [Guardia]
@@ -319,14 +320,19 @@ router.get("/guardias/recuperar-password/:token", comprobarTokenContraseña);
  *            properties:
  *              password:
  *                type: string
- *                format: password
+ *                description: Nueva contraseña
+ *                example: "NuevaContraseña123"
+ *              confirmarPassword:
+ *                type: string
+ *                description: Confirmación de la nueva contraseña
+ *                example: "NuevaContraseña123"
  *    responses:
  *      200:
  *        description: Contraseña actualizada
  *      400:
  *        description: Token inválido o contraseña no válida
  */
-router.put("/guardias/nueva-password/:token", nuevaContraseñaG);
+router.put("/guardias/nueva-contraseña/:token", nuevaContraseñaG);
 
 /**
  * @swagger
@@ -346,7 +352,7 @@ router.get("/guardias/perfil", verificarRol, perfil);
 
 /**
  * @swagger
- * /api/guardias/actualizar-password:
+ * /api/guardias/actualizar-contraseña:
  *  put:
  *    summary: Actualiza la contraseña del guardia
  *    tags: [Guardia]
@@ -418,7 +424,7 @@ router.get("/guardias/perfil", verificarRol, perfil);
  *                    msg: Lo sentimos, debe llenar todos los campos
  */
 router.put(
-  "/guardias/actualizar-password",
+  "/guardias/actualizar-contraseña",
   verificarRol,
   actualizarContraseñaG
 );

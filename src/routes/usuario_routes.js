@@ -138,7 +138,7 @@ router.post("/usuarios/login", loginUsuario);
 
 /**
  * @swagger
- * /api/recuperar-password:
+ * /api/recuperar-contraseña:
  *   post:
  *     summary: Solicita un enlace para recuperar la contraseña
  *     tags: [Usuario]
@@ -178,11 +178,11 @@ router.post("/usuarios/login", loginUsuario);
  *               example:
  *                 msg: "Error al enviar el enlace"
  */
-router.post("/recuperar-password", recuperarContraseña);
+router.post("/recuperar-contraseña", recuperarContraseña);
 
 /**
  * @swagger
- * /api/recuperar-password/{token}:
+ * /api/recuperar-contraseña/{token}:
  *   get:
  *     summary: Verifica si el token de recuperación es válido
  *     tags: [Usuario]
@@ -199,11 +199,11 @@ router.post("/recuperar-password", recuperarContraseña);
  *       400:
  *         description: Token inválido
  */
-router.get("/recuperar-password/:token", comprobarTokenContraseña);
+router.get("/recuperar-contraseña/:token", comprobarTokenContraseña);
 
 /**
  * @swagger
- * /api/nueva-password/{token}:
+ * /api/nueva-contraseña/{token}:
  *   put:
  *     summary: Establece una nueva contraseña usando el token
  *     tags: [Usuario]
@@ -233,7 +233,7 @@ router.get("/recuperar-password/:token", comprobarTokenContraseña);
  *       400:
  *         description: Token inválido o error en la actualización
  */
-router.put("/nueva-password/:token", nuevaContraseña);
+router.put("/nueva-contraseña/:token", nuevaContraseña);
 
 /**
  * @swagger
@@ -276,7 +276,7 @@ router.get("/usuarios/perfil", verificarRol, perfilUsuario);
 
 /**
  * @swagger
- * /api/usuarios/actualizar-password:
+ * /api/usuarios/actualizar-contraseña:
  *   put:
  *     summary: Actualiza la contraseña del usuario
  *     tags: [Usuario]
@@ -346,7 +346,11 @@ router.get("/usuarios/perfil", verificarRol, perfilUsuario);
  *               example:
  *                 msg: "No autorizado, falta de token"
  */
-router.put("/usuarios/actualizar-password", verificarRol, actualizarContraseña);
+router.put(
+  "/usuarios/actualizar-contraseña",
+  verificarRol,
+  actualizarContraseña
+);
 
 /**
  * @swagger
