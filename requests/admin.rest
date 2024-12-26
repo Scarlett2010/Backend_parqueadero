@@ -1,6 +1,6 @@
 ### ----------------Inicio sesion y recuperar contraseña----------
 ### registro
-POST http://localhost:3000/api/administrador/registrar
+POST http://localhost:4000/api/administrador/registrar
 content-type: application/json
 
 {
@@ -13,12 +13,12 @@ content-type: application/json
 }
 
 ### Login
-POST http://localhost:3000/api/administrador/login
+POST http://localhost:4000/api/administrador/login
 content-type: application/json
 
 {
   "email": "sluna6360@gmail.com",
-  "password": "Admin.1234"
+  "password": "Admin.22345"
 }
 
 ### recuperar contraseña administrador
@@ -28,14 +28,13 @@ Content-Type: application/json
 {
   "email": "sluna6360@gmail.com"
 }
-
 ###nueva contraseña
-PUT http://localhost:3000/api/administrador/nueva-password/mznxidu0lrm
+POST http://localhost:4000/api/administrador/nueva-password/l43udahlyee
 Content-Type: application/json
 
 {
-  "password": "Admin.12345",
-  "confirmarPassword": "Admin.12345"
+  "password": "Admin.22345",
+  "confirmarPassword": "Admin.22345"
 }
 ### ------------------ FIN---------------------------------------
 

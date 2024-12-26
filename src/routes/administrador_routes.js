@@ -355,64 +355,24 @@ router.post("/administrador/login", loginAdmin);
  * @swagger
  * /api/administrador/recuperar-password:
  *  post:
- *      summary: Recuperación de contraseña del administrador
- *      tags: [Administrador]
- *      requestBody:
- *          required: true
- *          content:
- *              application/json:
- *                  schema:
- *                      type: object
- *                      properties:
- *                          email:
- *                              type: string
- *                              description: Correo electrónico del administrador
- *                      required:
- *                          - email
- *                      example:
- *                          email: admin@example.com
- *      responses:
- *          200:
- *              description: Proceso de recuperación iniciado exitosamente
- *              content:
- *                  application/json:
- *                      schema:
- *                          type: object
- *                          properties:
- *                              msg:
- *                                  type: string
- *                                  description: Mensaje de éxito
- *                          example:
- *                              msg: Revisa tu correo electrónico para reestablecer tu cuenta
- *          400:
- *              description: Error de validación
- *              content:
- *                  application/json:
- *                      schema:
- *                          type: object
- *                          properties:
- *                              msg:
- *                                  type: string
- *                                  description: Mensaje de error
- *                          example:
- *                              msg: Lo sentimos, debes llenar todos los campos
- *          404:
- *              description: Usuario no encontrado
- *              content:
- *                  application/json:
- *                      schema:
- *                          type: object
- *                          properties:
- *                              msg:
- *                                  type: string
- *                                  description: Mensaje de error
- *                      examples:
- *                          Usuario no registrado:
- *                              value:
- *                                  msg: Lo sentimos, el usuario no se encuentra registrado
+ *    summary: Solicita recuperación de contraseña
+ *    tags: [Administrador]
+ *    requestBody:
+ *      required: true
+ *      content:
+ *        application/json:
+ *          schema:
+ *            type: object
+ *            properties:
+ *              email:
+ *                type: string
+ *    responses:
+ *      200:
+ *        description: Correo enviado para recuperación
+ *      404:
+ *        description: Usuario no encontrado
  */
-
-router.post("administrador/recuperar-password", recuperarContraseña);
+router.post("/administrador/recuperar-password", recuperarContraseña);
 
 /**
  * @swagger
@@ -453,7 +413,7 @@ router.post("administrador/recuperar-password", recuperarContraseña);
  *                          example:
  *                              msg: Token inválido o expirado
  */
-router.get("/administrador/comprobar-token", comprobarTokenContraseña);
+router.get("/administrador/comprobar-token/:token", comprobarTokenContraseña);
 
 /**
  * @swagger
@@ -503,7 +463,7 @@ router.get("/administrador/comprobar-token", comprobarTokenContraseña);
  *                          example:
  *                              msg: Token inválido o nueva contraseña no válida
  */
-router.post("/administrador/nueva-password", nuevaContraseña);
+router.post("/administrador/nueva-password/:token", nuevaContraseña);
 
 /**
  * @swagger

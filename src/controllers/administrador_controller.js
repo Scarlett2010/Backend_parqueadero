@@ -102,6 +102,7 @@ const comprobarTokenContraseña = async (req, res) => {
 // Actualizar contraseña
 const nuevaContraseña = async (req, res) => {
   const { password, confirmarPassword } = req.body;
+
   if (Object.values(req.body).includes(""))
     return res.status(404).json({
       msg: "Lo sentimos, debe llenar todos los campos",
@@ -111,6 +112,7 @@ const nuevaContraseña = async (req, res) => {
       msg: "Lo sentimos, las contraseñas no coinciden",
     });
   const adminBDD = await Administrador.findOne({ token: req.params.token });
+
   if (adminBDD.token !== req.params.token)
     return res.status(404).json({
       msg: "Lo sentimos no hemos podido verificar su cuenta",
