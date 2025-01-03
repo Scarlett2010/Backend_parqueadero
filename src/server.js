@@ -2,7 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import { createServer } from "http";
-//import { Server as SocketServer } from "socket.io";
+// import { Server as SocketServer } from "socket.io";
 import routerParqueaderos from "./routes/parqueadero_routes.js";
 import routerUsuarios from "./routes/usuario_routes.js";
 import routerGuardias from "./routes/guardia_routes.js";
@@ -49,7 +49,7 @@ app.use((req, res) => res.status(404).send("Endpoint no encontrado - 404"));
 
 // PARTE IOT
 // const port = new SerialPort({
-//   path: "COM3",
+//   path: "COM6",
 //   baudRate: 9600,
 // });
 
@@ -62,7 +62,7 @@ app.use((req, res) => res.status(404).send("Endpoint no encontrado - 404"));
 
 // parser.on("error", (err) => console.log(err));
 
-// // Socket.IO
+// // // Socket.IO
 // io.on("connection", (socket) => {
 //   console.log("Un cliente se ha conectado");
 

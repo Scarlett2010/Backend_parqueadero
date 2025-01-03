@@ -494,7 +494,7 @@ router.put("/administrador/nueva-contraseña/:token", nuevaContraseña);
  */
 router.post(
   "/administrador/registrar-guardia",
-  verificarAdmin,
+  
   registroGuardias
 );
 
@@ -528,7 +528,7 @@ router.post(
  *                          example:
  *                              msg: No hay guardias registrados
  */
-router.get("/administrador/listar-guardias", verificarAdmin, ListarGuardias);
+router.get("/administrador/listar-guardias",  ListarGuardias);
 
 /**
  * @swagger
@@ -607,7 +607,7 @@ router.get("/administrador/listar-guardias", verificarAdmin, ListarGuardias);
  */
 router.put(
   "/administrador/actualizar-guardia/:id",
-  verificarAdmin,
+  
   actualizarPerfilGuardia
 );
 
@@ -666,7 +666,7 @@ router.put(
  */
 router.patch(
   "/administrador/cambiar-estado-guardia/:id",
-  verificarAdmin,
+  
   cambiarEstadoGuardia
 );
 
@@ -713,7 +713,7 @@ router.patch(
  */
 router.delete(
   "/administrador/eliminar-guardia/:id",
-  verificarAdmin,
+  
   EliminarGuardias
 );
 
@@ -771,7 +771,7 @@ router.delete(
  */
 router.post(
   "/administrador/registrar-usuario",
-  verificarAdmin,
+  
   registroUsuarios
 );
 
@@ -805,7 +805,7 @@ router.post(
  *                          example:
  *                              msg: No hay usuarios registrados
  */
-router.get("/administrador/listar-usuarios", verificarAdmin, ListarUsuarios);
+router.get("/administrador/listar-usuarios",  ListarUsuarios);
 
 /**
  * @swagger
@@ -850,7 +850,6 @@ router.get("/administrador/listar-usuarios", verificarAdmin, ListarUsuarios);
  */
 router.delete(
   "/administrador/eliminar-usuario/:id",
-  verificarAdmin,
   EliminarUsuarios
 );
 

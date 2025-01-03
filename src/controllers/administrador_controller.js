@@ -257,18 +257,6 @@ const EliminarUsuarios = async (req, res) => {
   res.status(200).json({ msg: "Usuario eliminado" });
 };
 
-// Listar disponibilidad de parqueaderos
-const listarDisponibilidadParqueaderosAdmin = async (req, res) => {
-  const parqueaderosDisponibles = await parqueaderos.find({
-    disponibilidad: true,
-  });
-  if (!parqueaderosDisponibles)
-    return res.status(203).json({
-      msg: "Lo sentimos, por el momento no hay parqueaderos disponibles",
-    });
-  res.status(200).json(parqueaderosDisponibles);
-};
-
 export {
   registroAdmin,
   loginAdmin,
@@ -283,5 +271,4 @@ export {
   registroUsuarios,
   ListarUsuarios,
   EliminarUsuarios,
-  listarDisponibilidadParqueaderosAdmin,
 };

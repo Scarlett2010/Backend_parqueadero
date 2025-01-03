@@ -112,8 +112,8 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NTUxMzQ0N
 
 ###---------------------------- Apartado usuarios -----------------
 ### crear usuario
-POST http://localhost:3000/api/administrador/registrar-usuario
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NTUxMzQ0NDUwNWIwNzhiMDljYzg3ZSIsInJvbCI6ImFkbWluaXN0cmFkb3IiLCJpYXQiOjE3MzM3MDMyNjAsImV4cCI6MTczMzc4OTY2MH0.C74JQOe8kFz-0OaM3soC51q7U51Q9vv5UF0F0OWWxJc
+POST http://localhost:4000/api/administrador/registrar-usuario
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NmNiMTc1NTQ1YzRkYWZhMTJmOWJhNSIsInJvbCI6ImFkbWluaXN0cmFkb3IiLCJpYXQiOjE3MzU5MjU1ODksImV4cCI6MTczNjAxMTk4OX0.bngT6FUmuRGKc02uWcSIqG87psi61oWgCxVeWZiRSXo
 Content-Type: application/json
 
 {

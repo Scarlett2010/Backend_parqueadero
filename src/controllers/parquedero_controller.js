@@ -16,7 +16,7 @@ const registrarParqueadero = async (req, res) => {
 
 const listarParqueaderos = async (req, res) => {
   try {
-    const parqueaderos = await Parqueaderos.find({ estado: true });
+    const parqueaderos = await Parqueaderos.find();
     const parqueaderosSinCamposExtras = parqueaderos.map((parqueadero) => {
       const { createdAt, updatedAt, __v, ...rest } = parqueadero.toObject();
       return {
