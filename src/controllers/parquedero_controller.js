@@ -25,7 +25,6 @@ const listarParqueaderos = async (req, res) => {
         description: rest.description,
         planta: rest.planta,
         bloque: rest.bloque,
-        tipo: rest.tipo,
         espacios: rest.espacios,
         estado: rest.estado,
       };
@@ -34,40 +33,6 @@ const listarParqueaderos = async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(500).json({ msg: "Error al listar los parqueaderos." });
-  }
-};
-
-const detalleParqueadero = async (req, res) => {
-  const { id } = req.params;
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res
-      .status(400)
-      .json({ msg: "El ID que acaba de ingresar no existe." });
-  }
-  try {
-    const parqueadero = await Parqueaderos.findById(id).select(
-      "nombre description planta bloque tipo espacios estado"
-    );
-
-    if (!parqueadero) {
-      return res.status(404).json({ msg: "Parqueadero no encontrado." });
-    }
-    const espacio = {
-      _id: parqueadero._id,
-      nombre: parqueadero.nombre,
-      description: parqueadero.description,
-      planta: parqueadero.planta,
-      bloque: parqueadero.bloque,
-      tipo: parqueadero.tipo,
-      espacios: parqueadero.espacios,
-      estado: parqueadero.estado,
-    };
-    res.status(200).json(espacio);
-  } catch (error) {
-    console.error(error);
-    res
-      .status(500)
-      .json({ msg: "Error al obtener el detalle del parqueadero." });
   }
 };
 
@@ -102,7 +67,6 @@ const EliminarParqueadero = async (req, res) => {
 export {
   registrarParqueadero,
   listarParqueaderos,
-  detalleParqueadero,
   actualizarParqueadero,
   EliminarParqueadero,
 };

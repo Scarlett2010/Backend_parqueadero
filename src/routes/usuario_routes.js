@@ -7,7 +7,6 @@ import {
   nuevaContraseña,
   perfilUsuario,
   recuperarContraseña,
-  verParqueaderosDisponibles,
 } from "../controllers/usuario_controller.js";
 import verificarRol from "../middlewares/autenticacion.js";
 
@@ -429,41 +428,5 @@ router.put(
  *                 msg: "No autorizado, falta de token"
  */
 router.put("/usuarios/:id", verificarRol, actualizarPerfil);
-
-/**
- * @swagger
- * /api/usuarios/parqueaderos-disponibles:
- *   get:
- *     summary: Obtiene los parqueaderos disponibles
- *     tags: [Usuario]
- *     security:
- *       - bearerAuth: []
- *     responses:
- *       200:
- *         description: Lista de parqueaderos disponibles
- *         content:
- *           application/json:
- *             schema:
- *               type: array
- *               items:
- *                 type: object
- *                 properties:
- *                   id:
- *                     type: string
- *                   nombre:
- *                     type: string
- *                   direccion:
- *                     type: string
- *                   disponible:
- *                     type: boolean
- *             example:
- *               - id: "123"
- *                 nombre: "Parqueadero A"
- *                 direccion: "Calle 123, Ciudad"
- *                 disponible: true
- *       401:
- *         description: No autorizado, falta de token
- */
-router.get("/usuarios/parqueaderos-disponibles", verParqueaderosDisponibles);
 
 export default router;

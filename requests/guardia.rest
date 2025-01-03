@@ -10,7 +10,7 @@ content-type: application/json
 
 
 ### recuperar contraseña
-POST http://localhost:4000/api/guardias/recuperar-password
+POST http://localhost:4000/api/guardias/recuperar-contraseña
 Content-Type: application/json
 
 {
@@ -19,7 +19,7 @@ Content-Type: application/json
 
 
 ### contraseña nueva
-PUT http://localhost:4000/api/guardias/nueva-password/8nms6o98ei9
+PUT http://localhost:4000/api/guardias/nueva-contraseña/8nms6o98ei9
 Content-Type: application/json
 
 {
@@ -35,7 +35,7 @@ GET http://localhost:4000/api/guardias/perfil
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NTYzOTYwYzU3OTYyNmY0YTVmYmYxNiIsInJvbCI6Imd1YXJkaWEiLCJpYXQiOjE3MzM3MDQwNDgsImV4cCI6MTczMzc5MDQ0OH0.z5w9zMbPiL_Pgps4nqVsUBspkGOf2TKrNUqcdp1_Les
 
 ###actualizar contraseña
-PUT http://localhost:4000/api/guardias/actualizar-password
+PUT http://localhost:4000/api/guardias/actualizar-contraseña
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NTYzOTYwYzU3OTYyNmY0YTVmYmYxNiIsInJvbCI6Imd1YXJkaWEiLCJpYXQiOjE3MzM3MDQwNDgsImV4cCI6MTczMzc5MDQ0OH0.z5w9zMbPiL_Pgps4nqVsUBspkGOf2TKrNUqcdp1_Les
 Content-Type: application/json
 
@@ -117,3 +117,5 @@ Content-Type: application/json
 ### parqueadero disponibles
 GET http://localhost:4000/api/guardias/parqueaderos-disponibles
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NTYzOTYwYzU3OTYyNmY0YTVmYmYxNiIsInJvbCI6Imd1YXJkaWEiLCJpYXQiOjE3MzM3MTM0MTMsImV4cCI6MTczMzc5OTgxM30.LeHquD1tshDQYBlCwd1mANRbTDdKAtSs26kWxb5VfHs
+
+### cambiar estado espacio

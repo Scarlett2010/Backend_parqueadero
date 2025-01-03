@@ -18,18 +18,18 @@ content-type: application/json
 
 {
   "email": "sluna6360@gmail.com",
-  "password": "Admin.22345"
+  "password": "Admin.12345"
 }
 
 ### recuperar contraseña administrador
-POST http://localhost:4000/api/administrador/recuperar-password
+POST http://localhost:4000/api/administrador/recuperar-contraseña
 Content-Type: application/json
 
 {
   "email": "sluna6360@gmail.com"
 }
 ###nueva contraseña
-POST http://localhost:4000/api/administrador/nueva-password/l43udahlyee
+POST http://localhost:4000/api/administrador/nueva-contraseña/l43udahlyee
 Content-Type: application/json
 
 {
@@ -41,8 +41,8 @@ Content-Type: application/json
 
 ### --------------------------- Apartado guardias -----------------
 ### registro guardia
-POST http://localhost:3000/api/administrador/registrar-guardia
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NTUxMzQ0NDUwNWIwNzhiMDljYzg3ZSIsInJvbCI6ImFkbWluaXN0cmFkb3IiLCJpYXQiOjE3MzM3MDQwMTAsImV4cCI6MTczMzc5MDQxMH0.fJCNhTAlJqc2jDS-G54CfULFL-Ym3hR3STvqsQPhQrg
+POST http://localhost:4000/api/administrador/registrar-guardia
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NmNiMTc1NTQ1YzRkYWZhMTJmOWJhNSIsInJvbCI6ImFkbWluaXN0cmFkb3IiLCJpYXQiOjE3MzU5MTE3NDAsImV4cCI6MTczNTk5ODE0MH0.cCGt-p3krcD2XOlqHmbLDEcN3tb8rwL6nOnIhCL5JC0
 content-type: application/json
 
 {
@@ -140,6 +140,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NTUxMzQ0N
 
 
 ### --------------------------- Apartado espacios ------------------
-GET http://localhost:3000/api/administrador/disponibilidad-parqueadero
+### parqueaderos disponibles
+GET http://localhost:4000/api/administrador/disponibilidad-parqueadero
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NTUxMzQ0NDUwNWIwNzhiMDljYzg3ZSIsInJvbCI6ImFkbWluaXN0cmFkb3IiLCJpYXQiOjE3MzM3MDMyNjAsImV4cCI6MTczMzc4OTY2MH0.C74JQOe8kFz-0OaM3soC51q7U51Q9vv5UF0F0OWWxJc
 ### -------------------------FIN Apartado espacios -----------------

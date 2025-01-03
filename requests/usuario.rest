@@ -16,7 +16,7 @@ Content-Type: application/json
 
 
 ### recuperar contraseña
-POST http://localhost:4000/api/recuperar-password
+POST http://localhost:4000/api/recuperar-contraseña
 Content-Type: application/json
 
 {
@@ -24,7 +24,7 @@ Content-Type: application/json
 }
 
 ###nueva contraseña
-PUT http://localhost:4000/api/nueva-password/orut44nkxxa
+PUT http://localhost:4000/api/nueva-contraseña/orut44nkxxa
 Content-Type: application/json
 
 {
@@ -38,7 +38,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NTdhZmYzN
 
 
 ###actualizar contraseña
-PUT http://localhost:4000/api/usuarios/actualizar-password
+PUT http://localhost:4000/api/usuarios/actualizar-contraseña
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NTdhZmYzNGM3ZGJjODJhOTllNjQ3MyIsInJvbCI6InVzdWFyaW8iLCJpYXQiOjE3MzM4MDAwNTksImV4cCI6MTczMzg4NjQ1OX0.QJU98ZXF1X2JLZQxwrWqX4q3l0lGzqSKyv3bQSHFUFg
 Content-Type: application/json
 
@@ -63,8 +63,3 @@ Content-Type: application/json
   "rol": "Estudiante",
   "estado": true
 }
-
-### -----------------------espacios----------------------
-### parqueadero disponibles
-GET http://localhost:4000/api/usuarios/parqueaderos-disponibles
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NGU4NzIwMmI0ZDc1MmM0MTIxZTBkMCIsInJvbCI6Imd1YXJkaWEiLCJpYXQiOjE3MzMyODY1MjMsImV4cCI6MTczMzM3MjkyM30.ddvgoE9BNXPP7WXGbm4Ls4VMij62oLxybENeOfgoKWE

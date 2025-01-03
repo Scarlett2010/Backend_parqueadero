@@ -1,16 +1,42 @@
 ###parqeueadero
-POST http://localhost:3000/api/parqueaderos/registrar
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NTUxMzQ0NDUwNWIwNzhiMDljYzg3ZSIsInJvbCI6ImFkbWluaXN0cmFkb3IiLCJpYXQiOjE3MzM4MDA0ODYsImV4cCI6MTczMzg4Njg4Nn0.htMI_Fm01lLqHf4_tG6LT1Wfw124X4K0lpD5VG8fguU
+POST http://localhost:4000/api/parqueaderos/registrar
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NmNiMTc1NTQ1YzRkYWZhMTJmOWJhNSIsInJvbCI6ImFkbWluaXN0cmFkb3IiLCJpYXQiOjE3MzU5MTE3NDAsImV4cCI6MTczNTk5ODE0MH0.cCGt-p3krcD2XOlqHmbLDEcN3tb8rwL6nOnIhCL5JC0
 Content-Type: application/json
 
 {
-  "nombre": "Parqueadero Electrica",
-  "descripcion": "Parqueadero para vehículos",
-  "planta": "A",
+  "nombre": "Parqueadero ESFOT",
+  "description": "Parqueadero en a lado del laboratorio marcelo Davila",
+  "planta": "1",
   "bloque": "A",
-  "tipo": "Automovil",
-  "espacios": 14
+  "espacios": [
+    {
+      "numeroEspacio": "1",
+      "estado": true
+    },
+    {
+      "numeroEspacio": "2",
+      "estado": true
+    },
+    {
+      "numeroEspacio": "3",
+      "estado": true
+    },
+    {
+      "numeroEspacio": "4",
+      "estado": true
+    },
+    {
+      "numeroEspacio": "5",
+      "estado": true
+    },
+    {
+      "numeroEspacio": "6",
+      "estado": true
+    }
+  ],
+  "estado": true
 }
+
 
 # {
 #   "nombre": "Parqueadero Esfot",
@@ -22,15 +48,11 @@ Content-Type: application/json
 # }
 
 ###parqeueadero listar
-GET http://localhost:3000/api/parqueaderos
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NTUxMzQ0NDUwNWIwNzhiMDljYzg3ZSIsInJvbCI6ImFkbWluaXN0cmFkb3IiLCJpYXQiOjE3MzM4MDA0ODYsImV4cCI6MTczMzg4Njg4Nn0.htMI_Fm01lLqHf4_tG6LT1Wfw124X4K0lpD5VG8fguU
-
-###parqeueadero detalle
-GET http://localhost:3000/api/parqueaderos/674884c678b45e90ff3f5d35
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NTUxMzQ0NDUwNWIwNzhiMDljYzg3ZSIsInJvbCI6ImFkbWluaXN0cmFkb3IiLCJpYXQiOjE3MzM4MDA0ODYsImV4cCI6MTczMzg4Njg4Nn0.htMI_Fm01lLqHf4_tG6LT1Wfw124X4K0lpD5VG8fguU
+GET http://localhost:4000/api/parqueaderos
+Authorization: Bearer 
 
 ###parqeueadero actualizar
-PUT http://localhost:3000/api/parqueaderos/674884c678b45e90ff3f5d35
+PUT http://localhost:4000/api/parqueaderos/674884c678b45e90ff3f5d35
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NTUxMzQ0NDUwNWIwNzhiMDljYzg3ZSIsInJvbCI6ImFkbWluaXN0cmFkb3IiLCJpYXQiOjE3MzM4MDA0ODYsImV4cCI6MTczMzg4Njg4Nn0.htMI_Fm01lLqHf4_tG6LT1Wfw124X4K0lpD5VG8fguU
 Content-Type: application/json
 
@@ -44,15 +66,7 @@ Content-Type: application/json
   "estado": true
 }
 
-###parqeueadero estado
-PATCH http://localhost:3000/api/parqueaderos/674884c678b45e90ff3f5d35
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NTUxMzQ0NDUwNWIwNzhiMDljYzg3ZSIsInJvbCI6ImFkbWluaXN0cmFkb3IiLCJpYXQiOjE3MzM4MDA0ODYsImV4cCI6MTczMzg4Njg4Nn0.htMI_Fm01lLqHf4_tG6LT1Wfw124X4K0lpD5VG8fguU
-Content-Type: application/json
-
-{
-  "estado": true
-}
-
 ###parqeueadero eliminado
-DELETE http://localhost:3000/api/parqueaderos/6757bba96bf94d33ab724d96
+DELETE http://localhost:4000/api/parqueaderos/6757bba96bf94d33ab724d96
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NTUxMzQ0NDUwNWIwNzhiMDljYzg3ZSIsInJvbCI6ImFkbWluaXN0cmFkb3IiLCJpYXQiOjE3MzM4MDA0ODYsImV4cCI6MTczMzg4Njg4Nn0.htMI_Fm01lLqHf4_tG6LT1Wfw124X4K0lpD5VG8fguU
+

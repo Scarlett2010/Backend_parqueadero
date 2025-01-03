@@ -2,7 +2,6 @@ import { enviarRestablecimientoContraseña } from "../config/nodemailer.js";
 import Usuarios from "../models/usuarios.js";
 import mongoose from "mongoose";
 import generarJWT from "../helpers/crearJWT.js";
-import Parqueaderos from "../models/parqueaderos.js";
 
 const loginUsuario = async (req, res) => {
   const { email, password } = req.body;
@@ -22,7 +21,6 @@ const loginUsuario = async (req, res) => {
 
   const verificarPassword = await usuarioInformacion.matchPassword(password);
 
-  // Verificar contraseña
   if (!verificarPassword) {
     return res
       .status(401)
@@ -141,19 +139,16 @@ const actualizarContraseña = async (req, res) => {
 const actualizarPerfil = async (req, res) => {
   const { id } = req.params;
 
-  // Verifica si el ID es válido
   if (!mongoose.Types.ObjectId.isValid(id))
     return res.status(400).json({
       msg: "El id que acaba de ingresar no existe",
     });
 
-  // Verifica si todos los campos necesarios están llenos
   if (Object.values(req.body).includes(""))
     return res.status(400).json({
       msg: "Lo sentimos, debes llenar todos los campos",
     });
 
-  // Actualiza solo el número de teléfono del usuario
   const usuario = await Usuarios.findByIdAndUpdate(
     id,
     { telefono: req.body.telefono },
@@ -163,20 +158,9 @@ const actualizarPerfil = async (req, res) => {
     }
   );
 
-  // Guarda los cambios
   await usuario.save();
 
-  // Envía una respuesta de éxito
   res.status(200).json({ msg: "Perfil actualizado" });
-};
-
-const verParqueaderosDisponibles = async (req, res) => {
-  const parqueaderos = await Parqueaderos.find({ estado: true });
-  if (!parqueaderos)
-    return res.status(203).json({
-      msg: "Lo sentimos, por el momento no hay parqueaderos disponibles",
-    });
-  res.status(200).json(parqueaderos);
 };
 
 export {
@@ -187,5 +171,4 @@ export {
   actualizarContraseña,
   actualizarPerfil,
   comprobarTokenContraseña,
-  verParqueaderosDisponibles,
 };

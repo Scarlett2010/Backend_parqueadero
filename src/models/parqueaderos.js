@@ -1,5 +1,16 @@
 import mongoose from "mongoose";
 
+const espacioSchema = new mongoose.Schema({
+  numeroEspacio: {
+    type: String,
+    required: true,
+  },
+  estado: {
+    type: Boolean,
+    default: true,
+  },
+});
+
 const parqueaderoSchema = new mongoose.Schema(
   {
     nombre: {
@@ -19,14 +30,7 @@ const parqueaderoSchema = new mongoose.Schema(
       type: String,
       require: true,
     },
-    tipo: {
-      type: String,
-      require: true,
-    },
-    espacios: {
-      type: Number,
-      require: true,
-    },
+    espacios: [espacioSchema],
     estado: {
       type: Boolean,
       default: true,

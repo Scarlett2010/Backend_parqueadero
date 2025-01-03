@@ -770,7 +770,7 @@ router.delete(
  *                              msg: Lo sentimos debe llenar todos los campos o el usuario ya está registrado
  */
 router.post(
-  "/administrador/registrar-usuarios",
+  "/administrador/registrar-usuario",
   verificarAdmin,
   registroUsuarios
 );
@@ -852,39 +852,6 @@ router.delete(
   "/administrador/eliminar-usuario/:id",
   verificarAdmin,
   EliminarUsuarios
-);
-
-/**
- * @swagger
- * /api/administrador/listar-disponibilidad-parqueaderos:
- *  get:
- *      summary: Listar disponibilidad de parqueaderos
- *      tags: [Administrador]
- *      responses:
- *          200:
- *              description: Lista de disponibilidad obtenida correctamente
- *              content:
- *                  application/json:
- *                      schema:
- *                          type: array
- *                          items:
- *                              $ref: '#/components/schemas/ParqueaderoDisponibilidad'
- *          404:
- *              description: No se encontró información de disponibilidad
- *              content:
- *                  application/json:
- *                      schema:
- *                          type: object
- *                          properties:
- *                              msg:
- *                                  type: string
- *                                  description: Mensaje de error
- *                          example:
- *                              msg: No hay disponibilidad registrada
- */
-router.get(
-  "/administrador/listar-disponibilidad-parqueaderos",
-  listarDisponibilidadParqueaderosAdmin
 );
 
 export default router;

@@ -225,14 +225,6 @@ const actualizarUsuarios = async (req, res) => {
   res.status(200).json({ msg: "Perfil actualizado" });
 };
 
-const verParqueaderosDisponibles = async (req, res) => {
-  const parqueaderos = await Parqueaderos.find({ estado: true });
-  if (!parqueaderos)
-    return res.status(203).json({
-      msg: "Lo sentimos, por el momento no hay parqueaderos disponibles",
-    });
-  res.status(200).json(parqueaderos);
-};
 const cambiarEstadoParqueadero = async (req, res) => {
   try {
     const { estado } = req.body;
@@ -251,6 +243,48 @@ const cambiarEstadoParqueadero = async (req, res) => {
   }
 };
 
+const reservarEspacio = async (parqueaderoId, espacioId) => {
+  try {
+    // Buscar el parqueadero por ID
+    const parqueadero = await Parqueadero.findById(parqueaderoId);
+
+    if (!parqueadero) {
+      return { status: 404, msg: "Parqueadero no encontrado" };
+    }
+
+    // Buscar el espacio por ID
+    const espacio = parqueadero.espacios.find((e) => e.id === espacioId);
+
+    if (!espacio) {
+      return { status: 404, msg: "Espacio no encontrado" };
+    }
+
+    // Verificar si el espacio está disponible
+    if (!espacio.estado) {
+      return { status: 400, msg: "Espacio ya reservado" };
+    }
+
+    // Reservar el espacio
+    espacio.estado = false;
+
+    // Guardar los cambios
+    await parqueadero.save();
+
+    return {
+      status: 200,
+      msg: "Espacio reservado con éxito",
+      data: espacio,
+    };
+  } catch (error) {
+    console.error(error);
+    return {
+      status: 500,
+      msg: "Error al reservar el espacio",
+      error: error.message,
+    };
+  }
+};
+
 export {
   login,
   recuperarContraseña,
@@ -263,6 +297,6 @@ export {
   ListarUsuarios,
   cambiarEstadoUsuario,
   actualizarUsuarios,
-  verParqueaderosDisponibles,
   cambiarEstadoParqueadero,
+  reservarEspacio,
 };

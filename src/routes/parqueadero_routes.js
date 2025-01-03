@@ -3,9 +3,7 @@ import {
   registrarParqueadero,
   actualizarParqueadero,
   EliminarParqueadero,
-  // listarDisponibilidadParqueaderos,
-  //listarParqueaderos,
-  //detalleParqueadero,
+  listarParqueaderos,
 } from "../controllers/parquedero_controller.js";
 
 import verificarAdmin from "../middlewares/autenticacionAdmin.js";
@@ -146,7 +144,5 @@ router.put("/parqueaderos/:id", verificarAdmin, actualizarParqueadero);
  */
 router.delete("/parqueaderos/:id", verificarAdmin, EliminarParqueadero);
 
-//router.get("/parqueaderos", listarParqueaderos);
-
-//router.get("/parqueaderos/:id", verificarAdmin, detalleParqueadero);
+router.get("/parqueaderos", listarParqueaderos);
 export default router;

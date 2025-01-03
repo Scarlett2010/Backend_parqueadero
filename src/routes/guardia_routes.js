@@ -11,8 +11,8 @@ import {
   ListarUsuarios,
   cambiarEstadoUsuario,
   actualizarUsuarios,
-  verParqueaderosDisponibles,
   cambiarEstadoParqueadero,
+  reservarEspacio,
 } from "../controllers/guardia_controller.js";
 import verificarRol from "../middlewares/autenticacion.js";
 
@@ -790,18 +790,6 @@ router.put(
 
 /**
  * @swagger
- * /api/guardias/parqueaderos-disponibles:
- *  get:
- *    summary: Verifica los parqueaderos disponibles
- *    tags: [Guardia]
- *    responses:
- *      200:
- *        description: Parqueaderos disponibles obtenidos
- */
-router.get("/guardias/parqueaderos-disponibles", verParqueaderosDisponibles);
-
-/**
- * @swagger
  * /api/guardias/parqueaderos/{id}:
  *   patch:
  *     summary: Cambia el estado de un parqueadero
@@ -846,4 +834,9 @@ router.patch(
   cambiarEstadoParqueadero
 );
 
+router.patch(
+  "/guardias/parqueaderos-espacio/:id",
+  verificarRol,
+  reservarEspacio
+);
 export default router;
