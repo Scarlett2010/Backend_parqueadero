@@ -5,7 +5,7 @@ content-type: application/json
 
 {
   "email": "gifec83189@ckuer.com",
-  "password": "Amelia.123"
+  "password": "Amelia.1234"
 }
 
 
@@ -113,9 +113,23 @@ Content-Type: application/json
 
 ### ----------------------FIN usuarios----------------------
 
-### -----------------------espacios----------------------
-### parqueadero disponibles
-GET http://localhost:4000/api/guardias/parqueaderos-disponibles
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NTYzOTYwYzU3OTYyNmY0YTVmYmYxNiIsInJvbCI6Imd1YXJkaWEiLCJpYXQiOjE3MzM3MTM0MTMsImV4cCI6MTczMzc5OTgxM30.LeHquD1tshDQYBlCwd1mANRbTDdKAtSs26kWxb5VfHs
+### -----------------------Parqueadero----------------------
+### reservar todo el parqueadero
+PATCH http://localhost:4000/api/guardias/parqueaderos/6777ea78dddf4532cd632088
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NzdlY2U3ZGRkZjQ1MzJjZDYzMjA5OSIsInJvbCI6Imd1YXJkaWEiLCJpYXQiOjE3MzU5Mzk3MDUsImV4cCI6MTczNjAyNjEwNX0.Pb8b-e8nR3HDs2AHWL_q_3-L8MXYLcxx3U2RBjy6Ccw
+Content-Type: application/json
+
+{
+  "estado":true
+}
 
 ### cambiar estado espacio
+PATCH http://localhost:4000/api/guardias/parqueaderos-espacio/6777ea78dddf4532cd632088
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NzdlY2U3ZGRkZjQ1MzJjZDYzMjA5OSIsInJvbCI6Imd1YXJkaWEiLCJpYXQiOjE3MzU5Mzk3MDUsImV4cCI6MTczNjAyNjEwNX0.Pb8b-e8nR3HDs2AHWL_q_3-L8MXYLcxx3U2RBjy6Ccw
+Content-Type: application/json
+
+{
+  "estado": false,
+  "numeroEspacio": "6"
+}
+

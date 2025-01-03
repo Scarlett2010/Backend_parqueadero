@@ -243,45 +243,44 @@ const cambiarEstadoParqueadero = async (req, res) => {
   }
 };
 
-const reservarEspacio = async (parqueaderoId, espacioId) => {
+const cambiarEstadoEspacio = async (req, res) => {
   try {
-    // Buscar el parqueadero por ID
-    const parqueadero = await Parqueadero.findById(parqueaderoId);
+    const { estado, numeroEspacio } = req.body; // Recibimos el estado y el numeroEspacio
+    if (typeof estado !== "boolean") {
+      return res.status(400).json({ msg: "El estado debe ser true o false" });
+    }
+
+    // Buscar el parqueadero por su ID
+    const parqueadero = await Parqueaderos.findById(req.params.id);
 
     if (!parqueadero) {
-      return { status: 404, msg: "Parqueadero no encontrado" };
+      return res.status(404).json({ msg: "Parqueadero no encontrado" });
     }
 
-    // Buscar el espacio por ID
-    const espacio = parqueadero.espacios.find((e) => e.id === espacioId);
+    // Buscar el espacio por numeroEspacio
+    const espacio = parqueadero.espacios.find(
+      (e) => e.numeroEspacio === numeroEspacio
+    );
 
     if (!espacio) {
-      return { status: 404, msg: "Espacio no encontrado" };
+      return res.status(404).json({ msg: "Espacio no encontrado" });
     }
 
-    // Verificar si el espacio está disponible
-    if (!espacio.estado) {
-      return { status: 400, msg: "Espacio ya reservado" };
-    }
+    // Cambiar el estado del espacio
+    espacio.estado = estado;
 
-    // Reservar el espacio
-    espacio.estado = false;
-
-    // Guardar los cambios
+    // Guardar los cambios en el parqueadero
     await parqueadero.save();
 
-    return {
-      status: 200,
-      msg: "Espacio reservado con éxito",
+    res.status(200).json({
+      msg: `Estado del espacio modificado exitosamente a ${estado}`,
       data: espacio,
-    };
+    });
   } catch (error) {
-    console.error(error);
-    return {
-      status: 500,
-      msg: "Error al reservar el espacio",
+    res.status(500).json({
+      msg: "Error al modificar el estado del espacio",
       error: error.message,
-    };
+    });
   }
 };
 
@@ -298,5 +297,5 @@ export {
   cambiarEstadoUsuario,
   actualizarUsuarios,
   cambiarEstadoParqueadero,
-  reservarEspacio,
+  cambiarEstadoEspacio,
 };

@@ -70,3 +70,4 @@ Content-Type: application/json
 DELETE http://localhost:4000/api/parqueaderos/6757bba96bf94d33ab724d96
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NTUxMzQ0NDUwNWIwNzhiMDljYzg3ZSIsInJvbCI6ImFkbWluaXN0cmFkb3IiLCJpYXQiOjE3MzM4MDA0ODYsImV4cCI6MTczMzg4Njg4Nn0.htMI_Fm01lLqHf4_tG6LT1Wfw124X4K0lpD5VG8fguU
 
+###

@@ -12,7 +12,7 @@ import {
   cambiarEstadoUsuario,
   actualizarUsuarios,
   cambiarEstadoParqueadero,
-  reservarEspacio,
+  cambiarEstadoEspacio,
 } from "../controllers/guardia_controller.js";
 import verificarRol from "../middlewares/autenticacion.js";
 
@@ -837,6 +837,6 @@ router.patch(
 router.patch(
   "/guardias/parqueaderos-espacio/:id",
   verificarRol,
-  reservarEspacio
+  cambiarEstadoEspacio
 );
 export default router;

@@ -14,7 +14,6 @@ import {
   registroUsuarios,
   ListarUsuarios,
   EliminarUsuarios,
-  listarDisponibilidadParqueaderosAdmin,
 } from "../controllers/administrador_controller.js";
 
 const router = Router();
@@ -492,11 +491,7 @@ router.put("/administrador/nueva-contraseña/:token", nuevaContraseña);
  *                          example:
  *                              msg: Error en los datos del registro
  */
-router.post(
-  "/administrador/registrar-guardia",
-  
-  registroGuardias
-);
+router.post("/administrador/registrar-guardia", registroGuardias);
 
 /**
  * @swagger
@@ -528,7 +523,7 @@ router.post(
  *                          example:
  *                              msg: No hay guardias registrados
  */
-router.get("/administrador/listar-guardias",  ListarGuardias);
+router.get("/administrador/listar-guardias", ListarGuardias);
 
 /**
  * @swagger
@@ -605,11 +600,7 @@ router.get("/administrador/listar-guardias",  ListarGuardias);
  *                 value:
  *                   msg: Lo sentimos pero ese guardia no se encuentra registrado
  */
-router.put(
-  "/administrador/actualizar-guardia/:id",
-  
-  actualizarPerfilGuardia
-);
+router.put("/administrador/actualizar-guardia/:id", actualizarPerfilGuardia);
 
 /**
  * @swagger
@@ -664,11 +655,7 @@ router.put(
  *                          example:
  *                              msg: Estado inválido
  */
-router.patch(
-  "/administrador/cambiar-estado-guardia/:id",
-  
-  cambiarEstadoGuardia
-);
+router.patch("/administrador/cambiar-estado-guardia/:id", cambiarEstadoGuardia);
 
 /**
  * @swagger
@@ -711,11 +698,7 @@ router.patch(
  *                          example:
  *                              msg: Guardia no encontrado
  */
-router.delete(
-  "/administrador/eliminar-guardia/:id",
-  
-  EliminarGuardias
-);
+router.delete("/administrador/eliminar-guardia/:id", EliminarGuardias);
 
 /**
  * @swagger
@@ -769,11 +752,7 @@ router.delete(
  *                          example:
  *                              msg: Lo sentimos debe llenar todos los campos o el usuario ya está registrado
  */
-router.post(
-  "/administrador/registrar-usuario",
-  
-  registroUsuarios
-);
+router.post("/administrador/registrar-usuario", registroUsuarios);
 
 /**
  * @swagger
@@ -805,7 +784,7 @@ router.post(
  *                          example:
  *                              msg: No hay usuarios registrados
  */
-router.get("/administrador/listar-usuarios",  ListarUsuarios);
+router.get("/administrador/listar-usuarios", verificarAdmin, ListarUsuarios);
 
 /**
  * @swagger
@@ -848,9 +827,6 @@ router.get("/administrador/listar-usuarios",  ListarUsuarios);
  *                          example:
  *                              msg: Usuario no encontrado
  */
-router.delete(
-  "/administrador/eliminar-usuario/:id",
-  EliminarUsuarios
-);
+router.delete("/administrador/eliminar-usuario/:id", EliminarUsuarios);
 
 export default router;

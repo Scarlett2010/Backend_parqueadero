@@ -1,6 +1,5 @@
 import Administrador from "../models/administrador.js";
 import guardias from "../models/guardias.js";
-import parqueaderos from "../models/parqueaderos.js";
 import Usuario from "../models/usuarios.js";
 import mongoose from "mongoose";
 import generarJWT from "../helpers/crearJWT.js";
