@@ -45,27 +45,23 @@ app.get("/", (req, res) => {
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(spect));
 
 // Endpoint no es encontrado
-app.use((req, res) => res.status(404).send("Endpoint no encontrado - 404"));
+// app.use((req, res) => res.status(404).send("Endpoint no encontrado - 404"));
 
 // PARTE IOT
 // const port = new SerialPort({
-//   path: "COM6",
+//   path: "COM4",
 //   baudRate: 9600,
 // });
 
 // const parser = port.pipe(new ReadlineParser({ delimiter: "\r\n" }));
-
 // parser.on("data", function (data) {
 //   console.log(data);
 //   io.emit("serialData", data); // Emitir datos a todos los clientes conectados
 // });
-
 // parser.on("error", (err) => console.log(err));
-
 // // // Socket.IO
 // io.on("connection", (socket) => {
 //   console.log("Un cliente se ha conectado");
-
 //   socket.on("disconnect", () => {
 //     console.log("Un cliente se ha desconectado");
 //   });

@@ -5,21 +5,20 @@ content-type: application/json
 
 {
   "email": "gifec83189@ckuer.com",
-  "password": "Amelia.1234"
+  "password": "Amelia.12345"
 }
 
 
 ### recuperar contraseña
-POST http://localhost:4000/api/guardias/recuperar-contraseña
+POST http://localhost:4000/api/guardias/recuperar-clave
 Content-Type: application/json
 
 {
   "email": "gifec83189@ckuer.com"
 }
 
-
 ### contraseña nueva
-PUT http://localhost:4000/api/guardias/nueva-contraseña/8nms6o98ei9
+PUT http://localhost:4000/api/guardias/nueva-clave/7z1xj4al0nr
 Content-Type: application/json
 
 {
@@ -35,8 +34,8 @@ GET http://localhost:4000/api/guardias/perfil
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NTYzOTYwYzU3OTYyNmY0YTVmYmYxNiIsInJvbCI6Imd1YXJkaWEiLCJpYXQiOjE3MzM3MDQwNDgsImV4cCI6MTczMzc5MDQ0OH0.z5w9zMbPiL_Pgps4nqVsUBspkGOf2TKrNUqcdp1_Les
 
 ###actualizar contraseña
-PUT http://localhost:4000/api/guardias/actualizar-contraseña
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NTYzOTYwYzU3OTYyNmY0YTVmYmYxNiIsInJvbCI6Imd1YXJkaWEiLCJpYXQiOjE3MzM3MDQwNDgsImV4cCI6MTczMzc5MDQ0OH0.z5w9zMbPiL_Pgps4nqVsUBspkGOf2TKrNUqcdp1_Les
+PUT http://localhost:4000/api/guardias/actualizar-clave
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NzdlY2U3ZGRkZjQ1MzJjZDYzMjA5OSIsInJvbCI6Imd1YXJkaWEiLCJpYXQiOjE3MzYwMTg3OTcsImV4cCI6MTczNjEwNTE5N30.lR4VADp_VXfTBsiwz8ydTXoVLIA2d5iS7Vtp0DoNCE0
 Content-Type: application/json
 
   {
@@ -65,7 +64,7 @@ Content-Type: application/json
 ### -----------------------usuarios----------------------
 ### Registrar usuario externo
 POST http://localhost:4000/api/guardias/registrar
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NTYzOTYwYzU3OTYyNmY0YTVmYmYxNiIsInJvbCI6Imd1YXJkaWEiLCJpYXQiOjE3MzM3OTk4NjUsImV4cCI6MTczMzg4NjI2NX0.mHw4LAlyNq8tWoVcpG0Hq6AVKtd2Gr0AV-T5Ck_TkVw
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NzdlY2U3ZGRkZjQ1MzJjZDYzMjA5OSIsInJvbCI6Imd1YXJkaWEiLCJpYXQiOjE3MzYwMTM5MTcsImV4cCI6MTczNjEwMDMxN30.4LpMeSH2qmjkORYr6fJgcn0xg00aXKvkXCevHIyaTkg
 Content-Type: application/json
 
 {

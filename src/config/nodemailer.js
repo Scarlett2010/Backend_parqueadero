@@ -42,7 +42,7 @@ const enviarRestablecimientoContraseña = async (userMail, token) => {
       html: `
       <h1>Sistema de gestión (Parking 🚗🛣️)</h1>
       <hr>
-      <a href=http://localhost:4000/api/recuperar-password/${token}>Clic para reestablecer tu contraseña</a>
+      <a href=http://localhost:4000/api/recuperar-clave/${token}>Clic para reestablecer tu contraseña</a>
       <hr>
       <footer>Bienvenid@s!</footer>
       `,
@@ -53,10 +53,10 @@ const enviarRestablecimientoContraseña = async (userMail, token) => {
     console.error("Error al enviar el correo de restablecimiento:", error);
     throw error;
   }
-}; 
+};
 
 const RestablecimientoContraseñaAdmin = async (userMail, token) => {
-  try { 
+  try {
     let info = await transporter.sendMail({
       from: process.env.USER_MAILTRAP,
       to: userMail,
@@ -64,7 +64,7 @@ const RestablecimientoContraseñaAdmin = async (userMail, token) => {
       html: `
       <h1>Sistema de gestión (Parking 🚗🛣️)</h1>
       <hr>
-      <a href=http://localhost:4000/api/administrador/comprobar-token/${token}>Clic para reestablecer tu contraseña</a>
+      <a href=http://localhost:4000/api/administrador/recuperar-clave/${token}>Clic para reestablecer tu contraseña</a>
       <hr>
       <footer>Bienvenid@s!</footer>
       `,
@@ -86,7 +86,7 @@ const RestablecimientoContraseñaGuardia = async (userMail, token) => {
       html: `
       <h1>Sistema de gestión (Parking 🚗🛣️)</h1>
       <hr>
-      <a href=http://localhost:4000/api/guardias/recuperar-password/${token}>Clic para reestablecer tu contraseña</a>
+      <a href=http://localhost:4000/api/guardias/recuperar-clave/${token}>Clic para reestablecer tu contraseña</a>
       <hr>
       <footer>Bienvenid@s!</footer>
       `,

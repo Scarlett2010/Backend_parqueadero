@@ -371,7 +371,7 @@ router.post("/administrador/login", loginAdmin);
  *      404:
  *        description: Usuario no encontrado
  */
-router.post("/administrador/recuperar-contraseña", recuperarContraseña);
+router.post("/administrador/recuperar-clave", recuperarContraseña);
 
 /**
  * @swagger
@@ -391,10 +391,7 @@ router.post("/administrador/recuperar-contraseña", recuperarContraseña);
  *      400:
  *        description: Token inválido o expirado
  */
-router.get(
-  "/administrador/recuperar-contraseña/:token",
-  comprobarTokenContraseña
-);
+router.get("/administrador/recuperar-clave/:token", comprobarTokenContraseña);
 
 /**
  * @swagger
@@ -449,7 +446,7 @@ router.get(
  *                  type: string
  *                  example: Lo sentimos no hemos podido verificar su cuenta
  */
-router.put("/administrador/nueva-contraseña/:token", nuevaContraseña);
+router.put("/administrador/nueva-clave/:token", nuevaContraseña);
 
 /**
  * @swagger
@@ -491,7 +488,11 @@ router.put("/administrador/nueva-contraseña/:token", nuevaContraseña);
  *                          example:
  *                              msg: Error en los datos del registro
  */
-router.post("/administrador/registrar-guardia", registroGuardias);
+router.post(
+  "/administrador/registrar-guardia",
+  verificarAdmin,
+  registroGuardias
+);
 
 /**
  * @swagger
@@ -523,7 +524,7 @@ router.post("/administrador/registrar-guardia", registroGuardias);
  *                          example:
  *                              msg: No hay guardias registrados
  */
-router.get("/administrador/listar-guardias", ListarGuardias);
+router.get("/administrador/listar-guardias", verificarAdmin, ListarGuardias);
 
 /**
  * @swagger
@@ -600,7 +601,11 @@ router.get("/administrador/listar-guardias", ListarGuardias);
  *                 value:
  *                   msg: Lo sentimos pero ese guardia no se encuentra registrado
  */
-router.put("/administrador/actualizar-guardia/:id", actualizarPerfilGuardia);
+router.put(
+  "/administrador/actualizar-guardia/:id",
+  verificarAdmin,
+  actualizarPerfilGuardia
+);
 
 /**
  * @swagger
@@ -655,7 +660,11 @@ router.put("/administrador/actualizar-guardia/:id", actualizarPerfilGuardia);
  *                          example:
  *                              msg: Estado inválido
  */
-router.patch("/administrador/cambiar-estado-guardia/:id", cambiarEstadoGuardia);
+router.patch(
+  "/administrador/cambiar-estado-guardia/:id",
+  verificarAdmin,
+  cambiarEstadoGuardia
+);
 
 /**
  * @swagger
@@ -698,7 +707,11 @@ router.patch("/administrador/cambiar-estado-guardia/:id", cambiarEstadoGuardia);
  *                          example:
  *                              msg: Guardia no encontrado
  */
-router.delete("/administrador/eliminar-guardia/:id", EliminarGuardias);
+router.delete(
+  "/administrador/eliminar-guardia/:id",
+  verificarAdmin,
+  EliminarGuardias
+);
 
 /**
  * @swagger
@@ -752,7 +765,11 @@ router.delete("/administrador/eliminar-guardia/:id", EliminarGuardias);
  *                          example:
  *                              msg: Lo sentimos debe llenar todos los campos o el usuario ya está registrado
  */
-router.post("/administrador/registrar-usuario", registroUsuarios);
+router.post(
+  "/administrador/registrar-usuario",
+  verificarAdmin,
+  registroUsuarios
+);
 
 /**
  * @swagger
@@ -827,6 +844,10 @@ router.get("/administrador/listar-usuarios", verificarAdmin, ListarUsuarios);
  *                          example:
  *                              msg: Usuario no encontrado
  */
-router.delete("/administrador/eliminar-usuario/:id", EliminarUsuarios);
+router.delete(
+  "/administrador/eliminar-usuario/:id",
+  verificarAdmin,
+  EliminarUsuarios
+);
 
 export default router;

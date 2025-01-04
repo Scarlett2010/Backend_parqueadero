@@ -277,7 +277,7 @@ router.post("/guardias/login", login);
  *      404:
  *        description: Usuario no encontrado
  */
-router.post("/guardias/recuperar-contraseña", recuperarContraseña);
+router.post("/guardias/recuperar-clave", recuperarContraseña);
 
 /**
  * @swagger
@@ -297,7 +297,10 @@ router.post("/guardias/recuperar-contraseña", recuperarContraseña);
  *      400:
  *        description: Token inválido o expirado
  */
-router.get("/guardias/recuperar-contraseña/:token", comprobarTokenContraseña);
+router.get(
+  "/guardias/guardias/recuperar-clave/:token",
+  comprobarTokenContraseña
+);
 
 /**
  * @swagger
@@ -332,7 +335,7 @@ router.get("/guardias/recuperar-contraseña/:token", comprobarTokenContraseña);
  *      400:
  *        description: Token inválido o contraseña no válida
  */
-router.put("/guardias/nueva-contraseña/:token", nuevaContraseñaG);
+router.put("/guardias/nueva-clave/:token", nuevaContraseñaG);
 
 /**
  * @swagger
@@ -423,11 +426,7 @@ router.get("/guardias/perfil", verificarRol, perfil);
  *                  value:
  *                    msg: Lo sentimos, debe llenar todos los campos
  */
-router.put(
-  "/guardias/actualizar-contraseña",
-  verificarRol,
-  actualizarContraseñaG
-);
+router.put("/guardias/actualizar-clave", verificarRol, actualizarContraseñaG);
 
 /**
  * @swagger

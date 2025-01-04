@@ -177,7 +177,7 @@ router.post("/usuarios/login", loginUsuario);
  *               example:
  *                 msg: "Error al enviar el enlace"
  */
-router.post("/recuperar-contraseña", recuperarContraseña);
+router.post("/recuperar-clave", recuperarContraseña);
 
 /**
  * @swagger
@@ -198,7 +198,7 @@ router.post("/recuperar-contraseña", recuperarContraseña);
  *       400:
  *         description: Token inválido
  */
-router.get("/recuperar-contraseña/:token", comprobarTokenContraseña);
+router.get("/recuperar-clave/:token", comprobarTokenContraseña);
 
 /**
  * @swagger
@@ -232,7 +232,7 @@ router.get("/recuperar-contraseña/:token", comprobarTokenContraseña);
  *       400:
  *         description: Token inválido o error en la actualización
  */
-router.put("/nueva-contraseña/:token", nuevaContraseña);
+router.put("/nueva-clave/:token", nuevaContraseña);
 
 /**
  * @swagger
@@ -345,11 +345,7 @@ router.get("/usuarios/perfil", verificarRol, perfilUsuario);
  *               example:
  *                 msg: "No autorizado, falta de token"
  */
-router.put(
-  "/usuarios/actualizar-contraseña",
-  verificarRol,
-  actualizarContraseña
-);
+router.put("/usuarios/actualizar-clave", verificarRol, actualizarContraseña);
 
 /**
  * @swagger

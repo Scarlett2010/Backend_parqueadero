@@ -18,24 +18,25 @@ content-type: application/json
 
 {
   "email": "sluna6360@gmail.com",
-  "password": "Admin.12345"
+  "password": "Admin.1234"
 }
 
 ### recuperar contraseña administrador
-POST http://localhost:4000/api/administrador/recuperar-contraseña
+POST http://localhost:4000/api/administrador/recuperar-clave
 Content-Type: application/json
 
 {
   "email": "sluna6360@gmail.com"
 }
 ###nueva contraseña
-POST http://localhost:4000/api/administrador/nueva-contraseña/l43udahlyee
+PUT http://localhost:4000/api/administrador/nueva-clave/al3a3vrnq8h
 Content-Type: application/json
 
 {
-  "password": "Admin.22345",
-  "confirmarPassword": "Admin.22345"
+  "password": "Admin.1234",
+  "confirmarPassword": "Admin.1234"
 }
+
 ### ------------------ FIN---------------------------------------
 
 
@@ -76,8 +77,8 @@ content-type: application/json
 # }
 
 ###listar guardia
-GET  http://localhost:3000/api/administrador/listar-guardias
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NTUxMzQ0NDUwNWIwNzhiMDljYzg3ZSIsInJvbCI6ImFkbWluaXN0cmFkb3IiLCJpYXQiOjE3MzM3MDMyNjAsImV4cCI6MTczMzc4OTY2MH0.C74JQOe8kFz-0OaM3soC51q7U51Q9vv5UF0F0OWWxJc
+GET  http://localhost:4000/api/administrador/listar-guardias
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3Nzk4MTZmMzEzZThiMTZkYWFjMmY3NSIsInJvbCI6ImFkbWluaXN0cmFkb3IiLCJpYXQiOjE3MzYwMTgwNzgsImV4cCI6MTczNjEwNDQ3OH0.-mWP82topQKBERMmvxmbfl1SwsEJNSxvTk3mb5x8oSg
 
 ### actualizar perfil
 PUT http://localhost:4000/api/administrador/actualizar-guardia/67641274d4f7e4451839f085
@@ -95,7 +96,7 @@ content-type: application/json
 }
 
 ### cambiar estado 
-PATCH http://localhost:3000/api/administrador/cambiar-estado-guardia/674e87202b4d752c4121e0d0
+PATCH http://localhost:4000/api/administrador/cambiar-estado-guardia/674e87202b4d752c4121e0d0
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NTUxMzQ0NDUwNWIwNzhiMDljYzg3ZSIsInJvbCI6ImFkbWluaXN0cmFkb3IiLCJpYXQiOjE3MzM3MDMyNjAsImV4cCI6MTczMzc4OTY2MH0.C74JQOe8kFz-0OaM3soC51q7U51Q9vv5UF0F0OWWxJc
 Content-Type: application/json
 
@@ -104,7 +105,7 @@ Content-Type: application/json
 }
 
 ### delete guardia
-DELETE http://localhost:3000/api/administrador/eliminar-guardia/675636995754eec760b4a465
+DELETE http://localhost:4000/api/administrador/eliminar-guardia/675636995754eec760b4a465
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NTUxMzQ0NDUwNWIwNzhiMDljYzg3ZSIsInJvbCI6ImFkbWluaXN0cmFkb3IiLCJpYXQiOjE3MzM3MDMyNjAsImV4cCI6MTczMzc4OTY2MH0.C74JQOe8kFz-0OaM3soC51q7U51Q9vv5UF0F0OWWxJc
 
 ### -------------------------FIN Apartado guardias -----------------
@@ -128,19 +129,12 @@ Content-Type: application/json
   "estado": true
 }
 ### listar usuarios
-GET http://localhost:3000/api/administrador/listar-usuarios
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NTUxMzQ0NDUwNWIwNzhiMDljYzg3ZSIsInJvbCI6ImFkbWluaXN0cmFkb3IiLCJpYXQiOjE3MzM3MDMyNjAsImV4cCI6MTczMzc4OTY2MH0.C74JQOe8kFz-0OaM3soC51q7U51Q9vv5UF0F0OWWxJc
+GET http://localhost:4000/api/administrador/listar-usuarios
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3Nzk4MTZmMzEzZThiMTZkYWFjMmY3NSIsInJvbCI6ImFkbWluaXN0cmFkb3IiLCJpYXQiOjE3MzYwMTgwNzgsImV4cCI6MTczNjEwNDQ3OH0.-mWP82topQKBERMmvxmbfl1SwsEJNSxvTk3mb5x8oSg
 Content-Type: application/json
 
 ### delete
-DELETE http://localhost:3000/api/administrador/eliminar_usuario/67469bad724fd342698398bb
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NTUxMzQ0NDUwNWIwNzhiMDljYzg3ZSIsInJvbCI6ImFkbWluaXN0cmFkb3IiLCJpYXQiOjE3MzM3MDMyNjAsImV4cCI6MTczMzc4OTY2MH0.C74JQOe8kFz-0OaM3soC51q7U51Q9vv5UF0F0OWWxJc
+DELETE http://localhost:4000/api/administrador/eliminar-usuario/676cd1e6e9bbc03a790c7bb6
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3Nzk4MTZmMzEzZThiMTZkYWFjMmY3NSIsInJvbCI6ImFkbWluaXN0cmFkb3IiLCJpYXQiOjE3MzYwMTgwNzgsImV4cCI6MTczNjEwNDQ3OH0.-mWP82topQKBERMmvxmbfl1SwsEJNSxvTk3mb5x8oSg
 
 ### -------------------------FIN Apartado usuarios -----------------
-
-
-### --------------------------- Apartado espacios ------------------
-### parqueaderos disponibles
-GET http://localhost:4000/api/administrador/disponibilidad-parqueadero
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NTUxMzQ0NDUwNWIwNzhiMDljYzg3ZSIsInJvbCI6ImFkbWluaXN0cmFkb3IiLCJpYXQiOjE3MzM3MDMyNjAsImV4cCI6MTczMzc4OTY2MH0.C74JQOe8kFz-0OaM3soC51q7U51Q9vv5UF0F0OWWxJc
-### -------------------------FIN Apartado espacios -----------------
