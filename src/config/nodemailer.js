@@ -26,10 +26,8 @@ const CorreoCredencialesG = async (userMail, plainPassword) => {
              <p>Por favor, guarda esta información de manera segura.</p>`,
     };
     const info = await transporter.sendMail(mailOptions);
-    console.log("Correo enviado: " + info.response);
     return info;
   } catch (error) {
-    console.error("Error al enviar el correo:", error);
     throw error;
   }
 };
@@ -49,10 +47,8 @@ const CorreoCredencialesU = async (userMail, plainPassword) => {
              <p>Por favor, guarda esta información de manera segura.</p>`,
     };
     const info = await transporter.sendMail(mailOptions);
-    console.log("Correo enviado: " + info.response);
     return info;
   } catch (error) {
-    console.error("Error al enviar el correo:", error);
     throw error;
   }
 };
@@ -70,10 +66,8 @@ const enviarRestablecimientoContraseña = async (userMail, token) => {
       <footer>Bienvenid@s!</footer>
       `,
     });
-    console.log("Mensaje enviado satisfactoriamente: ", info.messageId);
     return info;
   } catch (error) {
-    console.error("Error al enviar el correo de restablecimiento:", error);
     throw error;
   }
 };
@@ -92,10 +86,8 @@ const RestablecimientoContraseñaAdmin = async (userMail, token) => {
       <footer>Bienvenid@s!</footer>
       `,
     });
-    console.log("Mensaje enviado satisfactoriamente: ", info.messageId);
     return info;
   } catch (error) {
-    console.error("Error al enviar el correo de restablecimiento:", error);
     throw error;
   }
 };
@@ -114,10 +106,8 @@ const RestablecimientoContraseñaGuardia = async (userMail, token) => {
       <footer>Bienvenid@s!</footer>
       `,
     });
-    console.log("Mensaje enviado satisfactoriamente: ", info.messageId);
     return info;
   } catch (error) {
-    console.error("Error al enviar el correo de restablecimiento:", error);
     throw error;
   }
 };

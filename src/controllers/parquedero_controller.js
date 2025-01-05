@@ -65,7 +65,6 @@ const actualizarParqueadero = async (req, res) => {
       parqueadero: espacioActualizado,
     });
   } catch (error) {
-    console.error("Error al actualizar el parqueadero:", error);
     res.status(500).json({
       msg: "Hubo un error al intentar actualizar el parqueadero.",
     });

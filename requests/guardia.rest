@@ -4,8 +4,8 @@ POST http://localhost:4000/api/guardias/login
 content-type: application/json
 
 {
-  "email": "gifec83189@ckuer.com",
-  "password": "Amelia.12345"
+  "email": "bilib61354@evnft.com",
+  "password": "ejemplo.1234"
 }
 
 
@@ -81,17 +81,13 @@ Content-Type: application/json
 
 ###listar usuario
 GET  http://localhost:4000/api/guardias/listar-usuarios
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NTYzOTYwYzU3OTYyNmY0YTVmYmYxNiIsInJvbCI6Imd1YXJkaWEiLCJpYXQiOjE3MzM3MTM0MTMsImV4cCI6MTczMzc5OTgxM30.LeHquD1tshDQYBlCwd1mANRbTDdKAtSs26kWxb5VfHs
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NzlmODA0NTA5M2ZlNDgxODgwZjc2YSIsInJvbCI6Imd1YXJkaWEiLCJpYXQiOjE3MzYwNTA2NDQsImV4cCI6MTczNjEzNzA0NH0.txt-0hy6R3yynVcWT5gUexN-tw8khGWhLoyHOzNNi0s
 Content-Type: application/json
 
 ### cambiar estado usuario
-PATCH  http://localhost:4000/api/guardias/cambiar-estado-usuario/67565e155d488118b0b84b2d
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NTYzOTYwYzU3OTYyNmY0YTVmYmYxNiIsInJvbCI6Imd1YXJkaWEiLCJpYXQiOjE3MzM3MTM0MTMsImV4cCI6MTczMzc5OTgxM30.LeHquD1tshDQYBlCwd1mANRbTDdKAtSs26kWxb5VfHs
+PATCH  http://localhost:4000/api/guardias/cambiar-estado-usuario
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NzlmODA0NTA5M2ZlNDgxODgwZjc2YSIsInJvbCI6Imd1YXJkaWEiLCJpYXQiOjE3MzYwNTA2NDQsImV4cCI6MTczNjEzNzA0NH0.txt-0hy6R3yynVcWT5gUexN-tw8khGWhLoyHOzNNi0s
 Content-Type: application/json
-
-{
-  "estado": false
-}
 
 ### actualizar usuario externo
 PUT http://localhost:4000/api/guardias/actualizar-usuarios/67565e155d488118b0b84b2d

@@ -12,41 +12,48 @@ import parqueadero from "../models/parqueaderos.js";
 
 const login = async (req, res) => {
   const { email, password } = req.body;
-  if (Object.values(req.body).includes(""))
+  if (Object.values(req.body).includes("")) {
     return res.status(404).json({
-      msg: "Lo sentimos debe llenar todos los campos",
-    });
-  const guardiaInfo = await Guardias.findOne({ email });
-  if (!guardiaInfo)
-    return res.status(404).json({
-      msg: "Lo sentimos ese email no se encuentra registrado",
-    });
-  if (guardiaInfo.status === false) {
-    return res.status(403).json({
-      msg: "Acceso denegado",
+      msg: "Lo sentimos, debe llenar todos los campos.",
     });
   }
-  const confirmarPass = await guardiaInfo.matchPassword(password);
-  if (!confirmarPass)
-    return res.status(404).json({
-      msg: "Lo sentimos contraseña incorrecta ",
+  try {
+    const guardiaInfo = await Guardias.findOne({ email });
+    if (!guardiaInfo) {
+      return res.status(404).json({
+        msg: "Lo sentimos, ese email no se encuentra registrado.",
+      });
+    }
+    if (!guardiaInfo.estado) {
+      return res.status(403).json({
+        msg: "Acceso denegado. Su cuenta está desactivada, contacte al administrador.",
+      });
+    }
+    const confirmarPass = await guardiaInfo.matchPassword(password);
+    if (!confirmarPass) {
+      return res.status(404).json({
+        msg: "Lo sentimos, la contraseña es incorrecta.",
+      });
+    }
+    const token = generarJWT(guardiaInfo._id, "guardia");
+    const { nombre, apellido, telefono, _id, estado, cedula } = guardiaInfo;
+    res.status(200).json({
+      _id,
+      token,
+      nombre,
+      apellido,
+      cedula,
+      telefono,
+      email: guardiaInfo.email,
+      rol: "guardia",
+      estado,
     });
-  const token = generarJWT(guardiaInfo._id, "guardia");
-  const { nombre, apellido, telefono, _id } = guardiaInfo;
-
-  await guardiaInfo.save();
-  res.status(200).json({
-    _id,
-    token,
-    nombre,
-    apellido,
-    telefono,
-    email: guardiaInfo.email,
-    rol: "guardia",
-    status: guardiaInfo.status,
-  });
+  } catch (error) {
+    res.status(500).json({
+      msg: "Hubo un error al intentar iniciar sesión.",
+    });
+  }
 };
-
 const recuperarContraseña = async (req, res) => {
   const { email } = req.body;
   if (Object.values(req.body).includes(""))
@@ -189,7 +196,6 @@ const registroUsuarios = async (req, res) => {
     await CorreoCredencialesU(email, password);
     res.status(200).json({ msg: "Usuario registrado y correo enviado" });
   } catch (error) {
-    console.error("Error en el registro del usuario:", error);
     res.status(500).json({ msg: "Hubo un error al registrar el usuario" });
   }
 };
@@ -201,14 +207,17 @@ const ListarUsuarios = async (req, res) => {
 
 const cambiarEstadoUsuario = async (req, res) => {
   try {
-    const estado = JSON.parse(req.body.estado);
-    await usuarios.findByIdAndUpdate(req.params.id, {
-      estado: estado,
-    });
-    res.status(200).json({ msg: "Estado modificado exitosamente" });
+    await usuarios.updateMany({}, [
+      {
+        $set: {
+          estado: { $not: "$estado" },
+        },
+      },
+    ]);
+    res.status(200).json({ msg: "Estados modificados exitosamente" });
   } catch (error) {
     res.status(500).json({
-      msg: "Error al modificar el estado del usuario",
+      msg: "Error al modificar los estados de los usuarios",
       error: error.message,
     });
   }

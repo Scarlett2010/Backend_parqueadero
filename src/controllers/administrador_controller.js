@@ -147,7 +147,6 @@ const registroGuardias = async (req, res) => {
     await CorreoCredencialesG(email, password);
     res.status(200).json({ msg: "Guardia registrado y correo enviado" });
   } catch (error) {
-    console.error("Error en el registro del guardia:", error);
     res.status(500).json({ msg: "Hubo un error al registrar el guardia" });
   }
 };
@@ -161,42 +160,30 @@ const ListarGuardias = async (req, res) => {
 // Actualizar perfil de guardia
 const actualizarPerfilGuardia = async (req, res) => {
   const { id } = req.params;
-
-  // Verificar si hay campos vacíos
   if (Object.values(req.body).includes("")) {
     return res.status(400).json({
       msg: "Lo sentimos, debe llenar todos los campos.",
     });
   }
-
-  // Validar que el ID sea un ObjectId válido
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(404).json({
       msg: "Lo sentimos, pero ese guardia no se encuentra registrado.",
     });
   }
-
   try {
-    // Actualizar el perfil del guardia
-    const guardiaActualizado = await guardias.findByIdAndUpdate(
-      id,
-      req.body,
-      { new: true } // Devolver el documento actualizado
-    );
-
-    // Verificar si se encontró y actualizó el guardia
+    const guardiaActualizado = await guardias.findByIdAndUpdate(id, req.body, {
+      new: true,
+    });
     if (!guardiaActualizado) {
       return res.status(404).json({
         msg: "Lo sentimos, no se encontró el guardia especificado.",
       });
     }
-
     res.status(200).json({
       msg: "Perfil del guardia actualizado con éxito.",
-      guardia: guardiaActualizado, // Retornar el guardia actualizado
+      guardia: guardiaActualizado,
     });
   } catch (error) {
-    console.error(error);
     res.status(500).json({
       msg: "Ocurrió un error al intentar actualizar el perfil del guardia.",
     });

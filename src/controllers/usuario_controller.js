@@ -5,39 +5,45 @@ import generarJWT from "../helpers/crearJWT.js";
 
 const loginUsuario = async (req, res) => {
   const { email, password } = req.body;
-  // Validación de campos vacíos
   if (!email || !password) {
     return res
       .status(400)
       .json({ msg: "Lo sentimos, debes llenar todos los campos" });
   }
-  const usuarioInformacion = await Usuarios.findOne({ email });
-  // Verificar si el usuario existe
-  if (!usuarioInformacion) {
-    return res
-      .status(404)
-      .json({ msg: "Lo sentimos, el usuario no se encuentra registrado" });
+  try {
+    const usuarioInformacion = await Usuarios.findOne({ email });
+    if (!usuarioInformacion) {
+      return res
+        .status(404)
+        .json({ msg: "Lo sentimos, el usuario no se encuentra registrado" });
+    }
+    if (!usuarioInformacion.estado) {
+      return res.status(403).json({
+        msg: "Acceso denegado. Su cuenta está desactivada, contacte al administrador.",
+      });
+    }
+    const verificarPassword = await usuarioInformacion.matchPassword(password);
+    if (!verificarPassword) {
+      return res
+        .status(401)
+        .json({ msg: "Lo sentimos, el password no es el correcto" });
+    }
+    const token = generarJWT(usuarioInformacion._id, "usuario");
+    const { nombre, apellido, telefono, _id, estado } = usuarioInformacion;
+    res.status(200).json({
+      nombre,
+      apellido,
+      telefono,
+      token,
+      _id,
+      email: usuarioInformacion.email,
+      estado,
+    });
+  } catch (error) {
+    res.status(500).json({
+      msg: "Hubo un error al intentar iniciar sesión.",
+    });
   }
-
-  const verificarPassword = await usuarioInformacion.matchPassword(password);
-
-  if (!verificarPassword) {
-    return res
-      .status(401)
-      .json({ msg: "Lo sentimos, el password no es el correcto" });
-  }
-
-  const token = generarJWT(usuarioInformacion._id, "usuario");
-  const { nombre, apellido, telefono, _id } = usuarioInformacion;
-
-  res.status(200).json({
-    nombre,
-    apellido,
-    telefono,
-    token,
-    _id,
-    email: usuarioInformacion.email,
-  });
 };
 
 const recuperarContraseña = async (req, res) => {

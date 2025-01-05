@@ -78,7 +78,7 @@ content-type: application/json
 
 ###listar guardia
 GET  http://localhost:4000/api/administrador/listar-guardias
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3Nzk4MTZmMzEzZThiMTZkYWFjMmY3NSIsInJvbCI6ImFkbWluaXN0cmFkb3IiLCJpYXQiOjE3MzYwMTgwNzgsImV4cCI6MTczNjEwNDQ3OH0.-mWP82topQKBERMmvxmbfl1SwsEJNSxvTk3mb5x8oSg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3Nzk4MTZmMzEzZThiMTZkYWFjMmY3NSIsInJvbCI6ImFkbWluaXN0cmFkb3IiLCJpYXQiOjE3MzYwNDg5NjcsImV4cCI6MTczNjEzNTM2N30.jLkfLku37nm0LAPsZ56rqf138S-v3Jcq-5V69SkVE2k
 
 ### actualizar perfil
 PUT http://localhost:4000/api/administrador/actualizar-guardia/67641274d4f7e4451839f085
@@ -96,12 +96,12 @@ content-type: application/json
 }
 
 ### cambiar estado 
-PATCH http://localhost:4000/api/administrador/cambiar-estado-guardia/674e87202b4d752c4121e0d0
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NTUxMzQ0NDUwNWIwNzhiMDljYzg3ZSIsInJvbCI6ImFkbWluaXN0cmFkb3IiLCJpYXQiOjE3MzM3MDMyNjAsImV4cCI6MTczMzc4OTY2MH0.C74JQOe8kFz-0OaM3soC51q7U51Q9vv5UF0F0OWWxJc
+PATCH http://localhost:4000/api/administrador/cambiar-estado-guardia/6779f8045093fe481880f76a
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3Nzk4MTZmMzEzZThiMTZkYWFjMmY3NSIsInJvbCI6ImFkbWluaXN0cmFkb3IiLCJpYXQiOjE3MzYwNDg5NjcsImV4cCI6MTczNjEzNTM2N30.jLkfLku37nm0LAPsZ56rqf138S-v3Jcq-5V69SkVE2k
 Content-Type: application/json
 
 {
-  "estado": false
+  "estado": true
 }
 
 ### delete guardia
