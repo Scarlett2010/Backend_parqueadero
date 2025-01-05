@@ -116,7 +116,11 @@ router.post("/parqueaderos/registrar", verificarAdmin, registrarParqueadero);
  *       401:
  *         description: No autorizado, falta de token
  */
-router.put("/parqueaderos/:id", verificarAdmin, actualizarParqueadero);
+router.put(
+  "/actualizar-parqueadero/:id",
+  verificarAdmin,
+  actualizarParqueadero
+);
 
 /**
  * @swagger
