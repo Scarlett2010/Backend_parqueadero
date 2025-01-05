@@ -16,13 +16,15 @@ const CorreoCredencialesG = async (userMail, plainPassword) => {
     let mailOptions = {
       from: process.env.USER_MAILTRAP,
       to: userMail,
-      subject: "Bienvenido a nuestro sistema",
-      html: `<p>Hola,</p>
-             <p>Te damos la bienvenida a nuestro sistema de gestión (Parking 🚗🛣️). Estos son tus datos de acceso:</p>
+      subject: "Bienvenid@ a nuestro sistema",
+      html: `<h2>Hola 😊🚗,</h2>
+             <h3>Te damos la bienvenida a nuestro sistema de gestión (Parking 🚗🛣️). Estos son tus datos de acceso:</h3>
+             <p>------------- Credenciales -------------</p>
              <ul>
                <li><strong>Email:</strong> ${userMail}</li>
                <li><strong>Contraseña:</strong> ${plainPassword}</li>
              </ul>
+             <p>------------------------------------------</p>
              <p>Por favor, guarda esta información de manera segura.</p>`,
     };
     const info = await transporter.sendMail(mailOptions);
@@ -37,13 +39,15 @@ const CorreoCredencialesU = async (userMail, plainPassword) => {
     let mailOptions = {
       from: process.env.USER_MAILTRAP,
       to: userMail,
-      subject: "Bienvenido a nuestro sistema",
-      html: `<p>Hola,</p>
-             <p>Te damos la bienvenida a nuestro sistema de gestión (Parking 🚗🛣️). Estos son tus datos de acceso:</p>
+      subject: "Bienvenid@ a nuestro sistema",
+      html: `<h2>Hola 😊🚗,</h2>
+             <h3>Te damos la bienvenida a nuestro sistema de gestión (Parking 🚗🛣️). Estos son tus datos de acceso:</h3>
+             <p>------------- Credenciales -------------</p>
              <ul>
                <li><strong>Email:</strong> ${userMail}</li>
                <li><strong>Contraseña:</strong> ${plainPassword}</li>
              </ul>
+             <p>------------------------------------------</p>
              <p>Por favor, guarda esta información de manera segura.</p>`,
     };
     const info = await transporter.sendMail(mailOptions);
@@ -52,6 +56,7 @@ const CorreoCredencialesU = async (userMail, plainPassword) => {
     throw error;
   }
 };
+
 const enviarRestablecimientoContraseña = async (userMail, token) => {
   try {
     let info = await transporter.sendMail({
