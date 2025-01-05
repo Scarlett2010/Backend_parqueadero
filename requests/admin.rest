@@ -43,16 +43,16 @@ Content-Type: application/json
 ### --------------------------- Apartado guardias -----------------
 ### registro guardia
 POST http://localhost:4000/api/administrador/registrar-guardia
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NmNiMTc1NTQ1YzRkYWZhMTJmOWJhNSIsInJvbCI6ImFkbWluaXN0cmFkb3IiLCJpYXQiOjE3MzU5MTE3NDAsImV4cCI6MTczNTk5ODE0MH0.cCGt-p3krcD2XOlqHmbLDEcN3tb8rwL6nOnIhCL5JC0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3Nzk4MTZmMzEzZThiMTZkYWFjMmY3NSIsInJvbCI6ImFkbWluaXN0cmFkb3IiLCJpYXQiOjE3MzYwNDY0NDMsImV4cCI6MTczNjEzMjg0M30.LwdQoHK8PqbKtFPPXaTtUoOujfx6iixk63wF-7v-Cf8
 content-type: application/json
 
 {
-  "nombre": "Amelia",
-  "apellido": "Perez",
-  "cedula": "1548955520",
-  "email": "gifec83189@ckuer.com",
-  "password": "Amelia.1234",
-  "telefono": "0995777012",
+  "nombre": "ejemplo",
+  "apellido": "ejemplo",
+  "cedula": "1548955550",
+  "email": "bilib61354@evnft.com",
+  "password": "ejemplo.1234",
+  "telefono": "0995777002",
   "estado": true
 }
 

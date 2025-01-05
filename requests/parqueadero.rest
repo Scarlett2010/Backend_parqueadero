@@ -49,21 +49,18 @@ Content-Type: application/json
 
 ###parqeueadero listar
 GET http://localhost:4000/api/parqueaderos
-Authorization: Bearer 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3Nzk4MTZmMzEzZThiMTZkYWFjMmY3NSIsInJvbCI6ImFkbWluaXN0cmFkb3IiLCJpYXQiOjE3MzYwNDcxOTAsImV4cCI6MTczNjEzMzU5MH0.OM3zMaGrAkrTWAHFAcL7cDMvk0dU3ls39g8-QJAcjTQ
 
 ###parqeueadero actualizar
-PUT http://localhost:4000/api/parqueaderos/674884c678b45e90ff3f5d35
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NTUxMzQ0NDUwNWIwNzhiMDljYzg3ZSIsInJvbCI6ImFkbWluaXN0cmFkb3IiLCJpYXQiOjE3MzM4MDA0ODYsImV4cCI6MTczMzg4Njg4Nn0.htMI_Fm01lLqHf4_tG6LT1Wfw124X4K0lpD5VG8fguU
+PUT http://localhost:4000/api/actualizar-parqueadero/6777ea78dddf4532cd632088
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3Nzk4MTZmMzEzZThiMTZkYWFjMmY3NSIsInJvbCI6ImFkbWluaXN0cmFkb3IiLCJpYXQiOjE3MzYwNDcxOTAsImV4cCI6MTczNjEzMzU5MH0.OM3zMaGrAkrTWAHFAcL7cDMvk0dU3ls39g8-QJAcjTQ
 Content-Type: application/json
 
 {
   "nombre": "Parqueadero Esfot",
   "description": "Parqueadero para vehículos",
   "planta": "A",
-  "bloque": "A",
-  "tipo": "Automóvil y motos",
-  "espacios": 9,
-  "estado": true
+  "bloque": "A"
 }
 
 ###parqeueadero eliminado

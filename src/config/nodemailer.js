@@ -11,19 +11,20 @@ let transporter = nodemailer.createTransport({
   },
 });
 
-const sendMailToUser = async (userMail, token) => {
+const CorreoCredencialesG = async (userMail, plainPassword) => {
   try {
     let mailOptions = {
       from: process.env.USER_MAILTRAP,
       to: userMail,
-      subject: "Verifica tu cuenta",
-      html: `<p>Hola, haz clic <a href="${
-        process.env.URL_FRONTEND
-      }confirmar/${encodeURIComponent(
-        token
-      )}">aquí</a> para confirmar tu cuenta.</p>`,
+      subject: "Bienvenido a nuestro sistema",
+      html: `<p>Hola,</p>
+             <p>Te damos la bienvenida a nuestro sistema de gestión (Parking 🚗🛣️). Estos son tus datos de acceso:</p>
+             <ul>
+               <li><strong>Email:</strong> ${userMail}</li>
+               <li><strong>Contraseña:</strong> ${plainPassword}</li>
+             </ul>
+             <p>Por favor, guarda esta información de manera segura.</p>`,
     };
-
     const info = await transporter.sendMail(mailOptions);
     console.log("Correo enviado: " + info.response);
     return info;
@@ -33,6 +34,28 @@ const sendMailToUser = async (userMail, token) => {
   }
 };
 
+const CorreoCredencialesU = async (userMail, plainPassword) => {
+  try {
+    let mailOptions = {
+      from: process.env.USER_MAILTRAP,
+      to: userMail,
+      subject: "Bienvenido a nuestro sistema",
+      html: `<p>Hola,</p>
+             <p>Te damos la bienvenida a nuestro sistema de gestión (Parking 🚗🛣️). Estos son tus datos de acceso:</p>
+             <ul>
+               <li><strong>Email:</strong> ${userMail}</li>
+               <li><strong>Contraseña:</strong> ${plainPassword}</li>
+             </ul>
+             <p>Por favor, guarda esta información de manera segura.</p>`,
+    };
+    const info = await transporter.sendMail(mailOptions);
+    console.log("Correo enviado: " + info.response);
+    return info;
+  } catch (error) {
+    console.error("Error al enviar el correo:", error);
+    throw error;
+  }
+};
 const enviarRestablecimientoContraseña = async (userMail, token) => {
   try {
     let info = await transporter.sendMail({
@@ -100,7 +123,8 @@ const RestablecimientoContraseñaGuardia = async (userMail, token) => {
 };
 
 export {
-  sendMailToUser,
+  CorreoCredencialesG,
+  CorreoCredencialesU,
   enviarRestablecimientoContraseña,
   RestablecimientoContraseñaAdmin,
   RestablecimientoContraseñaGuardia,

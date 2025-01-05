@@ -3,7 +3,10 @@ import guardias from "../models/guardias.js";
 import Usuario from "../models/usuarios.js";
 import mongoose from "mongoose";
 import generarJWT from "../helpers/crearJWT.js";
-import { RestablecimientoContraseñaAdmin } from "../config/nodemailer.js";
+import {
+  RestablecimientoContraseñaAdmin,
+  CorreoCredencialesG,
+} from "../config/nodemailer.js";
 
 // Registrar administrador
 const registroAdmin = async (req, res) => {
@@ -126,20 +129,27 @@ const nuevaContraseña = async (req, res) => {
 // Registrar guardias
 const registroGuardias = async (req, res) => {
   const { email, password } = req.body;
-  if (Object.values(req.body).includes(""))
+  if (Object.values(req.body).includes("")) {
     return res.status(404).json({
       msg: "Lo sentimos debe llenar todos los campos",
     });
+  }
   const guardia = await guardias.findOne({ email });
-  if (guardia)
+  if (guardia) {
     return res.status(404).json({
       msg: "Lo sentimos pero ese guardia ya se encuentra registrado",
     });
-
-  const nuevoGuardia = new guardias(req.body);
-  nuevoGuardia.password = await nuevoGuardia.encrypPassword(password);
-  await nuevoGuardia.save();
-  res.status(200).json({ msg: "Guardia registrado" });
+  }
+  try {
+    const nuevoGuardia = new guardias(req.body);
+    nuevoGuardia.password = await nuevoGuardia.encrypPassword(password);
+    await nuevoGuardia.save();
+    await CorreoCredencialesG(email, password);
+    res.status(200).json({ msg: "Guardia registrado y correo enviado" });
+  } catch (error) {
+    console.error("Error en el registro del guardia:", error);
+    res.status(500).json({ msg: "Hubo un error al registrar el guardia" });
+  }
 };
 
 // Listar guardias

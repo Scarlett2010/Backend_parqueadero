@@ -1,4 +1,7 @@
-import { RestablecimientoContraseñaGuardia } from "../config/nodemailer.js";
+import {
+  RestablecimientoContraseñaGuardia,
+  CorreoCredencialesU,
+} from "../config/nodemailer.js";
 import generarJWT from "../helpers/crearJWT.js";
 import Guardias from "../models/guardias.js";
 import Usuario from "../models/usuarios.js";
@@ -168,24 +171,27 @@ const actualizarPerfil = async (req, res) => {
 
 const registroUsuarios = async (req, res) => {
   const { email, password } = req.body;
-  if (Object.values(req.body).includes(""))
+  if (Object.values(req.body).includes("")) {
     return res.status(404).json({
       msg: "Lo sentimos debe llenar todos los campos",
     });
+  }
   const usuarioInformacion = await Usuario.findOne({ email });
-  if (usuarioInformacion)
+  if (usuarioInformacion) {
     return res.status(404).json({
       msg: "Lo sentimos pero el usuario ya se encuentra registrado",
     });
-
-  const nuevoUsuario = new Usuario(req.body);
-  console.log(nuevoUsuario);
-
-  nuevoUsuario.password = await nuevoUsuario.encrypPassword(password);
-
-  await nuevoUsuario.save();
-
-  res.status(200).json({ msg: "Usuario registrado" });
+  }
+  try {
+    const nuevoUsuario = new Usuario(req.body);
+    nuevoUsuario.password = await nuevoUsuario.encrypPassword(password);
+    await nuevoUsuario.save();
+    await CorreoCredencialesU(email, password);
+    res.status(200).json({ msg: "Usuario registrado y correo enviado" });
+  } catch (error) {
+    console.error("Error en el registro del usuario:", error);
+    res.status(500).json({ msg: "Hubo un error al registrar el usuario" });
+  }
 };
 
 const ListarUsuarios = async (req, res) => {

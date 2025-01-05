@@ -35,21 +35,41 @@ const listarParqueaderos = async (req, res) => {
   }
 };
 
+//actualizar parqueadero
 const actualizarParqueadero = async (req, res) => {
   const { id } = req.params;
-  if (Object.values(req.body).includes(""))
+  const { nombre, description, planta, bloque } = req.body;
+  if (!nombre || !description || !planta || !bloque) {
     return res.status(404).json({
-      msg: "Lo sentimos debe llenar todos los campos",
+      msg: "Lo sentimos, debe proporcionar todos los campos requeridos: nombre, description, planta, bloque.",
     });
-  if (!mongoose.Types.ObjectId.isValid(id))
+  }
+  if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(404).json({
-      msg: "Lo sentimos pero ese guardia no se encuentra registrado",
+      msg: "Lo sentimos, el ID del parqueadero no es válido.",
     });
-
-  const espacioActualizado = await Parqueaderos.findByIdAndUpdate(id, req.body);
-  await espacioActualizado.save();
-
-  res.status(200).json({ msg: "Perfil guardia actualizado" });
+  }
+  try {
+    const espacioActualizado = await Parqueaderos.findByIdAndUpdate(
+      id,
+      { nombre, description, planta, bloque },
+      { new: true }
+    );
+    if (!espacioActualizado) {
+      return res.status(404).json({
+        msg: "Lo sentimos, no se encontró el parqueadero con el ID proporcionado.",
+      });
+    }
+    res.status(200).json({
+      msg: "Parqueadero actualizado con éxito",
+      parqueadero: espacioActualizado,
+    });
+  } catch (error) {
+    console.error("Error al actualizar el parqueadero:", error);
+    res.status(500).json({
+      msg: "Hubo un error al intentar actualizar el parqueadero.",
+    });
+  }
 };
 
 //eliminar parqueadero
