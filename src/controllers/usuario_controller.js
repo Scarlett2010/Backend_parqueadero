@@ -1,4 +1,4 @@
-import { enviarRestablecimientoContraseña } from "../config/nodemailer.js";
+import { RestablecimientoContraseñaUser } from "../config/nodemailer.js";
 import Usuarios from "../models/usuarios.js";
 import mongoose from "mongoose";
 import generarJWT from "../helpers/crearJWT.js";
@@ -59,7 +59,7 @@ const recuperarContraseña = async (req, res) => {
       .json({ msg: "Lo sentimos, el usuario no se encuentra registrado" });
   const token = usuario.crearToken();
   usuario.token = token;
-  await enviarRestablecimientoContraseña(email, token);
+  await RestablecimientoContraseñaUser(email, token);
   await usuario.save();
   res
     .status(200)

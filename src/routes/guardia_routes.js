@@ -297,10 +297,7 @@ router.post("/guardias/recuperar-clave", recuperarContraseña);
  *      400:
  *        description: Token inválido o expirado
  */
-router.get(
-  "/guardias/guardias/recuperar-clave/:token",
-  comprobarTokenContraseña
-);
+router.get("/guardias/recuperar-clave/:token", comprobarTokenContraseña);
 
 /**
  * @swagger

@@ -57,7 +57,7 @@ const CorreoCredencialesU = async (userMail, plainPassword) => {
   }
 };
 
-const enviarRestablecimientoContraseña = async (userMail, token) => {
+const RestablecimientoContraseñaUser = async (userMail, token) => {
   try {
     let info = await transporter.sendMail({
       from: process.env.USER_MAILTRAP,
@@ -66,7 +66,7 @@ const enviarRestablecimientoContraseña = async (userMail, token) => {
       html: `
       <h1>Sistema de gestión (Parking 🚗🛣️)</h1>
       <hr>
-      <a href=http://localhost:4000/api/recuperar-clave/${token}>Clic para reestablecer tu contraseña</a>
+      <a href="https://timely-crepe-9d2886.netlify.app/cambiar-contrasena?token=${token}">Clic para reestablecer tu contraseña</a>
       <hr>
       <footer>Bienvenid@s!</footer>
       `,
@@ -86,7 +86,7 @@ const RestablecimientoContraseñaAdmin = async (userMail, token) => {
       html: `
       <h1>Sistema de gestión (Parking 🚗🛣️)</h1>
       <hr>
-      <a href=http://localhost:4000/api/administrador/recuperar-clave/${token}>Clic para reestablecer tu contraseña</a>
+      <a href="https://timely-crepe-9d2886.netlify.app/cambiar-contrasena?token=${token}">Clic para reestablecer tu contraseña</a>
       <hr>
       <footer>Bienvenid@s!</footer>
       `,
@@ -106,7 +106,7 @@ const RestablecimientoContraseñaGuardia = async (userMail, token) => {
       html: `
       <h1>Sistema de gestión (Parking 🚗🛣️)</h1>
       <hr>
-      <a href=http://localhost:4000/api/guardias/recuperar-clave/${token}>Clic para reestablecer tu contraseña</a>
+      <a href="https://timely-crepe-9d2886.netlify.app/cambiar-contrasena?token=${token}">Clic para reestablecer tu contraseña</a>
       <hr>
       <footer>Bienvenid@s!</footer>
       `,
@@ -120,7 +120,7 @@ const RestablecimientoContraseñaGuardia = async (userMail, token) => {
 export {
   CorreoCredencialesG,
   CorreoCredencialesU,
-  enviarRestablecimientoContraseña,
+  RestablecimientoContraseñaUser,
   RestablecimientoContraseñaAdmin,
   RestablecimientoContraseñaGuardia,
 };

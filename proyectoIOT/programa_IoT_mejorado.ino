@@ -123,11 +123,11 @@ float distancia(int trig, int echo)
 }
 int estado_vehiculo(float medicion)
 {
-  if (medicion <= 4 && medicion >= 1)
+  if (medicion <= 4.5 && medicion >= 1)
   {
     estado = 1;
   }
-  if (medicion > 4)
+  if (medicion > 4.5)
   {
     estado = 0;
   }
