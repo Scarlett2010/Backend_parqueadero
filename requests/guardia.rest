@@ -64,7 +64,7 @@ Content-Type: application/json
 ### -----------------------usuarios----------------------
 ### Registrar usuario externo
 POST http://localhost:4000/api/guardias/registrar
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NzdlY2U3ZGRkZjQ1MzJjZDYzMjA5OSIsInJvbCI6Imd1YXJkaWEiLCJpYXQiOjE3MzYwMTM5MTcsImV4cCI6MTczNjEwMDMxN30.4LpMeSH2qmjkORYr6fJgcn0xg00aXKvkXCevHIyaTkg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3N2RlNzI4ZmIwNjg2ZGIwYTQ2NDllZCIsInJvbCI6Imd1YXJkaWEiLCJpYXQiOjE3MzYzMDQ0NjUsImV4cCI6MTczNjM5MDg2NX0.brXHuxrDU2PbVXh7E-f5kkA22mSpVVB2aSOxrpzropE
 Content-Type: application/json
 
 {
@@ -81,7 +81,7 @@ Content-Type: application/json
 
 ###listar usuario
 GET  http://localhost:4000/api/guardias/listar-usuarios
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NzlmODA0NTA5M2ZlNDgxODgwZjc2YSIsInJvbCI6Imd1YXJkaWEiLCJpYXQiOjE3MzYwNTA2NDQsImV4cCI6MTczNjEzNzA0NH0.txt-0hy6R3yynVcWT5gUexN-tw8khGWhLoyHOzNNi0s
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3N2RlNzI4ZmIwNjg2ZGIwYTQ2NDllZCIsInJvbCI6Imd1YXJkaWEiLCJpYXQiOjE3MzYzMDQ0NjUsImV4cCI6MTczNjM5MDg2NX0.brXHuxrDU2PbVXh7E-f5kkA22mSpVVB2aSOxrpzropE
 Content-Type: application/json
 
 ### cambiar estado usuario
@@ -90,8 +90,8 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NzlmODA0N
 Content-Type: application/json
 
 ### actualizar usuario externo
-PUT http://localhost:4000/api/guardias/actualizar-usuarios/67565e155d488118b0b84b2d
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NTYzOTYwYzU3OTYyNmY0YTVmYmYxNiIsInJvbCI6Imd1YXJkaWEiLCJpYXQiOjE3MzM3MTM0MTMsImV4cCI6MTczMzc5OTgxM30.LeHquD1tshDQYBlCwd1mANRbTDdKAtSs26kWxb5VfHs
+PUT http://localhost:4000/api/guardias/actualizar-usuarios/677b6034c777b16afd0edff0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3N2RlNzI4ZmIwNjg2ZGIwYTQ2NDllZCIsInJvbCI6Imd1YXJkaWEiLCJpYXQiOjE3MzYzMDQ0NjUsImV4cCI6MTczNjM5MDg2NX0.brXHuxrDU2PbVXh7E-f5kkA22mSpVVB2aSOxrpzropE
 Content-Type: application/json
 
 {
@@ -99,12 +99,13 @@ Content-Type: application/json
   "apellido": "Luna",
   "cedula": "1548951000",
   "email": "scarlettluna397@gmail.com",
-  "password": "Luna.123",
   "telefono": "0998374400",
-  "placa_vehiculo": "abb-110",
-  "rol": "Estudiante",
-  "estado": true
+  "placa_vehiculo": "abb-120",
+  "rol": "Docente"
 }
+###{
+###  "rol": "Docente"
+###}
 
 ### ----------------------FIN usuarios----------------------
 

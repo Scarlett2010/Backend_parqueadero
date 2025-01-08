@@ -43,28 +43,28 @@ Content-Type: application/json
 ### --------------------------- Apartado guardias -----------------
 ### registro guardia
 POST http://localhost:4000/api/administrador/registrar-guardia
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3Nzk4MTZmMzEzZThiMTZkYWFjMmY3NSIsInJvbCI6ImFkbWluaXN0cmFkb3IiLCJpYXQiOjE3MzYwNDY0NDMsImV4cCI6MTczNjEzMjg0M30.LwdQoHK8PqbKtFPPXaTtUoOujfx6iixk63wF-7v-Cf8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3Nzk4MTZmMzEzZThiMTZkYWFjMmY3NSIsInJvbCI6ImFkbWluaXN0cmFkb3IiLCJpYXQiOjE3MzYzMDY0OTMsImV4cCI6MTczNjM5Mjg5M30.jogkNr26p-9Sg31FZhbfUMYSX-IW3sx6k76Jlox-N7c
 content-type: application/json
 
-{
-  "nombre": "ejemplo",
-  "apellido": "ejemplo",
-  "cedula": "1548955550",
-  "email": "bilib61354@evnft.com",
-  "password": "ejemplo.1234",
-  "telefono": "0995777002",
-  "estado": true
-}
-
 # {
-#   "nombre": "Elsa",
-#   "apellido": "Perez",
-#   "cedula": "1548950420",
-#   "email": "tixat81607@bawsny.com",
-#   "password": "Manuel.123",
-#   "telefono": "0995377002",
+#   "nombre": "ejemplo",
+#   "apellido": "ejemplo",
+#   "cedula": "1548955550",
+#   "email": "bilib61354@evnft.com",
+#   "password": "ejemplo.1234",
+#   "telefono": "0995777002",
 #   "estado": true
 # }
+
+{
+  "nombre": "Elsa",
+  "apellido": "Perez",
+  "cedula": "1548950420",
+  "email": "tixat81607@bawsny.com",
+  "password": "Manuel.123",
+  "telefono": "0995377002",
+  "estado": true
+}
 
 # {
 #   "nombre": "Lucia",
@@ -78,21 +78,22 @@ content-type: application/json
 
 ###listar guardia
 GET  http://localhost:4000/api/administrador/listar-guardias
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3Nzk4MTZmMzEzZThiMTZkYWFjMmY3NSIsInJvbCI6ImFkbWluaXN0cmFkb3IiLCJpYXQiOjE3MzYwNDg5NjcsImV4cCI6MTczNjEzNTM2N30.jLkfLku37nm0LAPsZ56rqf138S-v3Jcq-5V69SkVE2k
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3Nzk4MTZmMzEzZThiMTZkYWFjMmY3NSIsInJvbCI6ImFkbWluaXN0cmFkb3IiLCJpYXQiOjE3MzYzMDY0OTMsImV4cCI6MTczNjM5Mjg5M30.jogkNr26p-9Sg31FZhbfUMYSX-IW3sx6k76Jlox-N7c
 
 ### actualizar perfil
-PUT http://localhost:4000/api/administrador/actualizar-guardia/67641274d4f7e4451839f085
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NWY2ZGZlOTE5YzU5ZjQyNjIxODU2YSIsInJvbCI6ImFkbWluaXN0cmFkb3IiLCJpYXQiOjE3MzQ2MTE1MDMsImV4cCI6MTczNDY5NzkwM30.qSM7SyVYM59BTGKulay2WUU6tHSubedr1Ol6fxcOPOw
+PUT http://localhost:4000/api/administrador/actualizar-guardia/677def866be1044b150db694
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3Nzk4MTZmMzEzZThiMTZkYWFjMmY3NSIsInJvbCI6ImFkbWluaXN0cmFkb3IiLCJpYXQiOjE3MzYzMDY0OTMsImV4cCI6MTczNjM5Mjg5M30.jogkNr26p-9Sg31FZhbfUMYSX-IW3sx6k76Jlox-N7c
 content-type: application/json
 
+# {
+#   "nombre": "Elsa",
+#   "apellido": "Perez",
+#   "cedula": "1548950520",
+#   "email": "tixat81607@bawsny.com",
+#   "telefono": "0995377012"
+# }
 {
-  "nombre": "Elsa",
-  "apellido": "Perez",
-  "cedula": "1548950520",
-  "email": "tixat81607@bawsny.com",
-  "password": "Elsa.1234",
-  "telefono": "0995377012",
-  "estado": true
+  "telefono": "0995377112"
 }
 
 ### cambiar estado 

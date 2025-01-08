@@ -17,8 +17,8 @@ const CorreoCredencialesG = async (userMail, plainPassword) => {
       from: process.env.USER_MAILTRAP,
       to: userMail,
       subject: "Bienvenid@ a nuestro sistema",
-      html: `<h2>Hola 😊🚗,</h2>
-             <h3>Te damos la bienvenida a nuestro sistema de gestión (Parking 🚗🛣️). Estos son tus datos de acceso:</h3>
+      html: `<h3>Hola 😊🚗,</h3>
+             <h4>Te damos la bienvenida a nuestro sistema de gestión (Parking 🚗🛣️). Estos son tus datos de acceso:</h4>
              <p>------------- Credenciales -------------</p>
              <ul>
                <li><strong>Email:</strong> ${userMail}</li>
@@ -40,8 +40,8 @@ const CorreoCredencialesU = async (userMail, plainPassword) => {
       from: process.env.USER_MAILTRAP,
       to: userMail,
       subject: "Bienvenid@ a nuestro sistema",
-      html: `<h2>Hola 😊🚗,</h2>
-             <h3>Te damos la bienvenida a nuestro sistema de gestión (Parking 🚗🛣️). Estos son tus datos de acceso:</h3>
+      html: `<h3>Hola 😊🚗,</h3>
+             <h4>Te damos la bienvenida a nuestro sistema de gestión (Parking 🚗🛣️). Estos son tus datos de acceso:</h4>
              <p>------------- Credenciales -------------</p>
              <ul>
                <li><strong>Email:</strong> ${userMail}</li>
