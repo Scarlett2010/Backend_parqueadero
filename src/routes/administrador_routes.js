@@ -563,16 +563,12 @@ router.get("/administrador/listar-guardias", verificarAdmin, ListarGuardias);
  *               telefono:
  *                 type: number
  *                 description: Teléfono del guardia
- *               estado:
- *                 type: boolean
- *                 description: Estado del guardia (activo/inactivo)
  *           example:
  *             nombre: "Juan"
  *             apellido: "Pérez"
  *             cedula: "1234567890"
  *             email: "juan.perez@example.com"
  *             telefono: 987654321
- *             estado: true
  *     responses:
  *       200:
  *         description: Perfil del guardia actualizado exitosamente
@@ -583,9 +579,22 @@ router.get("/administrador/listar-guardias", verificarAdmin, ListarGuardias);
  *               properties:
  *                 msg:
  *                   type: string
- *                   example: Perfil guardia actualizado
+ *                   example: Perfil del guardia actualizado con éxito.
+ *                 guardia:
+ *                   type: object
+ *                   description: Datos actualizados del guardia
+ *       400:
+ *         description: No se enviaron campos válidos
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 msg:
+ *                   type: string
+ *                   example: No se enviaron campos válidos.
  *       404:
- *         description: Error en la actualización del perfil
+ *         description: Guardia no encontrado o ID inválido
  *         content:
  *           application/json:
  *             schema:
@@ -594,12 +603,22 @@ router.get("/administrador/listar-guardias", verificarAdmin, ListarGuardias);
  *                 msg:
  *                   type: string
  *             examples:
- *               camposVacios:
- *                 value:
- *                   msg: Lo sentimos debe llenar todos los campos
  *               idInvalido:
  *                 value:
- *                   msg: Lo sentimos pero ese guardia no se encuentra registrado
+ *                   msg: Guardia no registrado.
+ *               guardiaNoEncontrado:
+ *                 value:
+ *                   msg: Guardia no encontrado.
+ *       500:
+ *         description: Error en el servidor al intentar actualizar el perfil del guardia
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 msg:
+ *                   type: string
+ *                   example: Error al actualizar el perfil del guardia.
  */
 router.put(
   "/administrador/actualizar-guardia/:id",

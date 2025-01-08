@@ -86,6 +86,93 @@ router.post("/parqueaderos/registrar", verificarAdmin, registrarParqueadero);
 
 /**
  * @swagger
+ * /api/parqueaderos:
+ *  get:
+ *    summary: Listar todos los parqueaderos
+ *    tags: [Parqueadero]
+ *    security:
+ *      - bearerAuth: []
+ *    responses:
+ *      200:
+ *        description: Lista de parqueaderos obtenida con éxito
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: array
+ *              items:
+ *                type: object
+ *                properties:
+ *                  _id:
+ *                    type: string
+ *                    description: ID único del parqueadero
+ *                  nombre:
+ *                    type: string
+ *                    description: Nombre del parqueadero
+ *                  description:
+ *                    type: string
+ *                    description: Descripción del parqueadero
+ *                  planta:
+ *                    type: string
+ *                    description: Planta donde se encuentra el parqueadero
+ *                  bloque:
+ *                    type: string
+ *                    description: Bloque donde se encuentra el parqueadero
+ *                  espacios:
+ *                    type: array
+ *                    items:
+ *                      type: object
+ *                      properties:
+ *                        numeroEspacio:
+ *                          type: number
+ *                          description: Número del espacio
+ *                        estado:
+ *                          type: boolean
+ *                          description: Estado del espacio (true para ocupado, false para libre)
+ *                  estado:
+ *                    type: boolean
+ *                    description: Estado del parqueadero (activo/inactivo)
+ *              example:
+ *                - _id: "63f9a6e3c9d4b7a3f4e7d8a1"
+ *                  nombre: "Parqueadero A"
+ *                  description: "Parqueadero cerca del bloque principal"
+ *                  planta: "Planta Baja"
+ *                  bloque: "Bloque A"
+ *                  espacios:
+ *                    - numeroEspacio: 1
+ *                      estado: true
+ *                    - numeroEspacio: 2
+ *                      estado: false
+ *                  estado: true
+ *                - _id: "63f9a6e3c9d4b7a3f4e7d8a2"
+ *                  nombre: "Parqueadero B"
+ *                  description: "Parqueadero en el segundo bloque"
+ *                  planta: "Primer Piso"
+ *                  bloque: "Bloque B"
+ *                  espacios:
+ *                    - numeroEspacio: 1
+ *                      estado: true
+ *                  estado: false
+ *      500:
+ *        description: Error al intentar obtener la lista de parqueaderos
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                msg:
+ *                  type: string
+ *                  description: Mensaje de error
+ *                error:
+ *                  type: string
+ *                  description: Detalles del error (opcional)
+ *              example:
+ *                msg: "Error al listar los parqueaderos."
+ *                error: "Detalle del error interno"
+ */
+router.get("/parqueaderos", listarParqueaderos);
+
+/**
+ * @swagger
  * /api/parqueaderos/{id}:
  *   put:
  *     summary: Actualiza la información de un parqueadero
@@ -148,5 +235,4 @@ router.put(
  */
 router.delete("/parqueaderos/:id", verificarAdmin, EliminarParqueadero);
 
-router.get("/parqueaderos", listarParqueaderos);
 export default router;

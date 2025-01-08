@@ -429,7 +429,7 @@ router.put("/guardias/actualizar-clave", verificarRol, actualizarContraseñaG);
  * @swagger
  * /api/guardias/{id}:
  *  put:
- *    summary: Actualiza el número de teléfono del guardia
+ *    summary: Actualiza el número de teléfono de un guardia
  *    tags: [Guardia]
  *    security:
  *      - bearerAuth: []
@@ -439,7 +439,7 @@ router.put("/guardias/actualizar-clave", verificarRol, actualizarContraseñaG);
  *        required: true
  *        schema:
  *          type: string
- *          description: ID del guardia
+ *        description: ID del guardia a actualizar
  *    requestBody:
  *      required: true
  *      content:
@@ -465,8 +465,8 @@ router.put("/guardias/actualizar-clave", verificarRol, actualizarContraseñaG);
  *                msg:
  *                  type: string
  *                  description: Mensaje de confirmación
- *              example:
- *                msg: Perfil actualizado
+ *                example:
+ *                  msg: Perfil actualizado
  *      400:
  *        description: Error en los datos proporcionados
  *        content:
@@ -484,6 +484,18 @@ router.put("/guardias/actualizar-clave", verificarRol, actualizarContraseñaG);
  *                campos_faltantes:
  *                  value:
  *                    msg: Lo sentimos, debes llenar todos los campos
+ *      500:
+ *        description: Error interno del servidor
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                msg:
+ *                  type: string
+ *                  description: Mensaje de error
+ *                example:
+ *                  msg: Error interno del servidor
  */
 router.put("/guardias/:id", verificarRol, actualizarPerfil);
 
@@ -691,15 +703,15 @@ router.patch(
  *          schema:
  *            type: object
  *            properties:
+ *              cedula:
+ *                type: string
+ *                description: La cédula del usuario
  *              nombre:
  *                type: string
  *                description: El nombre del usuario
  *              apellido:
  *                type: string
  *                description: El apellido del usuario
- *              cedula:
- *                type: string
- *                description: La cédula del usuario
  *              email:
  *                type: string
  *                description: El email del usuario
@@ -712,18 +724,14 @@ router.patch(
  *              rol:
  *                type: string
  *                description: El rol del usuario
- *              estado:
- *                type: boolean
- *                description: El estado activo o inactivo del usuario
- *          example:
- *            nombre: "Carlos"
- *            apellido: "Ramírez"
- *            cedula: "9876543210"
- *            email: "carlosramirez@gmail.com"
- *            telefono: 123456789
- *            placa_vehiculo: "XYZ789"
- *            rol: "usuario"
- *            estado: true
+ *            example:
+ *              cedula: "9876543210"
+ *              nombre: "Carlos"
+ *              apellido: "Ramírez"
+ *              email: "carlosramirez@gmail.com"
+ *              telefono: 123456789
+ *              placa_vehiculo: "XYZ789"
+ *              rol: "usuario"
  *    responses:
  *      200:
  *        description: Perfil actualizado exitosamente
@@ -735,20 +743,20 @@ router.patch(
  *                msg:
  *                  type: string
  *                  description: Mensaje de éxito
+ *                usuario:
+ *                  type: object
+ *                  description: Datos actualizados del usuario
  *              example:
- *                msg: "Perfil actualizado"
- *      404:
- *        description: Usuario no encontrado o error al actualizar los datos
- *        content:
- *          application/json:
- *            schema:
- *              type: object
- *              properties:
- *                msg:
- *                  type: string
- *                  description: Mensaje de error
- *              example:
- *                msg: "Lo sentimos, el usuario no se encuentra registrado o faltan campos."
+ *                msg: "Perfil actualizado."
+ *                usuario:
+ *                  id: "64d7a8f5f5c7e6b8d0b2f3c1"
+ *                  cedula: "9876543210"
+ *                  nombre: "Carlos"
+ *                  apellido: "Ramírez"
+ *                  email: "carlosramirez@gmail.com"
+ *                  telefono: 123456789
+ *                  placa_vehiculo: "XYZ789"
+ *                  rol: "usuario"
  *      400:
  *        description: Datos inválidos o incompletos
  *        content:
@@ -758,11 +766,13 @@ router.patch(
  *              properties:
  *                msg:
  *                  type: string
- *                  description: El mensaje de error
- *              example:
- *                msg: "Lo sentimos debe llenar todos los campos"
- *      500:
- *        description: Error interno al intentar actualizar el usuario
+ *                  description: Mensaje de error
+ *              examples:
+ *                campos_invalidos:
+ *                  value:
+ *                    msg: "No se enviaron campos válidos."
+ *      404:
+ *        description: Usuario no encontrado o ID inválido
  *        content:
  *          application/json:
  *            schema:
@@ -770,13 +780,26 @@ router.patch(
  *              properties:
  *                msg:
  *                  type: string
- *                  description: El mensaje de error
- *                error:
+ *                  description: Mensaje de error
+ *              examples:
+ *                id_invalido:
+ *                  value:
+ *                    msg: "Guardia no registrado."
+ *                usuario_no_encontrado:
+ *                  value:
+ *                    msg: "Usuario no encontrado."
+ *      500:
+ *        description: Error interno del servidor
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                msg:
  *                  type: string
- *                  description: Detalles del error
+ *                  description: Mensaje de error
  *              example:
- *                msg: "Error al actualizar el perfil"
- *                error: "Error interno del servidor"
+ *                msg: "Error al actualizar perfil."
  */
 router.put(
   "/guardias/actualizar-usuarios/:id",
@@ -830,6 +853,113 @@ router.patch(
   cambiarEstadoParqueadero
 );
 
+/**
+ * @swagger
+ * /api/guardias/parqueaderos-espacio/{id}:
+ *  patch:
+ *    summary: Cambia el estado de un espacio en un parqueadero
+ *    tags: [Guardia]
+ *    security:
+ *      - bearerAuth: []
+ *    parameters:
+ *      - name: id
+ *        in: path
+ *        required: true
+ *        schema:
+ *          type: string
+ *        description: El ID del parqueadero
+ *    requestBody:
+ *      required: true
+ *      content:
+ *        application/json:
+ *          schema:
+ *            type: object
+ *            properties:
+ *              estado:
+ *                type: boolean
+ *                description: Nuevo estado del espacio (true para ocupado, false para libre)
+ *              numeroEspacio:
+ *                type: number
+ *                description: El número del espacio que se desea actualizar
+ *            required:
+ *              - estado
+ *              - numeroEspacio
+ *            example:
+ *              estado: true
+ *              numeroEspacio: 5
+ *    responses:
+ *      200:
+ *        description: Estado del espacio modificado exitosamente
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                msg:
+ *                  type: string
+ *                  description: Mensaje de éxito
+ *                data:
+ *                  type: object
+ *                  properties:
+ *                    numeroEspacio:
+ *                      type: number
+ *                      description: Número del espacio
+ *                    estado:
+ *                      type: boolean
+ *                      description: Estado actualizado del espacio
+ *              example:
+ *                msg: "Estado del espacio modificado exitosamente a true"
+ *                data:
+ *                  numeroEspacio: 5
+ *                  estado: true
+ *      400:
+ *        description: Error en los datos proporcionados
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                msg:
+ *                  type: string
+ *                  description: Mensaje de error
+ *              examples:
+ *                estado_invalido:
+ *                  value:
+ *                    msg: "El estado debe ser true o false"
+ *      404:
+ *        description: Parqueadero o espacio no encontrado
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                msg:
+ *                  type: string
+ *                  description: Mensaje de error
+ *              examples:
+ *                parqueadero_no_encontrado:
+ *                  value:
+ *                    msg: "Parqueadero no encontrado"
+ *                espacio_no_encontrado:
+ *                  value:
+ *                    msg: "Espacio no encontrado"
+ *      500:
+ *        description: Error interno del servidor
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                msg:
+ *                  type: string
+ *                  description: Mensaje de error
+ *                error:
+ *                  type: string
+ *                  description: Detalles del error
+ *              example:
+ *                msg: "Error al modificar el estado del espacio"
+ *                error: "Detalle del error interno"
+ */
 router.patch(
   "/guardias/parqueaderos-espacio/:id",
   verificarRol,
