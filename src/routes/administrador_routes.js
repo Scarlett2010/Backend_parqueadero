@@ -452,7 +452,7 @@ router.put("/administrador/nueva-clave/:token", nuevaContraseña);
  * @swagger
  * /api/administrador/registrar-guardia:
  *  post:
- *      summary: Registrar guardias
+ *      summary: Registrar un nuevo guardia
  *      tags: [Administrador]
  *      security:
  *          - bearerAuth: []
@@ -461,10 +461,43 @@ router.put("/administrador/nueva-clave/:token", nuevaContraseña);
  *          content:
  *              application/json:
  *                  schema:
- *                      $ref: '#/components/schemas/GuardiaRegister'
+ *                      type: object
+ *                      properties:
+ *                          nombre:
+ *                              type: string
+ *                              description: Nombre del guardia
+ *                          apellido:
+ *                              type: string
+ *                              description: Apellido del guardia
+ *                          cedula:
+ *                              type: string
+ *                              description: Cédula del guardia
+ *                          email:
+ *                              type: string
+ *                              description: Correo electrónico del guardia
+ *                          telefono:
+ *                              type: number
+ *                              description: Teléfono del guardia
+ *                          password:
+ *                              type: string
+ *                              description: Contraseña del guardia
+ *                      required:
+ *                          - nombre
+ *                          - apellido
+ *                          - cedula
+ *                          - email
+ *                          - telefono
+ *                          - password
+ *                      example:
+ *                          nombre: "Carlos"
+ *                          apellido: "López"
+ *                          cedula: "1234567890"
+ *                          email: "carlos.lopez@example.com"
+ *                          telefono: 987654321
+ *                          password: "contraseñaSegura123"
  *      responses:
  *          200:
- *              description: Guardia registrado con éxito
+ *              description: Guardia registrado y correo enviado con éxito
  *              content:
  *                  application/json:
  *                      schema:
@@ -474,9 +507,9 @@ router.put("/administrador/nueva-clave/:token", nuevaContraseña);
  *                                  type: string
  *                                  description: Mensaje de éxito
  *                          example:
- *                              msg: Guardia registrado correctamente
- *          400:
- *              description: Error al registrar guardia
+ *                              msg: Guardia registrado y correo enviado
+ *          404:
+ *              description: Error al registrar el guardia
  *              content:
  *                  application/json:
  *                      schema:
@@ -485,8 +518,28 @@ router.put("/administrador/nueva-clave/:token", nuevaContraseña);
  *                              msg:
  *                                  type: string
  *                                  description: Mensaje de error
+ *                          examples:
+ *                              camposVacios:
+ *                                  value:
+ *                                      msg: Lo sentimos debe llenar todos los campos
+ *                              guardiaRegistrado:
+ *                                  value:
+ *                                      msg: Lo sentimos pero ese guardia ya se encuentra registrado
+ *          500:
+ *              description: Error interno al intentar registrar al guardia
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                          type: object
+ *                          properties:
+ *                              msg:
+ *                                  type: string
+ *                                  description: Mensaje de error interno
+ *                              error:
+ *                                  type: string
+ *                                  description: Detalles del error (opcional)
  *                          example:
- *                              msg: Error en los datos del registro
+ *                              msg: Hubo un error al registrar el guardia
  */
 router.post(
   "/administrador/registrar-guardia",
@@ -745,10 +798,48 @@ router.delete(
  *          content:
  *              application/json:
  *                  schema:
- *                      $ref: '#/components/schemas/UsuarioRegister'
+ *                      type: object
+ *                      properties:
+ *                          nombre:
+ *                              type: string
+ *                              description: Nombre del usuario
+ *                          apellido:
+ *                              type: string
+ *                              description: Apellido del usuario
+ *                          cedula:
+ *                              type: string
+ *                              description: Cédula del usuario
+ *                          email:
+ *                              type: string
+ *                              description: Correo electrónico del usuario
+ *                          telefono:
+ *                              type: number
+ *                              description: Teléfono del usuario
+ *                          password:
+ *                              type: string
+ *                              description: Contraseña del usuario
+ *                          rol:
+ *                              type: string
+ *                              description: Rol del usuario (e.g., administrador, usuario, etc.)
+ *                      required:
+ *                          - nombre
+ *                          - apellido
+ *                          - cedula
+ *                          - email
+ *                          - telefono
+ *                          - password
+ *                          - rol
+ *                      example:
+ *                          nombre: "María"
+ *                          apellido: "Pérez"
+ *                          cedula: "0987654321"
+ *                          email: "maria.perez@example.com"
+ *                          telefono: 987654321
+ *                          password: "passwordSeguro123"
+ *                          rol: "usuario"
  *      responses:
  *          200:
- *              description: Usuario registrado con éxito
+ *              description: Usuario registrado y correo enviado con éxito
  *              content:
  *                  application/json:
  *                      schema:
@@ -758,21 +849,9 @@ router.delete(
  *                                  type: string
  *                                  description: Mensaje de éxito
  *                          example:
- *                              msg: Usuario registrado correctamente
- *          400:
- *              description: Error en los datos del registro
- *              content:
- *                  application/json:
- *                      schema:
- *                          type: object
- *                          properties:
- *                              msg:
- *                                  type: string
- *                                  description: Mensaje de error
- *                          example:
- *                              msg: Error en los datos proporcionados
+ *                              msg: Usuario registrado y correo enviado
  *          404:
- *              description: Usuario ya registrado o datos faltantes
+ *              description: Error por datos faltantes o usuario ya registrado
  *              content:
  *                  application/json:
  *                      schema:
@@ -781,8 +860,28 @@ router.delete(
  *                              msg:
  *                                  type: string
  *                                  description: Mensaje de error
+ *                          examples:
+ *                              camposVacios:
+ *                                  value:
+ *                                      msg: Lo sentimos debe llenar todos los campos
+ *                              usuarioExistente:
+ *                                  value:
+ *                                      msg: Lo sentimos pero el usuario ya se encuentra registrado
+ *          500:
+ *              description: Error interno al intentar registrar el usuario
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                          type: object
+ *                          properties:
+ *                              msg:
+ *                                  type: string
+ *                                  description: Mensaje de error interno
+ *                              error:
+ *                                  type: string
+ *                                  description: Detalles del error (opcional)
  *                          example:
- *                              msg: Lo sentimos debe llenar todos los campos o el usuario ya está registrado
+ *                              msg: Hubo un error al registrar el usuario
  */
 router.post(
   "/administrador/registrar-usuario",

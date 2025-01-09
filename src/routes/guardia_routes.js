@@ -560,7 +560,7 @@ router.put("/guardias/:id", verificarRol, actualizarPerfil);
  *              rol: "usuario"
  *              estado: true
  *    responses:
- *      201:
+ *      200:
  *        description: Usuario registrado exitosamente
  *        content:
  *          application/json:
@@ -571,9 +571,9 @@ router.put("/guardias/:id", verificarRol, actualizarPerfil);
  *                  type: string
  *                  description: Mensaje de confirmación
  *              example:
- *                msg: Usuario registrado
- *      400:
- *        description: Error en los datos proporcionados
+ *                msg: Usuario registrado y correo enviado
+ *      404:
+ *        description: Error en los datos proporcionados o usuario ya registrado
  *        content:
  *          application/json:
  *            schema:
@@ -589,6 +589,21 @@ router.put("/guardias/:id", verificarRol, actualizarPerfil);
  *                usuario_existente:
  *                  value:
  *                    msg: Lo sentimos pero el usuario ya se encuentra registrado
+ *      500:
+ *        description: Error interno al registrar el usuario
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                msg:
+ *                  type: string
+ *                  description: Mensaje de error
+ *                error:
+ *                  type: string
+ *                  description: Detalles del error
+ *              example:
+ *                msg: Hubo un error al registrar el usuario
  */
 router.post("/guardias/registrar", verificarRol, registroUsuarios);
 

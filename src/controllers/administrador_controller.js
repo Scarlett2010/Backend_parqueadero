@@ -6,6 +6,7 @@ import generarJWT from "../helpers/crearJWT.js";
 import {
   RestablecimientoContraseñaAdmin,
   CorreoCredencialesG,
+  CorreoCredencialesU,
 } from "../config/nodemailer.js";
 
 // Registrar administrador
@@ -189,12 +190,10 @@ const actualizarPerfilGuardia = async (req, res) => {
     if (!guardiaActualizado) {
       return res.status(404).json({ msg: "Guardia no encontrado." });
     }
-    res
-      .status(200)
-      .json({
-        msg: "Perfil del guardia actualizado con éxito.",
-        guardia: guardiaActualizado,
-      });
+    res.status(200).json({
+      msg: "Perfil del guardia actualizado con éxito.",
+      guardia: guardiaActualizado,
+    });
   } catch (error) {
     res.status(500).json({ msg: "Error al actualizar el perfil del guardia." });
   }
@@ -229,21 +228,26 @@ const EliminarGuardias = async (req, res) => {
 // Registrar usuarios
 const registroUsuarios = async (req, res) => {
   const { email, password } = req.body;
-  if (Object.values(req.body).includes(""))
+  if (Object.values(req.body).includes("")) {
     return res.status(404).json({
       msg: "Lo sentimos debe llenar todos los campos",
     });
+  }
   const usuarioInformacion = await Usuario.findOne({ email });
-  if (usuarioInformacion)
+  if (usuarioInformacion) {
     return res.status(404).json({
       msg: "Lo sentimos pero el usuario ya se encuentra registrado",
     });
-
-  const nuevoUsuario = new Usuario(req.body);
-  nuevoUsuario.password = await nuevoUsuario.encrypPassword(password);
-  await nuevoUsuario.save();
-
-  res.status(200).json({ msg: "Usuario registrado" });
+  }
+  try {
+    const nuevoUsuario = new Usuario(req.body);
+    nuevoUsuario.password = await nuevoUsuario.encrypPassword(password);
+    await nuevoUsuario.save();
+    await CorreoCredencialesU(email, password);
+    res.status(200).json({ msg: "Usuario registrado y correo enviado" });
+  } catch (error) {
+    res.status(500).json({ msg: "Hubo un error al registrar el usuario" });
+  }
 };
 
 // Listar usuarios
