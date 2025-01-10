@@ -10,12 +10,7 @@ import routerAdministrador from "./routes/administrador_routes.js";
 // import { SerialPort, ReadlineParser } from "serialport";
 import swaggerUi from "swagger-ui-express";
 import swaggerJSDoc from "swagger-jsdoc";
-import options  from "swagger.js";
-import path from "path";
-import { fileURLToPath } from "url";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+import { options } from "../src/swagger.js";
 
 // Inicializaciones
 const app = express();
@@ -37,13 +32,7 @@ app.use(cors());
 app.use(express.json());
 const spect = swaggerJSDoc(options);
 
-console.log("Swagger Spec:", JSON.stringify(spect, null, 2));
-
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(spect));
-
-app.use(express.static(path.join(__dirname, "public")));
-
-// Rutas0
+// Rutas
 app.use("/api", routerParqueaderos);
 app.use("/api", routerUsuarios);
 app.use("/api", routerGuardias);
@@ -53,6 +42,7 @@ app.get("/", (req, res) => {
   res.send("Bienvenido al backend");
 });
 // Documentación
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(spect));
 
 // Endpoint no es encontrado
 app.use((req, res) => res.status(404).send("Endpoint no encontrado - 404"));
