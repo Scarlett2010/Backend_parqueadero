@@ -137,7 +137,7 @@ router.post("/usuarios/login", loginUsuario);
 
 /**
  * @swagger
- * /api/recuperar-contraseña:
+ * /api/recuperar-clave:
  *   post:
  *     summary: Solicita un enlace para recuperar la contraseña
  *     tags: [Usuario]
@@ -181,7 +181,7 @@ router.post("/recuperar-clave", recuperarContraseña);
 
 /**
  * @swagger
- * /api/recuperar-contraseña/{token}:
+ * /api/recuperar-clave/{token}:
  *   get:
  *     summary: Verifica si el token de recuperación es válido
  *     tags: [Usuario]
@@ -202,7 +202,7 @@ router.get("/recuperar-clave/:token", comprobarTokenContraseña);
 
 /**
  * @swagger
- * /api/nueva-contraseña/{token}:
+ * /api/nueva-clave/{token}:
  *   put:
  *     summary: Establece una nueva contraseña usando el token
  *     tags: [Usuario]

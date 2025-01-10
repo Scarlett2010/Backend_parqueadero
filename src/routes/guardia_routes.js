@@ -257,7 +257,7 @@ router.post("/guardias/login", login);
 
 /**
  * @swagger
- * /api/guardias/recuperar-contraseña:
+ * /api/guardias/recuperar-clave:
  *  post:
  *    summary: Solicita recuperación de contraseña
  *    tags: [Guardia]
@@ -281,7 +281,7 @@ router.post("/guardias/recuperar-clave", recuperarContraseña);
 
 /**
  * @swagger
- * /api/guardias/recuperar-contraseña/{token}:
+ * /api/guardias/recuperar-clave/{token}:
  *  get:
  *    summary: Verifica el token de recuperación de contraseña
  *    tags: [Guardia]
@@ -301,7 +301,7 @@ router.get("/guardias/recuperar-clave/:token", comprobarTokenContraseña);
 
 /**
  * @swagger
- * /api/guardias/nueva-contraseña/{token}:
+ * /api/guardias/nueva-clave/{token}:
  *  put:
  *    summary: Cambia la contraseña utilizando el token
  *    tags: [Guardia]

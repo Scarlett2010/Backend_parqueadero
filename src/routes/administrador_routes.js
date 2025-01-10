@@ -352,7 +352,7 @@ router.post("/administrador/login", loginAdmin);
 
 /**
  * @swagger
- * /api/administrador/recuperar-contraseña:
+ * /api/administrador/recuperar-clave:
  *  post:
  *    summary: Solicita recuperación de contraseña
  *    tags: [Administrador]
@@ -365,6 +365,7 @@ router.post("/administrador/login", loginAdmin);
  *            properties:
  *              email:
  *                type: string
+ *                example: "estaphanym@gmail.com"
  *    responses:
  *      200:
  *        description: Correo enviado para recuperación
@@ -375,7 +376,7 @@ router.post("/administrador/recuperar-clave", recuperarContraseña);
 
 /**
  * @swagger
- * /api/administrador/recuperar-contraseña/{token}:
+ * /api/administrador/recuperar-clave/{token}:
  *  get:
  *    summary: Verifica el token de recuperación de contraseña
  *    tags: [Administrador]
@@ -395,7 +396,7 @@ router.get("/administrador/recuperar-clave/:token", comprobarTokenContraseña);
 
 /**
  * @swagger
- * /api/administrador/nueva-contraseña/{token}:
+ * /api/administrador/nueva-clave/{token}:
  *  put:
  *    summary: Actualiza la contraseña de un administrador
  *    tags: [Administrador]
