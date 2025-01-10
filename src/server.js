@@ -10,7 +10,7 @@ import routerAdministrador from "./routes/administrador_routes.js";
 // import { SerialPort, ReadlineParser } from "serialport";
 import swaggerUi from "swagger-ui-express";
 import swaggerJSDoc from "swagger-jsdoc";
-import { options } from "../swagger.js";
+import { options } from "/swagger.js";
 import path from "path";
 import { fileURLToPath } from "url";
 
@@ -39,7 +39,7 @@ const spect = swaggerJSDoc(options);
 
 console.log("Swagger Spec:", JSON.stringify(spect, null, 2));
 
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(spect, { explorer: true }));	
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(spect));	
 
 app.use(express.static(path.join(__dirname, "public")));
 
