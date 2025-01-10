@@ -788,7 +788,7 @@ router.delete(
 
 /**
  * @swagger
- * /api/administrador/registrar-usuarios:
+ * /api/administrador/registrar-usuario:
  *  post:
  *      summary: Registrar un nuevo usuario
  *      tags: [Administrador]
