@@ -10,7 +10,7 @@ import routerAdministrador from "./routes/administrador_routes.js";
 // import { SerialPort, ReadlineParser } from "serialport";
 import swaggerUi from "swagger-ui-express";
 import swaggerJSDoc from "swagger-jsdoc";
-import { options } from "../src/swagger.js";
+import { options } from "../swagger.js";
 
 // Inicializaciones
 const app = express();
@@ -32,7 +32,7 @@ app.use(cors());
 app.use(express.json());
 const spect = swaggerJSDoc(options);
 
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(spect));
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(spect, { explorer: true }));	
 
 // Rutas
 app.use("/api", routerParqueaderos);
