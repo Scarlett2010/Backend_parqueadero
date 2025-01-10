@@ -10,7 +10,7 @@ import routerAdministrador from "./routes/administrador_routes.js";
 // import { SerialPort, ReadlineParser } from "serialport";
 import swaggerUi from "swagger-ui-express";
 import swaggerJSDoc from "swagger-jsdoc";
-import { options } from "swagger.js";
+import options  from "swagger.js";
 import path from "path";
 import { fileURLToPath } from "url";
 
