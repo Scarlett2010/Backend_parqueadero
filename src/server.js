@@ -11,6 +11,7 @@ import routerAdministrador from "./routes/administrador_routes.js";
 import swaggerUi from "swagger-ui-express";
 import swaggerJSDoc from "swagger-jsdoc";
 import { options } from "../swagger.js";
+import path from "path";
 
 // Inicializaciones
 const app = express();
@@ -32,9 +33,13 @@ app.use(cors());
 app.use(express.json());
 const spect = swaggerJSDoc(options);
 
+console.log("Swagger Spec:", JSON.stringify(spect, null, 2));
+
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(spect, { explorer: true }));	
 
-// Rutas
+app.use(express.static(path.join(__dirname, "public")));
+
+// Rutas0
 app.use("/api", routerParqueaderos);
 app.use("/api", routerUsuarios);
 app.use("/api", routerGuardias);
