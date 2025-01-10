@@ -819,9 +819,14 @@ router.delete(
  *                          password:
  *                              type: string
  *                              description: Contraseña del usuario
+ *                          placa_vehiculo:
+ *                              type: string
+ *                              description: Placa del vehículo del usuario
  *                          rol:
  *                              type: string
  *                              description: Rol del usuario (e.g., administrador, usuario, etc.)
+ *                          estado:
+ *                              type: boolean
  *                      required:
  *                          - nombre
  *                          - apellido
@@ -829,7 +834,9 @@ router.delete(
  *                          - email
  *                          - telefono
  *                          - password
+ *                          - placa_vehiculo
  *                          - rol
+ *                          - estado
  *                      example:
  *                          nombre: "María"
  *                          apellido: "Pérez"
@@ -837,7 +844,9 @@ router.delete(
  *                          email: "maria.perez@example.com"
  *                          telefono: 987654321
  *                          password: "passwordSeguro123"
+ *                          placa_vehiculo: "ABC-123"
  *                          rol: "usuario"
+ *                          estado: true
  *      responses:
  *          200:
  *              description: Usuario registrado y correo enviado con éxito

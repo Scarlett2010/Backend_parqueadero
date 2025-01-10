@@ -115,19 +115,19 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NTUxMzQ0N
 ###---------------------------- Apartado usuarios -----------------
 ### crear usuario
 POST http://localhost:4000/api/administrador/registrar-usuario
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NmNiMTc1NTQ1YzRkYWZhMTJmOWJhNSIsInJvbCI6ImFkbWluaXN0cmFkb3IiLCJpYXQiOjE3MzU5MjU1ODksImV4cCI6MTczNjAxMTk4OX0.bngT6FUmuRGKc02uWcSIqG87psi61oWgCxVeWZiRSXo
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3Nzk4MTZmMzEzZThiMTZkYWFjMmY3NSIsInJvbCI6ImFkbWluaXN0cmFkb3IiLCJpYXQiOjE3MzY1MTUxNjksImV4cCI6MTczNjYwMTU2OX0.Df8hNHHlfkW7188XoQvphrsb5Br9TariY7b9sSbk5aU
 Content-Type: application/json
 
-{
-  "nombre": "Stefany",
-  "apellido": "Castellanos",
-  "cedula": "1548951000",
-  "email": "ejemplo@gmail.com",
-  "password": "Stefany.123",
-  "telefono": "0998374000",
-  "placa_vehiculo": "aab-100",
-  "rol": "Estudiante",
-  "estado": true
+  {
+  "nombre": "Vanessa",
+  "apellido": "Guevara",
+  "cedula": "1717849876",
+  "email": "vanessa.guevarav@gmail.com",
+  "telefono": 999669977,
+  "password": "usuario.123",
+  "placa":"PCF-267",
+  "rol": "Docente",
+  "estado":true
 }
 ### listar usuarios
 GET http://localhost:4000/api/administrador/listar-usuarios
