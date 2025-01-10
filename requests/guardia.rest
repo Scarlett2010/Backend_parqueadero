@@ -64,19 +64,19 @@ Content-Type: application/json
 ### -----------------------usuarios----------------------
 ### Registrar usuario externo
 POST http://localhost:4000/api/guardias/registrar
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3N2RlNzI4ZmIwNjg2ZGIwYTQ2NDllZCIsInJvbCI6Imd1YXJkaWEiLCJpYXQiOjE3MzYzMDQ0NjUsImV4cCI6MTczNjM5MDg2NX0.brXHuxrDU2PbVXh7E-f5kkA22mSpVVB2aSOxrpzropE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3N2RlNzI4ZmIwNjg2ZGIwYTQ2NDllZCIsInJvbCI6Imd1YXJkaWEiLCJpYXQiOjE3MzY1MTc0NTQsImV4cCI6MTczNjYwMzg1NH0.5T9122xx1XCl5Ow4G52Ve3F9y5U4qr0C5AWXqay3Iuk
 Content-Type: application/json
 
-{
-  "nombre": "Stefany",
-  "apellido": "Luna",
-  "cedula": "1548951090",
-  "email": "scarlettluna397@gmail.com",
-  "password": "Luna.123",
-  "telefono": "0998374400",
-  "placa_vehiculo": "abc-110",
-  "rol": "Estudiante",
-  "estado": true
+  {
+  "nombre": "Vanessa",
+  "apellido": "Guevara",
+  "cedula": "1717849876",
+  "email": "vanessa.guevarav@epn.edu.ec",
+  "telefono": 999669977,
+  "password": "usuario.123",
+  "placa_vehiculo":"PCF-267",
+  "rol": "Docente",
+  "estado":true
 }
 
 ###listar usuario

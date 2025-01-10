@@ -122,7 +122,7 @@ Content-Type: application/json
   "nombre": "Vanessa",
   "apellido": "Guevara",
   "cedula": "1717849876",
-  "email": "vanessa.guevarav@gmail.com",
+  "email": "vanessa.guevarav@epn.edu.ec",
   "telefono": 999669977,
   "password": "usuario.123",
   "placa":"PCF-267",
