@@ -86,7 +86,7 @@ const RestablecimientoContraseñaAdmin = async (userMail, token) => {
       html: `
       <h1>Sistema de gestión (Parking 🚗🛣️)</h1>
       <hr>
-      <a href="https://backend-espacios-esfot.onrender.com/api/recuperar-clave/token=${token}">Clic para reestablecer tu contraseña</a>
+      <a href="https://backend-espacios-esfot.onrender.com/api/recuperar-clave/${token}">Clic para reestablecer tu contraseña</a>
       <hr>
       <footer>Bienvenid@s!</footer>
       `,
