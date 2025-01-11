@@ -90,8 +90,6 @@ router.post("/parqueaderos/registrar", verificarAdmin, registrarParqueadero);
  *  get:
  *    summary: Listar todos los parqueaderos
  *    tags: [Parqueadero]
- *    security:
- *      - bearerAuth: []
  *    responses:
  *      200:
  *        description: Lista de parqueaderos obtenida con éxito
