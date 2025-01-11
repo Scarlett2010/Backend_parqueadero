@@ -275,7 +275,7 @@ router.get("/usuarios/perfil", verificarRol, perfilUsuario);
 
 /**
  * @swagger
- * /api/usuarios/actualizar-contraseña:
+ * /api/usuarios/actualizar-clave:
  *   put:
  *     summary: Actualiza la contraseña del usuario
  *     tags: [Usuario]
