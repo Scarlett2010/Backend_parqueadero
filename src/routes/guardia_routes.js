@@ -352,7 +352,7 @@ router.get("/guardias/perfil", verificarRol, perfil);
 
 /**
  * @swagger
- * /api/guardias/actualizar-contraseña:
+ * /api/guardias/actualizar-clave:
  *  put:
  *    summary: Actualiza la contraseña del guardia
  *    tags: [Guardia]
