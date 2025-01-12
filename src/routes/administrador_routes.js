@@ -297,53 +297,53 @@ router.post("/administrador/registrar", registroAdmin);
  * @swagger
  * /api/administrador/login:
  *  post:
- *      summary: Login de administrador
- *      tags: [Administrador]
- *      requestBody:
- *          required: true
- *          content:
- *              application/json:
- *                  schema:
- *                      $ref: '#/components/schemas/AdminLogin'
- *      responses:
- *          200:
- *              description: Login exitoso
- *              content:
- *                  application/json:
- *                      schema:
- *                          $ref: '#/components/schemas/AdminResponse'
- *          400:
- *              description: Error de validación
- *              content:
- *                  application/json:
- *                      schema:
- *                          type: object
- *                          properties:
- *                              msg:
- *                                  type: string
- *                                  description: El mensaje de error
- *                          example:
- *                              msg: Lo sentimos debe llenar todos los campos
- *          404:
- *              description: Error al iniciar sesión
- *              content:
- *                  application/json:
- *                      schema:
- *                          type: object
- *                          properties:
- *                              msg:
- *                                  type: string
- *                                  description: El mensaje de error
- *                      examples:
- *                          usuario no registrado:
- *                              value:
- *                                  msg: Lo siento el usuario no se encuentra registrado
- *                          Contraseña incorrecta:
- *                              value:
- *                                  msg: Lo sentimos la contraseña es incorrecta
- *                          No autenticado:
- *                              value:
- *                                  msg: Lo sentimos primero debe proporcionar un token
+ *   summary: Login de administrador
+ *   tags: [Administrador]
+ *   requestBody:
+ *    required: true
+ *    content:
+ *     application/json:
+ *      schema:
+ *       $ref: '#/components/schemas/AdminLogin'
+ *   responses:
+ *    200:
+ *     description: Login exitoso
+ *     content:
+ *      application/json:
+ *       schema:
+ *        $ref: '#/components/schemas/AdminResponse'
+ *    400:
+ *     description: Error de validación
+ *     content:
+ *      application/json:
+ *       schema:
+ *        type: object
+ *        properties:
+ *         msg:
+ *          type: string
+ *          description: El mensaje de error
+ *        example:
+ *         msg: Lo sentimos debe llenar todos los campos
+ *    404:
+ *     description: Error al iniciar sesión
+ *     content:
+ *      application/json:
+ *       schema:
+ *        type: object
+ *        properties:
+ *         msg:
+ *          type: string
+ *          description: El mensaje de error
+ *       examples:
+ *        usuario no registrado:
+ *         value:
+ *          msg: Lo siento el usuario no se encuentra registrado
+ *        Contraseña incorrecta:
+ *         value:
+ *          msg: Lo sentimos la contraseña es incorrecta
+ *        No autenticado:
+ *         value:
+ *          msg: Lo sentimos primero debe proporcionar un token
  */
 router.post("/administrador/login", loginAdmin);
 
