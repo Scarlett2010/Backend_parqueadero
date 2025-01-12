@@ -9,7 +9,7 @@ export const options = {
     },
     servers: [
       {
-        url: "https://backend-espacios-esfot.onrender.com/",
+        url: "https://backend-espacios-esfot.onrender.com",
       },
     ],
   },
