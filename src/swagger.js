@@ -1,17 +1,19 @@
-export const options = {
+import swaggerJSDoc from "swagger-jsdoc";
+
+const options = {
   swaggerDefinition: {
     openapi: "3.0.1",
     info: {
-      title: "Parking ESFOT",
       version: "1.0.0",
+      title: "Parking ESFOT",
       description:
         "La API de Gestión de Lugares de Parqueo está diseñada para facilitar la administración eficiente de los espacios de estacionamiento en una instalación o área específica. Esta API permite a los administradores, guardias y usuarios interactuar con el sistema para obtener información en tiempo real sobre la disponibilidad de lugares de parqueo y realizar acciones relacionadas con la gestión de estos espacios.",
-      servers: ["https://backend-espacios-esfot.onrender.com/api"],
+      servers: ["https://backend-espacios-esfot.onrender.com/"],
     },
-    basaPath: "/api",
+    basePath: "/",
     components: {
       securitySchemes: {
-        BearerAuth: {
+        bearerAuth: {
           type: "http",
           scheme: "bearer",
         },
@@ -19,9 +21,11 @@ export const options = {
     },
     servers: [
       {
-        url: "https://backend-espacios-esfot.onrender.com/api",
+        url: "https://backend-espacios-esfot.onrender.com/",
       },
     ],
   },
   apis: ["./src/routes/*.js"],
 };
+
+export const swaggerSpec = swaggerJSDoc(options);

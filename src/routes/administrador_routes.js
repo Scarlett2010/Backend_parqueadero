@@ -295,7 +295,7 @@ router.post("/administrador/registrar", registroAdmin);
 
 /**
  * @swagger
- * /administrador/login:
+ * /api/administrador/login:
  *  post:
  *      summary: Login de administrador
  *      tags: [Administrador]

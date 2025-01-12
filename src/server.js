@@ -9,14 +9,13 @@ import routerGuardias from "./routes/guardia_routes.js";
 import routerAdministrador from "./routes/administrador_routes.js";
 // import { SerialPort, ReadlineParser } from "serialport";
 import swaggerUi from "swagger-ui-express";
-import swaggerJSDoc from "swagger-jsdoc";
-import { options } from "../src/swagger.js";
+import { swaggerSpec } from "./swagger.js";
 
 // Inicializaciones
 const app = express();
-const spect = swaggerJSDoc(options);
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(spect));
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
+app.use(cors());
 const httpServer = createServer(app);
 const io = new SocketServer(httpServer, {
   cors: {
@@ -29,7 +28,6 @@ dotenv.config();
 // Configuraciones
 const PORT = process.env.PORT || 4000;
 app.set("port", PORT);
-app.use(cors());
 
 // Middlewares
 app.use(express.json());
