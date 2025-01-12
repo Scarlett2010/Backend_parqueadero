@@ -691,7 +691,7 @@ router.get("/guardias/listar-usuarios", verificarRol, ListarUsuarios);
  *                error: "Error interno del servidor"
  */
 router.patch(
-  "/guardias/cambiar-estado-usuario",
+  "/guardias/cambiar-estado-usuario/:id",
   verificarRol,
   cambiarEstadoUsuario
 );
