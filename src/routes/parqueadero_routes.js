@@ -171,7 +171,7 @@ router.get("/parqueaderos", listarParqueaderos);
 
 /**
  * @swagger
- * /api/parqueaderos/{id}:
+ * /api/actualizar-parqueadero/{id}:
  *   put:
  *     summary: Actualiza la información de un parqueadero
  *     tags: [Parqueadero]

@@ -14,6 +14,9 @@ import { options } from "../src/swagger.js";
 
 // Inicializaciones
 const app = express();
+const spect = swaggerJSDoc(options);
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(spect));
+
 const httpServer = createServer(app);
 const io = new SocketServer(httpServer, {
   cors: {
@@ -30,7 +33,6 @@ app.use(cors());
 
 // Middlewares
 app.use(express.json());
-const spect = swaggerJSDoc(options);
 
 // Rutas
 app.use("/api", routerParqueaderos);
@@ -42,7 +44,6 @@ app.get("/", (req, res) => {
   res.send("Bienvenido al backend");
 });
 // Documentación
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(spect));
 
 // Endpoint no es encontrado
 app.use((req, res) => res.status(404).send("Endpoint no encontrado - 404"));
