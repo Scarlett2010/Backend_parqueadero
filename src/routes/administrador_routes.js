@@ -298,7 +298,6 @@ router.post("/administrador/registrar", registroAdmin);
  * /api/administrador/login:
  *  post:
  *   summary: Login de administrador
- *   tags: [Administrador]
  *   requestBody:
  *    required: true
  *    content:
