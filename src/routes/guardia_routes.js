@@ -623,7 +623,7 @@ router.get("/guardias/listar-usuarios", verificarRol, ListarUsuarios);
 
 /**
  * @swagger
- * /api/guardias/cambiar-estado-usuario/{id}:
+ * /api/guardias/cambiar-estado-usuario:
  *  patch:
  *    summary: Cambia el estado del usuario
  *    tags: [Guardia]
@@ -691,7 +691,7 @@ router.get("/guardias/listar-usuarios", verificarRol, ListarUsuarios);
  *                error: "Error interno del servidor"
  */
 router.patch(
-  "/guardias/cambiar-estado-usuario/:id",
+  "/guardias/cambiar-estado-usuario",
   verificarRol,
   cambiarEstadoUsuario
 );
