@@ -625,8 +625,6 @@ router.post("/guardias/registrar", verificarRol, registroUsuarios);
  *                  application/json:
  *                      schema:
  *                          type: array
- *                          items:
- *                              $ref: '#/models/schemas/Usuarios'
  *                      example:
  *                          [
  *                              {
@@ -638,7 +636,7 @@ router.post("/guardias/registrar", verificarRol, registroUsuarios);
  *                                  "telefono": 987654321,
  *                                  "placa_vehiculo": "ABC-123",
  *                                  "rol": "Invitado",
- *                                  "estado": true,
+ *                                  "estado": true
  *                              },
  *                              {
  *                                  "_id": "60d5ecb8b98c1f2b9cfe6b1b",
@@ -649,7 +647,7 @@ router.post("/guardias/registrar", verificarRol, registroUsuarios);
  *                                  "telefono": 123456789,
  *                                  "placa_vehiculo": "XYZ-789",
  *                                  "rol": "Docente",
- *                                  "estado": true,
+ *                                  "estado": true
  *                              }
  *                          ]
  *          404:

@@ -560,8 +560,6 @@ router.post(
  *                  application/json:
  *                      schema:
  *                          type: array
- *                          items:
- *                              $ref: '#/models/schemas/Guardias'
  *                      example:
  *                          [
  *                              {
@@ -586,7 +584,9 @@ router.post(
  *                                  "telefono": 123456789,
  *                                  "placa_vehiculo": "XYZ-789",
  *                                  "rol": "Guardia",
- *                                  "estado": true
+ *                                  "estado": true,
+ *                                  "createdAt": "2023-06-21T15:30:00.000Z",
+ *                                  "updatedAt": "2023-06-21T15:30:00.000Z"
  *                              }
  *                          ]
  *          404:
@@ -943,8 +943,6 @@ router.post(
  *                  application/json:
  *                      schema:
  *                          type: array
- *                          items:
- *                             $ref: '#/models/schemas/Usuarios'
  *                      example:
  *                          [
  *                              {
@@ -956,7 +954,7 @@ router.post(
  *                                  "telefono": 987654321,
  *                                  "placa_vehiculo": "ABC-123",
  *                                  "rol": "Invitado",
- *                                  "estado": true,
+ *                                  "estado": true
  *                              },
  *                              {
  *                                  "_id": "60d5ecb8b98c1f2b9cfe6b1b",
@@ -967,7 +965,7 @@ router.post(
  *                                  "telefono": 123456789,
  *                                  "placa_vehiculo": "XYZ-789",
  *                                  "rol": "Docente",
- *                                  "estado": true,
+ *                                  "estado": true
  *                              }
  *                          ]
  *          404:
