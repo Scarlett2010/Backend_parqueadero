@@ -514,6 +514,17 @@ router.put("/guardias/:id", verificarRol, actualizarPerfil);
  *          schema:
  *            type: object
  *            properties:
+ *              email:
+ *                type: string
+ *                description: El email del usuario
+ *              password:
+ *                type: string
+ *                format: password
+ *                description: La contraseña del usuario
+ *              rol:
+ *                type: string
+ *                enum: [Estudiante, Invitado]
+ *                description: El rol asignado al usuario (debe ser Estudiante o Invitado)
  *              nombre:
  *                type: string
  *                description: El nombre del usuario
@@ -523,44 +534,27 @@ router.put("/guardias/:id", verificarRol, actualizarPerfil);
  *              cedula:
  *                type: string
  *                description: La cédula del usuario
- *              email:
- *                type: string
- *                description: El email del usuario
- *              password:
- *                type: string
- *                format: password
- *                description: La contraseña del usuario
  *              telefono:
  *                type: number
  *                description: El teléfono del usuario
  *              placa_vehiculo:
  *                type: string
  *                description: La placa del vehículo del usuario
- *              rol:
- *                type: string
- *                description: El rol asignado al usuario
- *              estado:
- *                type: boolean
- *                description: El estado del usuario (activo o inactivo)
  *            required:
- *              - nombre
- *              - apellido
- *              - cedula
  *              - email
  *              - password
  *              - rol
  *            example:
+ *              email: "carlosramirez@gmail.com"
+ *              password: "Usuario.123"
+ *              rol: "Estudiante"
  *              nombre: "Carlos"
  *              apellido: "Ramírez"
  *              cedula: "9876543210"
- *              email: "carlosramirez@gmail.com"
- *              password: "Usuario.123"
  *              telefono: 123456789
  *              placa_vehiculo: "XYZ789"
- *              rol: "usuario"
- *              estado: true
  *    responses:
- *      200:
+ *      201:
  *        description: Usuario registrado exitosamente
  *        content:
  *          application/json:
@@ -572,8 +566,8 @@ router.put("/guardias/:id", verificarRol, actualizarPerfil);
  *                  description: Mensaje de confirmación
  *              example:
  *                msg: Usuario registrado y correo enviado
- *      404:
- *        description: Error en los datos proporcionados o usuario ya registrado
+ *      400:
+ *        description: Error en los datos proporcionados
  *        content:
  *          application/json:
  *            schema:
@@ -585,10 +579,22 @@ router.put("/guardias/:id", verificarRol, actualizarPerfil);
  *              examples:
  *                campos_vacios:
  *                  value:
- *                    msg: Lo sentimos debe llenar todos los campos
- *                usuario_existente:
+ *                    msg: Lo sentimos, debe llenar todos los campos
+ *                rol_invalido:
  *                  value:
- *                    msg: Lo sentimos pero el usuario ya se encuentra registrado
+ *                    msg: El rol debe ser Estudiante o Invitado
+ *      409:
+ *        description: Usuario ya registrado
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                msg:
+ *                  type: string
+ *                  description: Mensaje de error
+ *              example:
+ *                msg: Lo sentimos, pero el usuario ya se encuentra registrado
  *      500:
  *        description: Error interno al registrar el usuario
  *        content:
@@ -599,9 +605,6 @@ router.put("/guardias/:id", verificarRol, actualizarPerfil);
  *                msg:
  *                  type: string
  *                  description: Mensaje de error
- *                error:
- *                  type: string
- *                  description: Detalles del error
  *              example:
  *                msg: Hubo un error al registrar el usuario
  */
@@ -611,13 +614,56 @@ router.post("/guardias/registrar", verificarRol, registroUsuarios);
  * @swagger
  * /api/guardias/listar-usuarios:
  *  get:
- *    summary: Lista todos los guardias
- *    tags: [Guardia]
- *    security:
- *      - bearerAuth: []
- *    responses:
- *      200:
- *        description: Lista de guardias obtenida
+ *      summary: Listar usuarios
+ *      tags: [Guardia]
+ *      security:
+ *       - bearerAuth: []
+ *      responses:
+ *          200:
+ *              description: Lista de usuarios obtenida correctamente
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                          type: array
+ *                          items:
+ *                              $ref: '#/components/schemas/Usuarios'
+ *                      example:
+ *                          [
+ *                              {
+ *                                  "_id": "60d5ecb8b98c1f2b9cfe6b1a",
+ *                                  "cedula": 1234567790,
+ *                                  "nombre": "Juan",
+ *                                  "apellido": "Pérez",
+ *                                  "email": "juan@example.com",
+ *                                  "telefono": 987654321,
+ *                                  "placa_vehiculo": "ABC-123",
+ *                                  "rol": "Invitado",
+ *                                  "estado": true,
+ *                              },
+ *                              {
+ *                                  "_id": "60d5ecb8b98c1f2b9cfe6b1b",
+ *                                  "cedula": 9876543110,
+ *                                  "nombre": "María",
+ *                                  "apellido": "González",
+ *                                  "email": "maria@example.com",
+ *                                  "telefono": 123456789,
+ *                                  "placa_vehiculo": "XYZ-789",
+ *                                  "rol": "Docente",
+ *                                  "estado": true,
+ *                              }
+ *                          ]
+ *          404:
+ *              description: No se encontraron usuarios
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                          type: object
+ *                          properties:
+ *                              msg:
+ *                                  type: string
+ *                                  description: Mensaje de error
+ *                          example:
+ *                              msg: No hay usuarios registrados
  */
 router.get("/guardias/listar-usuarios", verificarRol, ListarUsuarios);
 

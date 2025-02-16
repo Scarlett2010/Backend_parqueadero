@@ -562,6 +562,33 @@ router.post(
  *                          type: array
  *                          items:
  *                              $ref: '#/components/schemas/Guardia'
+ *                      example:
+ *                          [
+ *                              {
+ *                                  "_id": "60d5ecb8b98c1f2b9cfe6b1a",
+ *                                  "cedula": 1234567890,
+ *                                  "nombre": "Juan",
+ *                                  "apellido": "Pérez",
+ *                                  "email": "juan.perez@example.com",
+ *                                  "telefono": 987654321,
+ *                                  "placa_vehiculo": "ABC-123",
+ *                                  "rol": "Guardia",
+ *                                  "estado": true,
+ *                                  "createdAt": "2023-06-21T15:30:00.000Z",
+ *                                  "updatedAt": "2023-06-21T15:30:00.000Z"
+ *                              },
+ *                              {
+ *                                  "_id": "60d5ecb8b98c1f2b9cfe6b1b",
+ *                                  "cedula": 9876543210,
+ *                                  "nombre": "María",
+ *                                  "apellido": "González",
+ *                                  "email": "maria.gonzalez@example.com",
+ *                                  "telefono": 123456789,
+ *                                  "placa_vehiculo": "XYZ-789",
+ *                                  "rol": "Guardia",
+ *                                  "estado": true
+ *                              }
+ *                          ]
  *          404:
  *              description: No se encontraron guardias
  *              content:
@@ -787,7 +814,7 @@ router.delete(
  * @swagger
  * /api/administrador/registrar-usuario:
  *  post:
- *      summary: Registrar un nuevo usuario
+ *      summary: Registrar un nuevo usuario (Administrativo o Docente)
  *      tags: [Administrador]
  *      security:
  *          - bearerAuth: []
@@ -805,7 +832,7 @@ router.delete(
  *                              type: string
  *                              description: Apellido del usuario
  *                          cedula:
- *                              type: string
+ *                              type: number
  *                              description: Cédula del usuario
  *                          email:
  *                              type: string
@@ -821,31 +848,27 @@ router.delete(
  *                              description: Placa del vehículo del usuario
  *                          rol:
  *                              type: string
- *                              description: Rol del usuario (e.g., administrador, usuario, etc.)
- *                          estado:
- *                              type: boolean
+ *                              description: Rol del usuario (Administrativo o Docente)
+ *                              enum: [Administrativo, Docente]
  *                      required:
  *                          - nombre
  *                          - apellido
  *                          - cedula
  *                          - email
- *                          - telefono
  *                          - password
  *                          - placa_vehiculo
  *                          - rol
- *                          - estado
  *                      example:
  *                          nombre: "María"
  *                          apellido: "Pérez"
- *                          cedula: "0987654321"
+ *                          cedula: 987654321
  *                          email: "maria.perez@example.com"
  *                          telefono: 987654321
  *                          password: "passwordSeguro123"
  *                          placa_vehiculo: "ABC-123"
- *                          rol: "usuario"
- *                          estado: true
+ *                          rol: "Administrativo"
  *      responses:
- *          200:
+ *          201:
  *              description: Usuario registrado y correo enviado con éxito
  *              content:
  *                  application/json:
@@ -857,8 +880,8 @@ router.delete(
  *                                  description: Mensaje de éxito
  *                          example:
  *                              msg: Usuario registrado y correo enviado
- *          404:
- *              description: Error por datos faltantes o usuario ya registrado
+ *          400:
+ *              description: Error por datos faltantes o rol inválido
  *              content:
  *                  application/json:
  *                      schema:
@@ -870,10 +893,22 @@ router.delete(
  *                          examples:
  *                              camposVacios:
  *                                  value:
- *                                      msg: Lo sentimos debe llenar todos los campos
- *                              usuarioExistente:
+ *                                      msg: Lo sentimos, debe llenar todos los campos
+ *                              rolInvalido:
  *                                  value:
- *                                      msg: Lo sentimos pero el usuario ya se encuentra registrado
+ *                                      msg: El rol debe ser Administrativo o Docente
+ *          409:
+ *              description: Error por usuario ya registrado
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                          type: object
+ *                          properties:
+ *                              msg:
+ *                                  type: string
+ *                                  description: Mensaje de error
+ *                          example:
+ *                              msg: Lo sentimos, pero el usuario ya se encuentra registrado
  *          500:
  *              description: Error interno al intentar registrar el usuario
  *              content:
@@ -884,9 +919,6 @@ router.delete(
  *                              msg:
  *                                  type: string
  *                                  description: Mensaje de error interno
- *                              error:
- *                                  type: string
- *                                  description: Detalles del error (opcional)
  *                          example:
  *                              msg: Hubo un error al registrar el usuario
  */
@@ -912,7 +944,32 @@ router.post(
  *                      schema:
  *                          type: array
  *                          items:
- *                              $ref: '#/components/schemas/Usuario'
+ *                              $ref: '#/components/schemas/Usuarios'
+ *                      example:
+ *                          [
+ *                              {
+ *                                  "_id": "60d5ecb8b98c1f2b9cfe6b1a",
+ *                                  "cedula": 1234567790,
+ *                                  "nombre": "Juan",
+ *                                  "apellido": "Pérez",
+ *                                  "email": "juan@example.com",
+ *                                  "telefono": 987654321,
+ *                                  "placa_vehiculo": "ABC-123",
+ *                                  "rol": "Invitado",
+ *                                  "estado": true,
+ *                              },
+ *                              {
+ *                                  "_id": "60d5ecb8b98c1f2b9cfe6b1b",
+ *                                  "cedula": 9876543110,
+ *                                  "nombre": "María",
+ *                                  "apellido": "González",
+ *                                  "email": "maria@example.com",
+ *                                  "telefono": 123456789,
+ *                                  "placa_vehiculo": "XYZ-789",
+ *                                  "rol": "Docente",
+ *                                  "estado": true,
+ *                              }
+ *                          ]
  *          404:
  *              description: No se encontraron usuarios
  *              content:

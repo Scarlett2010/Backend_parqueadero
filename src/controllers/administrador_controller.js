@@ -221,31 +221,43 @@ const EliminarGuardias = async (req, res) => {
   if (!mongoose.Types.ObjectId.isValid(id))
     return res.status(404).json({ msg: "ID de usuario no válido" });
   const guardia = await guardias.findByIdAndDelete(id);
-  if (!guardia) return res.status(404).json({ msg: "Usuario no encontrado" });
-  res.status(200).json({ msg: "Usuario eliminado" });
+  if (!guardia) return res.status(404).json({ msg: "Guardia no encontrado" });
+  res.status(200).json({ msg: "Guardia eliminado" });
 };
 
 // Registrar usuarios
+// Registrar usuarios
 const registroUsuarios = async (req, res) => {
-  const { email, password } = req.body;
+  const { email, password, rol } = req.body;
+
   if (Object.values(req.body).includes("")) {
-    return res.status(404).json({
-      msg: "Lo sentimos debe llenar todos los campos",
+    return res.status(400).json({
+      msg: "Lo sentimos, debe llenar todos los campos",
     });
   }
+
+  if (rol !== "Administrativo" && rol !== "Docente") {
+    return res.status(400).json({
+      msg: "El rol debe ser Administrativo o Docente",
+    });
+  }
+
+  // Check if the user already exists
   const usuarioInformacion = await Usuario.findOne({ email });
   if (usuarioInformacion) {
-    return res.status(404).json({
-      msg: "Lo sentimos pero el usuario ya se encuentra registrado",
+    return res.status(409).json({
+      msg: "Lo sentimos, pero el usuario ya se encuentra registrado",
     });
   }
+
   try {
     const nuevoUsuario = new Usuario(req.body);
     nuevoUsuario.password = await nuevoUsuario.encrypPassword(password);
     await nuevoUsuario.save();
     await CorreoCredencialesU(email, password);
-    res.status(200).json({ msg: "Usuario registrado y correo enviado" });
+    res.status(201).json({ msg: "Usuario registrado y correo enviado" });
   } catch (error) {
+    console.error(error);
     res.status(500).json({ msg: "Hubo un error al registrar el usuario" });
   }
 };

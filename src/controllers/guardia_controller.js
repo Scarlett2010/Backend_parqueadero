@@ -177,25 +177,35 @@ const actualizarPerfil = async (req, res) => {
 };
 
 const registroUsuarios = async (req, res) => {
-  const { email, password } = req.body;
+  const { email, password, rol } = req.body;
+
   if (Object.values(req.body).includes("")) {
-    return res.status(404).json({
-      msg: "Lo sentimos debe llenar todos los campos",
+    return res.status(400).json({
+      msg: "Lo sentimos, debe llenar todos los campos",
     });
   }
+
+  if (rol !== "Estudiante" && rol !== "Invitado") {
+    return res.status(400).json({
+      msg: "El rol debe ser Estudiante o Invitado",
+    });
+  }
+
   const usuarioInformacion = await Usuario.findOne({ email });
   if (usuarioInformacion) {
-    return res.status(404).json({
-      msg: "Lo sentimos pero el usuario ya se encuentra registrado",
+    return res.status(409).json({
+      msg: "Lo sentimos, pero el usuario ya se encuentra registrado",
     });
   }
+
   try {
     const nuevoUsuario = new Usuario(req.body);
     nuevoUsuario.password = await nuevoUsuario.encrypPassword(password);
     await nuevoUsuario.save();
     await CorreoCredencialesU(email, password);
-    res.status(200).json({ msg: "Usuario registrado y correo enviado" });
+    res.status(201).json({ msg: "Usuario registrado y correo enviado" });
   } catch (error) {
+    console.error(error);
     res.status(500).json({ msg: "Hubo un error al registrar el usuario" });
   }
 };

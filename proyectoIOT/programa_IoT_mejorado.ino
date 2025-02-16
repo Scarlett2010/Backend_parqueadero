@@ -1,16 +1,15 @@
-
-#define trig1 3
-#define echo1 2
-#define trig2 5
-#define echo2 4
-#define trig3 15
-#define echo3 14
-#define trig4 9
-#define echo4 8
-#define trig5 11
-#define echo5 10
-#define trig6 13
-#define echo6 12
+#define trig1 13
+#define echo1 12
+#define trig2 11
+#define echo2 10
+#define echo3 15
+#define trig3 14
+#define trig4 8
+#define echo4 9
+#define trig5 5
+#define echo5 4
+#define trig6 3
+#define echo6 2
 
 // definir variables para medir
 float distancia1;
@@ -52,7 +51,6 @@ void setup()
 
 void loop()
 {
-  // put your main code here, to run repeatedly:
   // carro 1
   estado = 0;
   distancia(trig1, echo1);

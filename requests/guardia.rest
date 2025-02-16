@@ -121,7 +121,7 @@ Content-Type: application/json
 
 ### cambiar estado espacio
 PATCH http://localhost:4000/api/guardias/parqueaderos-espacio/6777ea78dddf4532cd632088
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NzdlY2U3ZGRkZjQ1MzJjZDYzMjA5OSIsInJvbCI6Imd1YXJkaWEiLCJpYXQiOjE3MzU5Mzk3MDUsImV4cCI6MTczNjAyNjEwNX0.Pb8b-e8nR3HDs2AHWL_q_3-L8MXYLcxx3U2RBjy6Ccw
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3N2RlZjg2NmJlMTA0NGIxNTBkYjY5NCIsInJvbCI6Imd1YXJkaWEiLCJpYXQiOjE3MzY3Mjk0NDQsImV4cCI6MTczNjgxNTg0NH0.eHV95b7k27fiUg5q6-uCC6NyxHQV0zzMAzVanl6ljbQ
 Content-Type: application/json
 
 {

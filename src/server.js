@@ -2,12 +2,12 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import { createServer } from "http";
-import { Server as SocketServer } from "socket.io";
+//import { Server as SocketServer } from "socket.io";
 import routerParqueaderos from "./routes/parqueadero_routes.js";
 import routerUsuarios from "./routes/usuario_routes.js";
 import routerGuardias from "./routes/guardia_routes.js";
 import routerAdministrador from "./routes/administrador_routes.js";
-// import { SerialPort, ReadlineParser } from "serialport";
+//import { SerialPort, ReadlineParser } from "serialport";
 import swaggerUi from "swagger-ui-express";
 import { swaggerSpec } from "./swagger.js";
 
@@ -17,11 +17,11 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 app.use(cors());
 const httpServer = createServer(app);
-const io = new SocketServer(httpServer, {
-  cors: {
-    origin: "*",
-  },
-});
+// const io = new SocketServer(httpServer, {
+//   cors: {
+//     origin: "*",
+//   },
+// });
 
 dotenv.config();
 
@@ -51,7 +51,6 @@ app.use((req, res) => res.status(404).send("Endpoint no encontrado - 404"));
 //   path: "COM3",
 //   baudRate: 9600,
 // });
-
 // const parser = port.pipe(new ReadlineParser({ delimiter: "\r\n" }));
 // parser.on("data", function (data) {
 //   console.log(data);

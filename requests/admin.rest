@@ -18,7 +18,7 @@ content-type: application/json
 
 {
   "email": "sluna6360@gmail.com",
-  "password": "Admin.1234"
+  "password": "Admin.123"
 }
 
 ### recuperar contraseña administrador
@@ -115,7 +115,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NTUxMzQ0N
 ###---------------------------- Apartado usuarios -----------------
 ### crear usuario
 POST http://localhost:4000/api/administrador/registrar-usuario
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3Nzk4MTZmMzEzZThiMTZkYWFjMmY3NSIsInJvbCI6ImFkbWluaXN0cmFkb3IiLCJpYXQiOjE3MzY1MTUxNjksImV4cCI6MTczNjYwMTU2OX0.Df8hNHHlfkW7188XoQvphrsb5Br9TariY7b9sSbk5aU
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjEzYmYwNmJhOWViOWJmYjdjZjg5OSIsInJvbCI6ImFkbWluaXN0cmFkb3IiLCJpYXQiOjE3Mzk2Njg0NzQsImV4cCI6MTczOTc1NDg3NH0.CtjFJ5Bt8B5eSMAdkQDoP6VZcmgZoI4MgCVkiXvQyfY
 Content-Type: application/json
 
   {
@@ -126,7 +126,7 @@ Content-Type: application/json
   "telefono": 999669977,
   "password": "usuario.123",
   "placa":"PCF-267",
-  "rol": "Docente",
+  "rol": "Estudiante",
   "estado":true
 }
 ### listar usuarios
