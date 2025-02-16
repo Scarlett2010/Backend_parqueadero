@@ -626,7 +626,7 @@ router.post("/guardias/registrar", verificarRol, registroUsuarios);
  *                      schema:
  *                          type: array
  *                          items:
- *                              $ref: '#/components/schemas/Usuarios'
+ *                              $ref: '#/models/schemas/Usuarios'
  *                      example:
  *                          [
  *                              {

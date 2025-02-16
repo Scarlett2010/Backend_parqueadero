@@ -561,7 +561,7 @@ router.post(
  *                      schema:
  *                          type: array
  *                          items:
- *                              $ref: '#/components/schemas/Guardia'
+ *                              $ref: '#/models/schemas/Guardias'
  *                      example:
  *                          [
  *                              {
@@ -944,7 +944,7 @@ router.post(
  *                      schema:
  *                          type: array
  *                          items:
- *                              $ref: '#/components/schemas/Usuarios'
+ *                             $ref: '#/models/schemas/Usuarios'
  *                      example:
  *                          [
  *                              {
